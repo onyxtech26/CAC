@@ -1,0 +1,8 @@
+{
+  "name": "Conglomerate Appraisal Consultancy",
+  "description": "High-stakes real estate and forensic property investigation platform for institutional-grade valuation, asset tracking, and dispute resolution in Malaysia.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
