@@ -60,3 +60,6 @@ The `@` path alias resolves to `src/` (e.g. `import X from '@/components/ui/Roll
   section components, sourced from the company profile.
 - The contact form submits leads by email via [FormSubmit](https://formsubmit.co);
   the destination inbox must confirm activation once on first submission.
+
+<!-- Trigger Deploy -->
+
