@@ -1,8 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Compass, BookOpen, Search, Shield, ArrowRightCircle } from 'lucide-react';
-import RollingNumber from './RollingNumber';
-import ForensicShader from './ForensicShader';
+import RollingNumber from '../ui/RollingNumber';
 
 interface Step {
   id: number;
@@ -109,19 +108,24 @@ export default function Timeline() {
   };
 
   return (
-    <section id="process" className="py-24 md:py-32 bg-surface forensic-grid border-b border-black/5 relative overflow-hidden">
-      <ForensicShader />
+    <section id="process" className="py-24 md:py-32 bg-transparent border-b border-black/5 relative overflow-hidden">
       <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-12 xl:px-20">
 
         {/* Title & Metadata Header */}
-        <div className="text-center mb-10">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+          className="text-center mb-10"
+        >
           <span className="font-mono text-xs text-secondary uppercase tracking-[0.25em] block mb-3">
             // Investigation Roadmap
           </span>
           <h3 className="font-display text-3xl sm:text-4xl font-bold text-on-surface">
             Procedural Path to Clarity
           </h3>
-        </div>
+        </motion.div>
 
 
 
@@ -134,7 +138,7 @@ export default function Timeline() {
             {/* Active growing laser path */}
             <div className="absolute top-1/2 left-[10%] right-[10%] h-[2px] -translate-y-1/2 overflow-hidden pointer-events-none">
               <motion.div
-                className="h-full bg-gradient-to-r from-secondary via-tertiary to-secondary shadow-[0_0_8px_rgba(30,58,138,0.3)]"
+                className="h-full bg-gradient-to-r from-secondary via-tertiary to-secondary shadow-[0_0_8px_rgba(19,41,75,0.3)]"
                 animate={{ width: `${((activeStepId - 1) / (STEPS.length - 1)) * 100}%` }}
                 transition={{ duration: 0.6, ease: "easeInOut" }}
               />
@@ -175,7 +179,7 @@ export default function Timeline() {
                           transform="rotate(45 20 20)"
                           fill="none"
                           strokeWidth="1.5"
-                          stroke={isHighlight ? "#ca8a04" : "#1e3a8a"}
+                          stroke={isHighlight ? "#ca8a04" : "#13294b"}
                           strokeDasharray="80"
                           initial={{ strokeDashoffset: 80 }}
                           animate={{ strokeDashoffset: 0 }}
@@ -191,7 +195,7 @@ export default function Timeline() {
                       className={`w-5 h-5 border transition-all duration-300 relative z-10 flex items-center justify-center ${isActive
                           ? isHighlight
                             ? 'bg-tertiary border-tertiary shadow-[0_0_15px_rgba(202,138,4,0.4)]'
-                            : 'bg-secondary border-secondary shadow-[0_0_15px_rgba(30,58,138,0.4)]'
+                            : 'bg-secondary border-secondary shadow-[0_0_15px_rgba(19,41,75,0.4)]'
                           : 'bg-white border-secondary/40 group-hover:bg-secondary/10 group-hover:border-secondary'
                         }`}
                     >

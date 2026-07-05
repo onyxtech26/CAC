@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   Building2,
@@ -12,12 +12,26 @@ import {
   X,
   Fingerprint
 } from 'lucide-react';
-import { SERVICES } from '../data';
-import { Service } from '../types';
-import ForensicShader from './ForensicShader';
+import { SERVICES } from '../../data';
+import { Service } from '../../types';
+import { lockScroll, unlockScroll } from '../../lib/scrollLock';
 
 export default function Services() {
   const [selectedService, setSelectedService] = useState<Service | null>(null);
+
+  // Close on Escape and lock body scroll while the modal is open.
+  useEffect(() => {
+    if (!selectedService) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSelectedService(null);
+    };
+    document.addEventListener('keydown', onKey);
+    lockScroll();
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      unlockScroll();
+    };
+  }, [selectedService]);
 
   // Map icon strings to Lucide icon components
   const getIcon = (iconName: string) => {
@@ -33,19 +47,24 @@ export default function Services() {
   };
 
   return (
-    <section id="services" className="py-24 md:py-32 bg-surface forensic-grid relative overflow-hidden border-y border-black/5">
-      <ForensicShader />
+    <section id="services" className="py-24 md:py-32 bg-transparent relative overflow-hidden border-y border-black/5">
       <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-12 xl:px-20">
 
         {/* Header */}
-        <div className="text-center mb-16 md:mb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+          className="text-center mb-16 md:mb-20"
+        >
           <span className="font-mono text-xs text-tertiary uppercase tracking-[0.25em] block mb-3">
             // Forensic Capabilities
           </span>
           <h3 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-on-surface">
             Specialized Service Portfolio
           </h3>
-        </div>
+        </motion.div>
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8">
@@ -58,11 +77,12 @@ export default function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.15 }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
+                whileHover={{ y: -6 }}
                 onClick={() => setSelectedService(service)}
-                className="glass-surface p-8 lg:p-10 hover:border-tertiary/50 transition-all duration-300 group cursor-pointer relative flex flex-col justify-between"
+                className="glass-surface p-8 lg:p-10 hover:border-tertiary/50 hover:shadow-[0_26px_55px_-26px_rgba(19,41,75,0.35)] transition-shadow duration-300 group cursor-pointer relative flex flex-col justify-between"
               >
                 <div>
-                  <div className="w-12 h-12 bg-secondary/10 flex items-center justify-center text-secondary border border-secondary/20 mb-6 group-hover:scale-105 group-hover:border-secondary/40 transition-transform duration-300">
+                  <div className="w-12 h-12 bg-secondary/10 flex items-center justify-center text-secondary border border-secondary/20 mb-6 group-hover:scale-110 group-hover:-rotate-3 group-hover:bg-secondary/15 group-hover:border-secondary/40 transition-all duration-300">
                     <IconComponent className="w-6 h-6 text-secondary" />
                   </div>
                   <h4 className="font-display text-xl font-semibold text-on-surface mb-3 group-hover:text-secondary transition-colors">
@@ -91,36 +111,41 @@ export default function Services() {
       {/* Forensic Detail Modal / Drawer */}
       <AnimatePresence>
         {selectedService && (
-          <div className="fixed inset-0 z-50 flex items-center justify-end">
-            {/* Backdrop */}
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            {/* Backdrop scrim */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
               onClick={() => setSelectedService(null)}
-              className="absolute inset-0 bg-black/25 backdrop-blur-sm"
+              className="absolute inset-0 bg-black/50 backdrop-blur-md"
             />
 
-            {/* Sidebar content */}
+            {/* Centered pop-up modal */}
             <motion.div
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="relative w-full max-w-lg h-full bg-white/90 backdrop-blur-2xl sm:border-l border-black/10 p-6 sm:p-12 overflow-y-auto flex flex-col justify-between shadow-2xl"
+              role="dialog"
+              aria-modal="true"
+              aria-label={`${selectedService.title} details`}
+              initial={{ opacity: 0, scale: 0.92, y: 24 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.96, y: 12, transition: { duration: 0.16, ease: 'easeIn' } }}
+              transition={{ type: 'spring', damping: 26, stiffness: 280 }}
+              className="relative w-full max-w-2xl max-h-[88vh] bg-white/95 backdrop-blur-2xl border border-black/10 p-6 sm:p-10 overflow-y-auto no-scrollbar flex flex-col shadow-2xl z-10"
             >
               <div>
                 {/* Header controls */}
                 <div className="flex justify-between items-center mb-8">
                   <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-tertiary rounded-full animate-pulse" />
+                    <span className="w-2 h-2 bg-tertiary rounded-full" />
                     <span className="font-mono text-[10px] tracking-[0.2em] text-on-surface-variant uppercase">
                       Forensic Audit File // {selectedService.id.toUpperCase()}
                     </span>
                   </div>
                   <button
                     onClick={() => setSelectedService(null)}
-                    className="p-1.5 border border-black/10 bg-black/5 hover:border-black/25 transition-all text-on-surface-variant hover:text-on-surface"
+                    aria-label="Close"
+                    className="p-1.5 border border-black/10 bg-black/5 hover:border-black/25 hover:rotate-90 transition-all duration-300 text-on-surface-variant hover:text-on-surface"
                   >
                     <X className="w-4 h-4" />
                   </button>
@@ -146,18 +171,30 @@ export default function Services() {
                     <h4 className="font-mono text-xs text-secondary uppercase tracking-widest font-semibold border-b border-black/10 pb-2">
                       // Tactical Audit Checklist
                     </h4>
-                    <div className="space-y-3">
+                    <motion.div
+                      className="space-y-3"
+                      initial="hidden"
+                      animate="show"
+                      variants={{ show: { transition: { staggerChildren: 0.06, delayChildren: 0.15 } } }}
+                    >
                       {selectedService.checklist.map((step, idx) => (
-                        <div key={idx} className="flex gap-3 items-start">
+                        <motion.div
+                          key={idx}
+                          variants={{
+                            hidden: { opacity: 0, x: -12 },
+                            show: { opacity: 1, x: 0, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } },
+                          }}
+                          className="flex gap-3 items-start"
+                        >
                           <div className="mt-0.5 w-4 h-4 rounded-full bg-tertiary/10 border border-tertiary/30 flex items-center justify-center flex-shrink-0">
                             <CheckCircle2 className="w-3 h-3 text-tertiary" />
                           </div>
                           <span className="font-sans text-xs text-on-surface-variant font-light leading-relaxed">
                             {step}
                           </span>
-                        </div>
+                        </motion.div>
                       ))}
-                    </div>
+                    </motion.div>
                   </div>
                 </div>
               </div>
@@ -167,7 +204,7 @@ export default function Services() {
                 <a
                   href="#contact"
                   onClick={() => setSelectedService(null)}
-                  className="w-full block text-center bg-secondary text-white py-4 font-mono text-xs uppercase tracking-widest font-bold hover:bg-transparent hover:text-secondary border border-secondary transition-all"
+                  className="btn-premium w-full block text-center bg-secondary text-white py-4 font-mono text-xs uppercase tracking-widest font-bold hover:bg-tertiary border border-secondary hover:border-tertiary"
                 >
                   Engage on {selectedService.title}
                 </a>

@@ -1,20 +1,62 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# CAC — Conglomerate Appraisal Consultancy
 
-# Run and deploy your AI Studio app
+Marketing website for **Conglomerate Appraisal Consultancy (CAC)** — a Malaysian
+property appraisal and forensic consultancy specialising in the valuation, due
+diligence and strategic acquisition of subsale and land assets across Johor & Kedah.
 
-This contains everything you need to run your app locally.
+Built as a single-page site with React, Vite, Tailwind CSS v4 and Motion.
 
-View your app in AI Studio: https://ai.studio/apps/5f5905c1-dc53-47f5-ba5d-a7dbefae5f57
+## Tech stack
 
-## Run Locally
+| Concern      | Choice                            |
+| ------------ | --------------------------------- |
+| Framework    | React 19                          |
+| Build / dev  | Vite 6                            |
+| Styling      | Tailwind CSS v4 (`@theme` in CSS) |
+| Animation    | Motion                            |
+| Icons        | lucide-react                      |
+| Lottie       | @lottiefiles/dotlottie-react      |
+| Language     | TypeScript                        |
 
-**Prerequisites:**  Node.js
+## Getting started
 
+**Prerequisites:** Node.js 18+
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+```bash
+npm install      # install dependencies
+npm run dev      # start the dev server on http://localhost:3000
+npm run build    # production build to /dist
+npm run preview  # preview the production build
+npm run lint     # type-check with tsc
+```
+
+## Project structure
+
+```
+public/
+  icon.png                 # favicon
+src/
+  main.tsx                 # app entry
+  App.tsx                  # page composition
+  styles/
+    index.css              # Tailwind + theme tokens + utilities/keyframes
+  assets/                  # bundled images / lottie
+  data/
+    index.ts               # SERVICES + ASSETS content
+  types/
+    index.ts               # shared TypeScript types
+  components/
+    layout/                # Navbar, Footer
+    sections/              # Hero, StatsBar, About, Services,
+                           #   InvestmentOutlook, Timeline, WhyCAC, Contact
+    ui/                    # PremiumBackground, RollingNumber, InquiryLogModal
+```
+
+The `@` path alias resolves to `src/` (e.g. `import X from '@/components/ui/RollingNumber'`).
+
+## Notes
+
+- Site content (services, portfolio, contact details) lives in `src/data` and the
+  section components, sourced from the company profile.
+- The contact form submits leads by email via [FormSubmit](https://formsubmit.co);
+  the destination inbox must confirm activation once on first submission.

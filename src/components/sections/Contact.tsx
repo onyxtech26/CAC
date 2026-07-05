@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { MapPin, Mail, Phone, MessageSquare, Loader2, ShieldCheck, CheckCircle2 } from 'lucide-react';
-import { Inquiry } from '../types';
-import ForensicShader from './ForensicShader';
+import { MapPin, Mail, Phone, MessageSquare, Loader2, CheckCircle2, AlertTriangle } from 'lucide-react';
+import { Inquiry } from '../../types';
 
 interface ContactProps {
   onInquirySubmitted: () => void;
@@ -12,47 +11,74 @@ export default function Contact({ onInquirySubmitted }: ContactProps) {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [service, setService] = useState('Forensic Investigation');
+  const [service, setService] = useState('Property Forensic Consultation');
   const [briefInquiry, setBriefInquiry] = useState('');
 
   // Custom multi-stage form submission status
-  const [submissionStage, setSubmissionStage] = useState<'idle' | 'securing' | 'hashing' | 'generating' | 'success'>('idle');
+  const [submissionStage, setSubmissionStage] = useState<'idle' | 'securing' | 'hashing' | 'generating' | 'success' | 'error'>('idle');
   const [issuedTrackingCode, setIssuedTrackingCode] = useState('');
 
   const servicesList = [
-    'Forensic Investigation',
-    'Estate & Probate',
-    'Valuation Advisory',
-    'Development Planning',
-    'Will Writing & Trust setup'
+    'Property Valuation & Appraisal',
+    'Property Forensic Consultation',
+    'Subsale Acquisition & Flips',
+    'Land Banking & Development',
+    'Due Diligence & Title Verification',
+    'Market & Investment Advisory'
   ];
 
   const handleWhatsApp = () => {
     // Standard WhatsApp API link redirect
     const message = encodeURIComponent("Hello CAC, I would like to schedule a forensic consultation regarding real estate matters.");
-    window.open(`https://wa.me/60123456789?text=${message}`, '_blank');
+    window.open(`https://wa.me/60183777716?text=${message}`, '_blank');
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Company lead inbox (FormSubmit delivers the form to this address by email).
+  const LEAD_EMAIL = 'conglomerateac@gmail.com';
+  const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!fullName || !email || !phoneNumber || !briefInquiry) return;
 
-    // Trigger stages sequence
+    const trackingCode = `CAC-2026-${Math.floor(1000 + Math.random() * 9000)}`;
+
     setSubmissionStage('securing');
+    await wait(700);
+    setSubmissionStage('hashing');
 
-    setTimeout(() => {
-      setSubmissionStage('hashing');
-    }, 1000);
+    try {
+      // Send the lead to the company inbox (and cc the office) by email.
+      const res = await fetch(`https://formsubmit.co/ajax/${LEAD_EMAIL}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          _subject: `New Website Lead — ${service} — ${fullName}`,
+          _template: 'table',
+          _captcha: 'false',
+          _cc: 'admin@cac.com.my',
+          _replyto: email,
+          'Tracking Code': trackingCode,
+          'Full Name': fullName,
+          'Email Address': email,
+          'Phone Number': phoneNumber,
+          'Service Required': service,
+          'Brief Inquiry': briefInquiry,
+          Source: 'CAC Website — Contact Form',
+          Submitted: new Date().toLocaleString(),
+        }),
+      });
 
-    setTimeout(() => {
       setSubmissionStage('generating');
-    }, 2000);
+      const data = await res.json().catch(() => ({} as any));
+      if (!res.ok || (data && data.success === 'false')) {
+        throw new Error((data && data.message) || 'Submission failed');
+      }
 
-    setTimeout(() => {
-      const trackingCode = `CAC-2026-${Math.floor(1000 + Math.random() * 9000)}`;
+      await wait(500);
       setIssuedTrackingCode(trackingCode);
 
-      // Save to localStorage
+      // Keep a local copy so the inquiry log / case tracker still works.
       const newInquiry: Inquiry = {
         id: Math.random().toString(36).substr(2, 9),
         fullName,
@@ -63,29 +89,27 @@ export default function Contact({ onInquirySubmitted }: ContactProps) {
         timestamp: new Date().toLocaleString(),
         status: 'received',
         trackingCode,
-        lastUpdated: new Date().toLocaleString()
+        lastUpdated: new Date().toLocaleString(),
       };
-
       const existingInquiries = JSON.parse(localStorage.getItem('cac_inquiries') || '[]');
       localStorage.setItem('cac_inquiries', JSON.stringify([newInquiry, ...existingInquiries]));
-
-      // Dispatch event to update other active states
       window.dispatchEvent(new Event('cac_inquiry_added'));
 
       setSubmissionStage('success');
       onInquirySubmitted();
 
-      // Clear fields
       setFullName('');
       setEmail('');
       setPhoneNumber('');
       setBriefInquiry('');
-    }, 3200);
+    } catch (err) {
+      console.error('Lead submission failed:', err);
+      setSubmissionStage('error');
+    }
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 bg-surface forensic-grid border-b border-black/5 relative overflow-hidden">
-      <ForensicShader />
+    <section id="contact" className="py-24 md:py-32 bg-transparent border-b border-black/5 relative overflow-hidden">
       <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-12 xl:px-20 grid grid-cols-1 md:grid-cols-2 gap-16 xl:gap-24">
 
         {/* Left Side: Investigator Info Card */}
@@ -112,19 +136,18 @@ export default function Contact({ onInquirySubmitted }: ContactProps) {
             </div>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-8">
-              <div className="w-20 h-20 rounded-full border-2 border-secondary p-1 overflow-hidden bg-surface-container flex-shrink-0">
+              <div className="w-20 h-20 rounded-full border-2 border-secondary p-1 overflow-hidden bg-surface-container flex-shrink-0 transition-all duration-300 hover:scale-105 hover:border-tertiary hover:shadow-lg hover:shadow-tertiary/20">
                 <div
                   className="w-full h-full rounded-full bg-cover bg-center"
-                  referrerPolicy="no-referrer"
                   style={{
                     backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuBGxax-H32Oqj0P49IpMtY_oqV37yRFHUWSy1J60h5FzHQt8RwBqUb-y8MTTsVmBYK2WMIdaj_LvxNBVN48t77GMMRttLhohkN4ABE46o7h7iA1_wNU0r66BdTfp4g-qw-E0Od6f0vMl4MxCApvDZ8mX8dY66fmQePYvQrByX5-FXxsiAI8geK3QE5Y_KifhZYaGaaGv6aTOrIQvGz09E9XbepsTsKcgbVkSyNJEKLjbltCLMRoBz2LoNZIe8SXoakKgKStcQ6atkc')`
                   }}
                 />
               </div>
               <div>
-                <p className="font-display text-xl font-bold text-on-surface">Consultant Mohaan</p>
+                <p className="font-display text-xl font-bold text-on-surface">Mohaan</p>
                 <p className="font-mono text-xs text-on-surface-variant/75 uppercase tracking-wider">
-                  Senior Property Investigator
+                  Forensic Consultant
                 </p>
               </div>
             </div>
@@ -132,22 +155,22 @@ export default function Contact({ onInquirySubmitted }: ContactProps) {
             <div className="space-y-4 font-mono text-xs text-on-surface-variant">
               <div className="flex items-center gap-3">
                 <MapPin className="w-4 h-4 text-secondary flex-shrink-0" />
-                <span>Office: Johor Bahru, Malaysia</span>
+                <span>Coverage: Johor &amp; Kedah, Malaysia</span>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-secondary flex-shrink-0" />
-                <span>contact@cacconsultancy.com</span>
+                <span>admin@cac.com.my</span>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-secondary flex-shrink-0" />
-                <span>+60 7-331 4827 // HQ</span>
+                <span>+6018-377 7716</span>
               </div>
             </div>
 
             {/* WhatsApp Integration button */}
             <button
               onClick={handleWhatsApp}
-              className="w-full mt-8 bg-[#25D366] text-white py-4 font-mono text-xs uppercase tracking-widest font-bold flex items-center justify-center gap-3 hover:bg-[#20ba59] active:scale-95 transition-all shadow-md"
+              className="btn-premium w-full mt-8 bg-[#25D366] text-white py-4 font-mono text-xs uppercase tracking-widest font-bold flex items-center justify-center gap-3 hover:bg-[#20ba59] shadow-md"
             >
               <MessageSquare className="w-4 h-4" /> WhatsApp Consultation
             </button>
@@ -225,13 +248,39 @@ export default function Contact({ onInquirySubmitted }: ContactProps) {
                         </p>
                       </div>
                       <p className="font-sans text-xs text-on-surface-variant font-light max-w-sm leading-relaxed mx-auto">
-                        Your secure file has been successfully submitted to Senior Investigator Mohaan. We will analyze the deed registry records and contact you within 24 hours.
+                        Your inquiry has been sent securely to our team and logged as a lead. Forensic Consultant Mohaan will review your case and contact you within 24 hours.
                       </p>
                       <button
                         onClick={() => setSubmissionStage('idle')}
                         className="font-mono text-[10px] text-secondary hover:text-on-surface uppercase border border-secondary/20 bg-secondary/5 hover:bg-secondary/10 px-4 py-2 tracking-widest font-bold"
                       >
                         Dismiss Overlay
+                      </button>
+                    </motion.div>
+                  )}
+
+                  {submissionStage === 'error' && (
+                    <motion.div
+                      initial={{ scale: 0.95 }}
+                      animate={{ scale: 1 }}
+                      className="space-y-6"
+                    >
+                      <div className="w-12 h-12 rounded-full bg-red-500/10 border border-red-500/40 flex items-center justify-center mx-auto">
+                        <AlertTriangle className="w-6 h-6 text-red-600" />
+                      </div>
+                      <div className="space-y-2">
+                        <h4 className="font-display text-xl font-bold text-on-surface">
+                          Transmission Failed
+                        </h4>
+                      </div>
+                      <p className="font-sans text-xs text-on-surface-variant font-light max-w-sm leading-relaxed mx-auto">
+                        We couldn't send your inquiry just now. Please try again, or reach us directly on WhatsApp or at conglomerateac@gmail.com.
+                      </p>
+                      <button
+                        onClick={() => setSubmissionStage('idle')}
+                        className="font-mono text-[10px] text-secondary hover:text-on-surface uppercase border border-secondary/20 bg-secondary/5 hover:bg-secondary/10 px-4 py-2 tracking-widest font-bold"
+                      >
+                        Try Again
                       </button>
                     </motion.div>
                   )}
@@ -316,7 +365,7 @@ export default function Contact({ onInquirySubmitted }: ContactProps) {
 
               <button
                 type="submit"
-                className="w-full bg-secondary text-white py-4 font-mono text-xs uppercase tracking-widest font-bold hover:bg-transparent hover:text-secondary border border-secondary transition-all duration-300 navy-glow shadow-md hover:shadow-secondary/20 cursor-pointer"
+                className="btn-premium w-full bg-secondary text-white py-4 font-mono text-xs uppercase tracking-widest font-bold hover:bg-tertiary hover:border-tertiary border border-secondary duration-300 navy-glow shadow-md hover:shadow-tertiary/25 cursor-pointer"
               >
                 Initiate Inquiry
               </button>

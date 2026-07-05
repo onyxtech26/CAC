@@ -1,0 +1,251 @@
+/* Typography: UI/UX Pro Max "Real Estate Luxury" pairing — Cinzel (display) + Josefin Sans (body), Space Mono kept for forensic/technical labels. */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Josefin+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Josefin Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Cinzel", "Playfair Display", Georgia, serif;
+  --font-mono: "Space Mono", monospace;
+  
+  --color-surface: #ffffff;
+  --color-surface-dim: #f9fafb;
+  --color-surface-bright: #ffffff;
+  --color-surface-container: rgba(255, 255, 255, 0.45);
+  --color-surface-container-low: #f3f4f6;
+  --color-surface-container-high: #f9fafb;
+  --color-surface-container-highest: #e5e7eb;
+  --color-on-surface: #000000;
+  --color-on-surface-variant: #000000;
+  --color-secondary: #13294b;
+  --color-primary-container: #f8fafc;
+  --color-tertiary: #ca8a04;
+
+  --animate-fade-in: fade-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-float-slow: float 11s ease-in-out infinite;
+  --animate-sonar: sonar 4s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  --animate-scan: scan 6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Slow, calm "sonar" ring — replaces the loud animate-ping. */
+@keyframes sonar {
+  0%   { transform: translate(-50%, -50%) scale(0.55); opacity: 0.45; }
+  70%  { opacity: 0.06; }
+  100% { transform: translate(-50%, -50%) scale(1.85); opacity: 0; }
+}
+
+/* Smooth vertical survey scan — replaces the cheap animate-bounce line. */
+@keyframes scan {
+  0%   { top: 0%;   opacity: 0; }
+  12%  { opacity: 0.9; }
+  88%  { opacity: 0.9; }
+  100% { top: 100%; opacity: 0; }
+}
+
+@utility glass-surface {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.04);
+}
+
+/* Full-section liquid-glass / glassmorphism panel.
+   Frosts the fixed survey background behind it with a soft specular sheen. */
+@utility liquid-glass {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.58) 0%,
+    rgba(255, 255, 255, 0.30) 45%,
+    rgba(255, 255, 255, 0.48) 100%
+  );
+  backdrop-filter: blur(28px) saturate(160%);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  border-top: 1px solid rgba(255, 255, 255, 0.65);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.75),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.30),
+    0 24px 70px -34px rgba(19, 41, 75, 0.30);
+}
+
+@utility forensic-grid {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+@utility navy-glow {
+  &:hover {
+    box-shadow: 0 8px 24px rgba(19, 41, 75, 0.15);
+  }
+}
+
+@utility gold-glow {
+  text-shadow: 0 0 8px rgba(202, 138, 4, 0.2);
+}
+
+@utility fingerprint-bg {
+  background-image: radial-gradient(circle at 50% 50%, rgba(19, 41, 75, 0.02) 0%, transparent 70%);
+}
+
+/* Premium button: subtle lift + light-sweep shine on hover, press feedback. */
+@utility btn-premium {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -80%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+    z-index: 1;
+  }
+  &:hover {
+    transform: translateY(-2px);
+  }
+  &:hover::after {
+    left: 135%;
+  }
+  &:active {
+    transform: translateY(0) scale(0.98);
+  }
+}
+
+/* Card hover: gentle lift with a soft navy shadow. */
+@utility card-lift {
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease, border-color 0.3s ease;
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 26px 55px -26px rgba(19, 41, 75, 0.35);
+  }
+}
+
+/* Hide the scrollbar on a scrollable element (used inside modals/panels). */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+}
+
+/* Image container: slow cinematic zoom on hover (child gets .zoom-target). */
+@utility img-zoom {
+  overflow: hidden;
+  & .zoom-target {
+    transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1), filter 0.8s ease;
+    will-change: transform;
+  }
+  &:hover .zoom-target {
+    transform: scale(1.07);
+    filter: saturate(1.06) contrast(1.03);
+  }
+}
+
+/* Respect users who prefer reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer base {
+  /* Josefin Sans runs light/geometric — nudge body to 400 and add comfortable
+     rhythm so paragraphs stay readable (skill: contrast-readability, line-height). */
+  body {
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Cinzel is an engraved caps serif — a touch of tracking reads as luxury. */
+  .font-display {
+    letter-spacing: 0.005em;
+  }
+
+  /* Accessibility (skill priority #1): visible keyboard focus ring.
+     Restores focus indication removed by focus:outline-none on inputs/buttons. */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Premium layered "architectural light" canvas.
+     Stacked top→bottom: film grain, fine blueprint grid, ambient navy/gold
+     light glows, and a soft vertical sheen. Fixed so it stays put on scroll. */
+  body {
+    color: var(--color-on-surface);
+    overflow-x: hidden;
+    background-color: #f4f6f9;
+    background-image:
+      /* subtle film grain for tactile depth */
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E"),
+      /* ambient premium light glows */
+      radial-gradient(900px 620px at 12% -8%, rgba(19, 41, 75, 0.10), transparent 60%),
+      radial-gradient(820px 540px at 108% 4%, rgba(202, 138, 4, 0.07), transparent 55%),
+      radial-gradient(1100px 900px at 50% 118%, rgba(19, 41, 75, 0.08), transparent 62%),
+      /* base vertical sheen */
+      linear-gradient(180deg, #ffffff 0%, #f3f6fa 55%, #eaeef5 100%);
+    background-size:
+      140px 140px,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%;
+    background-attachment: fixed;
+    background-repeat: repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Hide the page scrollbar while keeping scroll functionality. */
+  html,
+  body {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* legacy Edge/IE */
+  }
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none; /* Chrome, Safari, Edge */
+  }
+}
+

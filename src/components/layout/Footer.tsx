@@ -9,12 +9,13 @@ export default function Footer() {
   ];
 
   const locations = [
-    'Johor Bahru (HQ)'
+    'Johor (HQ)'
   ];
 
   const contacts = [
-    '+60 7-331 4827',
-    'admin@cac.com.my'
+    '+6018-377 7716',
+    'admin@cac.com.my',
+    'www.cac.com.my'
   ];
 
   const socials = [
@@ -44,7 +45,7 @@ export default function Footer() {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute -top-10 left-10 w-96 h-96 bg-gradient-to-tr from-secondary/15 via-blue-400/10 to-transparent blur-2xl"
+          className="absolute -top-10 left-10 w-96 h-96 bg-gradient-to-tr from-secondary/15 via-secondary/10 to-transparent blur-2xl"
         />
 
         {/* Blob 2 */}
@@ -100,11 +101,11 @@ export default function Footer() {
             </span>
             <span className="h-4 w-[1px] bg-black/20"></span>
             <span className="font-mono text-[9px] tracking-[0.2em] text-on-surface-variant/60 uppercase">
-              Forensics
+              Est. 2024
             </span>
           </div>
           <p className="font-sans text-xs text-on-surface-variant max-w-xs leading-relaxed font-light">
-            The definitive corporate agency for high-stakes property forensics, secure title verification, and technical appraisal in South East Asia.
+            Conglomerate Appraisal Consultancy — property appraisal, forensic due diligence and strategic acquisition of subsale and land assets across Johor &amp; Kedah, Malaysia.
           </p>
         </div>
 

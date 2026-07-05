@@ -11,29 +11,29 @@ import {
 export default function WhyCAC() {
   const edgeItems = [
     {
-      title: 'Property Knowledge',
-      desc: 'Deep expertise in local market dynamics, zoning laws, and appraisal methodologies unique to Johor and wider Malaysia.',
-      icon: BarChart3
-    },
-    {
-      title: 'Evidence-Based Advisory',
-      desc: 'We move beyond opinion. Every piece of advice is backed by forensic-level documentation and verifiable data points.',
+      title: 'Evidence First',
+      desc: 'Every valuation and acquisition is backed by independent evidence, verified comparables and title checks — capital is deployed on evidence, not optimism.',
       icon: ShieldCheck
     },
     {
-      title: 'End-to-End Support',
-      desc: 'Comprehensive management from initial discovery through to legal resolution and asset execution.',
-      icon: Headphones
+      title: 'Transparency',
+      desc: 'Disciplined, transparent reporting at every milestone — from underwriting through to resale completion.',
+      icon: BarChart3
     },
     {
-      title: 'Johor Market Presence',
-      desc: 'Unrivaled access to off-market opportunities and legal insights within the Johor Bahru real estate ecosystem.',
+      title: 'Capital Discipline',
+      desc: 'Capital is committed only against appraised, title-verified assets held under first legal charge — never unsecured promises.',
       icon: Building
+    },
+    {
+      title: 'Aligned Returns',
+      desc: 'Structures are designed to protect investor capital first and align with realised, above-market returns.',
+      icon: Compass
     }
   ];
 
   return (
-    <section id="why-cac" className="py-24 md:py-32 relative overflow-hidden bg-surface">
+    <section id="why-cac" className="py-24 md:py-32 relative overflow-hidden liquid-glass">
       {/* Background radial glow */}
       <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] rounded-full bg-tertiary/[0.03] blur-[150px] pointer-events-none" />
 
@@ -50,19 +50,32 @@ export default function WhyCAC() {
           >
             <div>
               <span className="font-mono text-xs text-secondary uppercase tracking-[0.25em] block mb-3">
-                // The CAC Edge
+                // Core Values
               </span>
               <h3 className="font-display text-3xl sm:text-4xl font-bold leading-tight text-on-surface">
-                Why Discerning Clients Choose<br />Our Forensic Approach
+                The Principles Behind<br />Every Deal We Underwrite
               </h3>
             </div>
 
-            <div className="space-y-8">
+            <motion.div
+              className="space-y-8"
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={{ show: { transition: { staggerChildren: 0.1 } } }}
+            >
               {edgeItems.map((item, idx) => {
                 const IconComponent = item.icon;
                 return (
-                  <div key={idx} className="flex gap-6 items-start group">
-                    <div className="w-12 h-12 bg-secondary/10 flex items-center justify-center flex-shrink-0 text-secondary border border-secondary/20 group-hover:bg-secondary/20 group-hover:border-secondary/40 transition-colors duration-300">
+                  <motion.div
+                    key={idx}
+                    variants={{
+                      hidden: { opacity: 0, y: 20 },
+                      show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+                    }}
+                    className="flex gap-6 items-start group"
+                  >
+                    <div className="w-12 h-12 bg-secondary/10 flex items-center justify-center flex-shrink-0 text-secondary border border-secondary/20 group-hover:bg-secondary/20 group-hover:border-secondary/40 group-hover:scale-110 transition-all duration-300">
                       <IconComponent className="w-5 h-5 text-secondary" />
                     </div>
                     <div>
@@ -73,10 +86,10 @@ export default function WhyCAC() {
                         {item.desc}
                       </p>
                     </div>
-                  </div>
+                  </motion.div>
                 );
               })}
-            </div>
+            </motion.div>
           </motion.div>
 
           {/* Right Column: Vision & Mission (Asymmetrical Grid) */}
@@ -88,17 +101,18 @@ export default function WhyCAC() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6 }}
-              className="glass-surface p-8 sm:p-10 fingerprint-bg border-black/5 relative group hover:border-secondary/30 transition-all duration-300"
+              whileHover={{ y: -6 }}
+              className="glass-surface p-8 sm:p-10 fingerprint-bg border-black/5 relative group hover:border-secondary/30 hover:shadow-[0_26px_55px_-26px_rgba(19,41,75,0.35)] transition-shadow duration-300"
             >
               <div className="flex items-center gap-2 mb-4">
-                <Target className="w-4 h-4 text-secondary animate-pulse" />
+                <Target className="w-4 h-4 text-secondary" />
                 <span className="font-mono text-[9px] text-secondary tracking-widest uppercase">// Core Direction</span>
               </div>
-              <h4 className="font-display text-2xl font-bold text-secondary italic mb-4">
+              <h4 className="font-display text-2xl font-bold text-secondary mb-4">
                 Our Vision
               </h4>
               <p className="font-sans text-sm sm:text-base text-on-surface-variant leading-relaxed font-light">
-                To become the definitive authority in property forensics across South East Asia, setting the absolute standard for transparency, evidence collection, and trust in the region's asset landscape.
+                To be the most trusted property appraisal and acquisition partner in the southern and northern Malaysian markets — the name investors associate with disciplined underwriting, transparent reporting and consistently realised returns.
               </p>
             </motion.div>
 
@@ -108,17 +122,18 @@ export default function WhyCAC() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="glass-surface p-8 sm:p-10 fingerprint-bg border-black/5 relative group hover:border-secondary/30 transition-all duration-300 lg:translate-x-4"
+              whileHover={{ y: -6 }}
+              className="glass-surface p-8 sm:p-10 fingerprint-bg border-black/5 relative group hover:border-secondary/30 hover:shadow-[0_26px_55px_-26px_rgba(19,41,75,0.35)] transition-shadow duration-300 lg:ml-4"
             >
               <div className="flex items-center gap-2 mb-4">
-                <Compass className="w-4 h-4 text-secondary animate-pulse" />
+                <Compass className="w-4 h-4 text-secondary" />
                 <span className="font-mono text-[9px] text-secondary tracking-widest uppercase">// Core Mission</span>
               </div>
-              <h4 className="font-display text-2xl font-bold text-secondary italic mb-4">
+              <h4 className="font-display text-2xl font-bold text-secondary mb-4">
                 Our Mission
               </h4>
               <p className="font-sans text-sm sm:text-base text-on-surface-variant leading-relaxed font-light">
-                Protecting our clients' legacies, legal rights, and financial capital through uncompromising investigative rigor, flawless title audits, and forensic-grade real estate advisory.
+                To identify undervalued subsale and land assets, verify them through rigorous forensic appraisal, and convert them into secured, fixed-return opportunities that protect investor capital while delivering above-market profit.
               </p>
             </motion.div>
 

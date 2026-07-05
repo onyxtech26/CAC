@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Search, FileText, ClipboardList, Clock, ShieldAlert, BadgeCheck, MessageSquare } from 'lucide-react';
-import { Inquiry } from '../types';
+import { Inquiry } from '../../types';
 
 interface InquiryLogModalProps {
   isOpen: boolean;

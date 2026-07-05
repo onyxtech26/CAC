@@ -1,15 +1,16 @@
 import { useState } from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import StatsBar from './components/StatsBar';
-import About from './components/About';
-import Services from './components/Services';
-import InvestmentOutlook from './components/InvestmentOutlook';
-import Timeline from './components/Timeline';
-import WhyCAC from './components/WhyCAC';
-import Contact from './components/Contact';
-import InquiryLogModal from './components/InquiryLogModal';
-import Footer from './components/Footer';
+import PremiumBackground from './components/ui/PremiumBackground';
+import InquiryLogModal from './components/ui/InquiryLogModal';
+import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
+import Hero from './components/sections/Hero';
+import StatsBar from './components/sections/StatsBar';
+import About from './components/sections/About';
+import Services from './components/sections/Services';
+import InvestmentOutlook from './components/sections/InvestmentOutlook';
+import Timeline from './components/sections/Timeline';
+import WhyCAC from './components/sections/WhyCAC';
+import Contact from './components/sections/Contact';
 
 export default function App() {
   const [isInquiryLogOpen, setIsInquiryLogOpen] = useState(false);
@@ -37,7 +38,10 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-surface text-on-surface font-sans selection:bg-secondary selection:text-surface">
+    <div className="min-h-screen bg-transparent text-on-surface font-sans selection:bg-secondary selection:text-surface">
+      {/* Static premium land-survey graphic background (site-wide) */}
+      <PremiumBackground />
+
       {/* Dynamic Floating Glass Navbar */}
       <Navbar
         onBookConsultation={handleBookConsultation}
@@ -79,6 +83,7 @@ export default function App() {
         isOpen={isInquiryLogOpen}
         onClose={() => setIsInquiryLogOpen(false)}
       />
+
     </div>
   );
 }
