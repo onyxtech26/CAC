@@ -168,11 +168,11 @@ export default function Timeline() {
         {/* Timeline Horizontal Line / Node Grid */}
         <div className="relative py-8 md:py-12 mb-8 md:mb-12 overflow-x-auto snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           <div className="min-w-[980px] xl:min-w-0 relative px-4 md:px-0">
-            {/* Static track background */}
-            <div className="absolute top-1/2 left-[10%] right-[10%] h-[2px] bg-secondary/10 -translate-y-1/2" />
+            {/* Static track background — fixed to the diamond row's centre (24px = half of the w-12 h-12 node), not the column's total height, so it stays put regardless of label wrapping */}
+            <div className="absolute top-6 left-[10%] right-[10%] h-[2px] bg-secondary/10 -translate-y-1/2" />
 
             {/* Active growing laser path */}
-            <div className="absolute top-1/2 left-[10%] right-[10%] h-[2px] -translate-y-1/2 overflow-hidden pointer-events-none">
+            <div className="absolute top-6 left-[10%] right-[10%] h-[2px] -translate-y-1/2 overflow-hidden pointer-events-none">
               <motion.div
                 className="h-full bg-gradient-to-r from-secondary via-tertiary to-secondary shadow-[0_0_8px_rgba(74,116,201,0.4)]"
                 animate={{ width: `${((activeStepId - 1) / (STEPS.length - 1)) * 100}%` }}
@@ -242,13 +242,16 @@ export default function Timeline() {
                     </motion.div>
                   </div>
 
-                  {/* Labels */}
-                  <h5 className={`font-display text-lg font-bold transition-colors ${isActive
-                      ? isHighlight ? 'text-tertiary' : 'text-secondary'
-                      : 'text-on-surface group-hover:text-secondary'
-                    }`}>
-                    {step.label}
-                  </h5>
+                  {/* Labels — fixed-height wrapper so the caption below always starts
+                      at the same y, whether the title wraps to one line or two */}
+                  <div className="min-h-[2.6rem] sm:min-h-[2.9rem] flex items-center justify-center px-1">
+                    <h5 className={`font-display text-sm sm:text-base font-bold leading-snug transition-colors ${isActive
+                        ? isHighlight ? 'text-tertiary' : 'text-secondary'
+                        : 'text-on-surface group-hover:text-secondary'
+                      }`}>
+                      {step.label}
+                    </h5>
+                  </div>
                   <p className="font-mono text-[10px] tracking-widest text-on-surface-variant uppercase mt-1">
                     {step.sub}
                   </p>
