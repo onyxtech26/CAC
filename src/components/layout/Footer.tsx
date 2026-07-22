@@ -21,7 +21,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative bg-black/20 backdrop-blur-2xl border-t border-white/10 pt-12 pb-8 px-6 md:px-12 xl:px-20 overflow-hidden z-10 shadow-[0_-20px_50px_-15px_rgba(0,0,0,0.35)]">
+    <footer className="relative bg-surface-dim/60 backdrop-blur-2xl border-t border-secondary/10 pt-12 pb-8 px-6 md:px-12 xl:px-20 overflow-hidden z-10 shadow-[0_-20px_50px_-15px_rgba(19,41,75,0.08)]">
       {/* Liquid Organic Morphing Glass Blobs in Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none select-none z-0">
         {/* Blob 1 */}
@@ -82,25 +82,28 @@ export default function Footer() {
       </div>
 
       {/* Glossy Liquid Specular Reflection Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-white/[0.02] to-transparent pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/10 to-transparent pointer-events-none z-0" />
 
       {/* Edge highlight reflection stroke */}
-      <div className="absolute top-0 inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none z-0" />
-      <div className="absolute top-[1.5px] inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none z-0 blur-[1px]" />
+      <div className="absolute top-0 inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-secondary/15 to-transparent pointer-events-none z-0" />
+      <div className="absolute top-[1.5px] inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none z-0 blur-[1px]" />
 
-      <div className="relative z-10 max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-start gap-12 border-b border-white/10 pb-10">
+      <div className="relative z-10 max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-start gap-12 border-b border-secondary/10 pb-10">
 
         {/* Brand Column */}
         <div className="space-y-4">
           <div className="flex items-center gap-2 group cursor-pointer">
             <img src="/icon.png" alt="CAC" className="h-8 w-auto" />
-            <span className="h-4 w-[1px] bg-white/20"></span>
+            <span className="h-4 w-[1px] bg-secondary/20"></span>
             <span className="font-mono text-[9px] tracking-[0.2em] text-on-surface-variant/60 uppercase">
-              Est. 2009
+              Turning Intelligence Into Evidence
             </span>
           </div>
+          <p className="font-sans text-xs text-on-surface-variant max-w-xs leading-relaxed font-light font-medium text-tertiary">
+            "Discovering the Past • Protecting the Present • Securing the Future"
+          </p>
           <p className="font-sans text-xs text-on-surface-variant max-w-xs leading-relaxed font-light">
-            Conglomerate Appraisal Consultancy — Property Forensic Consultation. Independent, evidence-based investigation for family estates across Johor &amp; All of Malaysia.
+            Conglomerate Appraisal Consultancy (CAC) is an elite property forensic and intelligence consultancy. Independent, evidence-based investigation for family estates, assets, and land recovery.
           </p>
         </div>
 

@@ -40,7 +40,7 @@ export default function About() {
 
           <div className="relative pl-6 border-l border-tertiary/30 my-6 py-1">
             <p className="font-sans text-lg sm:text-xl text-on-surface-variant/90 italic leading-relaxed font-light">
-              "Clarity before commitment. Evidence before decision."
+              "Uncovering Truth. Protecting Legacies. Creating Value."
             </p>
           </div>
 
@@ -79,14 +79,17 @@ export default function About() {
               <span className="absolute left-1/2 top-0 -translate-x-1/2 w-2 h-2 rounded-full bg-tertiary shadow-[0_0_10px_rgba(202,138,4,0.7)]" />
             </div>
 
-            {/* The property image (parallax drift, full, uncropped) */}
+            {/* The Floating 3D corporate building image */}
             <motion.div
-              style={{
-                y: imageY,
-                backgroundImage: `url(${aboutPic})`,
-              }}
-              className="relative z-10 w-full h-full bg-contain bg-center bg-no-repeat"
-            />
+              style={{ y: imageY }}
+              className="relative z-10 w-full h-full flex items-center justify-center pointer-events-none select-none"
+            >
+              <img
+                src="/assets/about-building-3d-floating.png"
+                alt="CAC Corporate Headquarters Floating 3D Building"
+                className="w-full h-full object-contain filter drop-shadow-[0_15px_30px_rgba(74,116,201,0.35)]"
+              />
+            </motion.div>
 
             {/* Animated survey scan sweeping across the lens */}
             <div className="absolute left-[8%] w-[84%] h-[2px] bg-gradient-to-r from-transparent via-tertiary/70 to-transparent shadow-[0_0_12px_rgba(202,138,4,0.5)] animate-scan z-20 pointer-events-none" />

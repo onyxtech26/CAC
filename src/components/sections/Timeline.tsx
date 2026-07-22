@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Users, FileSearch, Fingerprint, BarChart3, FileText, Scale, CheckCircle2 } from 'lucide-react';
+import { Users, FileSearch, Archive, Fingerprint, FileText, Scale, CheckCircle2, Home } from 'lucide-react';
 import RollingNumber from '../ui/RollingNumber';
 
 interface Step {
@@ -16,85 +16,97 @@ const STEPS: Step[] = [
   {
     id: 1,
     label: 'Consultation',
-    sub: 'Requirement Analysis',
+    sub: 'Case Briefing',
     icon: Users,
-    details: 'We begin by understanding your case and requirements — the family situation, the properties or assets involved, and what you are trying to establish or resolve.',
+    details: 'We begin by understanding your concerns, reviewing available family records, and establishing the exact scope of property, assets, and individuals under investigation.',
     deliverables: [
-      'Understanding of case background and objectives',
-      'Identification of properties, assets and parties involved',
-      'Scoping of the investigation and engagement terms'
+      'Understanding of case history & objectives',
+      'Preliminary timeline and scope definition',
+      'Confidentiality & engagement agreements executed'
     ]
   },
   {
     id: 2,
-    label: 'Evidence',
-    sub: 'Collection',
+    label: 'Evidence Collection',
+    sub: 'Document Gathering',
     icon: FileSearch,
-    details: 'We gather the documents and public records that matter: land titles, deeds, probate files, survey plans, historical records and any material relevant to the estate.',
+    details: 'We gather all available property deeds, historical maps, wills, probate files, bank records, and land registry records from public and private archives.',
     deliverables: [
-      'Land title, deed and probate document gathering',
-      'Land registry, court and archival record searches',
-      'Historical ownership and family record collection'
+      'Land office register searches & title extraction',
+      'High Court probate & administration registry records',
+      'Verification of historical surveyor maps and boundaries'
     ]
   },
   {
     id: 3,
-    label: 'Investigation',
-    sub: 'In-Depth Research',
-    icon: Fingerprint,
-    details: 'We conduct in-depth research and verification — tracing ownership history, checking for irregularities, and following leads across registries and archives.',
+    label: 'Historical Research',
+    sub: 'Chain Reconstruction',
+    icon: Archive,
+    details: 'We reconstruct the complete ownership chronology, tracing back to pioneer owners and checking every transition (sales, inheritance, gifts) for validity.',
     deliverables: [
-      'In-depth research and cross-registry verification',
-      'Ownership chain and irregularity checks',
-      'Field and archival lead follow-up'
+      'Pioneer ownership records and original grants verified',
+      'Complete chronology of ownership transfers compiled',
+      'Reconstruction of subdivision or acquisition history'
     ]
   },
   {
     id: 4,
-    label: 'Analysis',
-    sub: 'Findings Review',
-    icon: BarChart3,
-    details: 'We examine the findings, cross-referencing documents against each other to identify gaps, inconsistencies, or evidence of irregular transfers.',
+    label: 'Intelligence Analysis',
+    sub: 'Forensic Review',
+    icon: Fingerprint,
+    details: 'We analyze all collected data, identifying forged documents, unauthorized land sales, hidden beneficiaries, or irregularities in estate distribution.',
     deliverables: [
-      'Cross-referencing of documents and evidence',
-      'Identification of gaps and inconsistencies',
-      'Assessment of irregular or fraudulent transfers'
+      'Exposing signatures, wills, or deeds with indicators of forgery',
+      'Auditing land transfer timelines for inconsistency',
+      'Tracing missing or hidden assets within the estate'
     ]
   },
   {
     id: 5,
-    label: 'Reporting',
-    sub: 'Detailed Forensics',
+    label: 'Forensic Reporting',
+    sub: 'Evidence Synthesis',
     icon: FileText,
-    details: 'We prepare a detailed forensic report backed by evidence — presenting verified ownership, a chronological history, and clear findings.',
+    details: 'We prepare an independent Property Forensic Investigation Report with clear findings, verified chronologies, and evidence packages structured for legal use.',
     deliverables: [
-      'Verified ownership and chronological history',
-      'Evidence-backed findings documentation',
-      'Recommendations for legal action or estate administration'
+      'Professional Forensic Investigation Report delivered',
+      'Evidence binder with certified copies of deeds & titles',
+      'Formal declaration and recommendations for resolution'
     ]
   },
   {
     id: 6,
-    label: 'Legal Support',
-    sub: 'Connecting Experts',
+    label: 'Legal Coordination',
+    sub: 'Expert Referrals',
     icon: Scale,
-    details: 'We connect you with the right legal experts and support the legal process alongside qualified counsel through to a resolution.',
+    details: 'We coordinate with probate or property attorneys and prepare evidence files, ensuring our findings are effectively leveraged for legal success.',
     deliverables: [
-      'Referral to experienced property and probate lawyers',
-      'Evidence preparation for legal proceedings',
-      'Liaison with land offices and government authorities'
+      'Referrals to elite, specialized estate and land lawyers',
+      'Preparation of legal evidence files for counsel use',
+      'Liaison with land offices and government surveyor teams'
     ]
   },
   {
     id: 7,
     label: 'Resolution',
-    sub: 'Recover & Protect',
+    sub: 'Estate Recovery',
     icon: CheckCircle2,
-    details: 'We carry the matter through to resolution — recovering, transferring or protecting the asset until your case is fully and finally closed.',
+    details: 'We support the execution of distribution orders, registration of recovered assets, and resolution of beneficiary claims under legal guidance.',
     deliverables: [
-      'Distribution order and transfer follow-through',
-      'Registration of inherited or recovered assets',
-      'Continued support until the matter is fully resolved'
+      'Registration of correct ownership titles at land office',
+      'Settle inheritance distribution disputes among heirs',
+      'Reclaim missing assets or unclaimed compensation funds'
+    ]
+  },
+  {
+    id: 8,
+    label: 'Property Sale',
+    sub: 'Asset Monetization',
+    icon: Home,
+    details: 'Once assets are legally recovered, we assist with property valuations, ROI renovation consultancy, buyer-matching, and sale coordination.',
+    deliverables: [
+      'Detailed property condition & appraisal valuation support',
+      'Marketing targeting our private investor/developer networks',
+      'Sale completion coordinating with licensed property professionals'
     ]
   }
 ];
@@ -132,7 +144,7 @@ export default function Timeline() {
   };
 
   return (
-    <section id="process" className="py-16 md:py-24 bg-transparent border-b border-white/5 relative overflow-hidden">
+    <section id="process" className="py-16 md:py-24 bg-transparent border-b border-secondary/5 relative overflow-hidden">
       <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-12 xl:px-20">
 
         {/* Title & Metadata Header */}
@@ -157,7 +169,7 @@ export default function Timeline() {
         <div className="relative py-8 md:py-12 mb-8 md:mb-12 overflow-x-auto snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           <div className="min-w-[980px] xl:min-w-0 relative px-4 md:px-0">
             {/* Static track background */}
-            <div className="absolute top-1/2 left-[10%] right-[10%] h-[2px] bg-white/10 -translate-y-1/2" />
+            <div className="absolute top-1/2 left-[10%] right-[10%] h-[2px] bg-secondary/10 -translate-y-1/2" />
 
             {/* Active growing laser path */}
             <div className="absolute top-1/2 left-[10%] right-[10%] h-[2px] -translate-y-1/2 overflow-hidden pointer-events-none">
@@ -169,7 +181,7 @@ export default function Timeline() {
             </div>
 
             {/* Stepper nodes */}
-            <div className="grid grid-cols-7 gap-3 md:gap-4 relative z-10">
+            <div className="grid grid-cols-8 gap-3 md:gap-4 relative z-10">
             {STEPS.map((step) => {
               const isActive = step.id === activeStepId;
               const isHighlight = step.id === 3; // "Evaluate" high interest stage
@@ -255,7 +267,7 @@ export default function Timeline() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.4 }}
-            className="glass-surface p-8 md:p-12 border-white/5 grid grid-cols-1 md:grid-cols-3 gap-10 items-start relative overflow-hidden shadow-lg backdrop-blur-md"
+            className="glass-surface p-8 md:p-12 border-secondary/5 grid grid-cols-1 md:grid-cols-3 gap-10 items-start relative overflow-hidden shadow-lg backdrop-blur-md"
             id="timeline-active-content"
           >
             {/* Step summary column */}
@@ -274,7 +286,7 @@ export default function Timeline() {
             </div>
 
             {/* Step deliverables column */}
-            <div className="space-y-4 md:border-l md:border-white/10 md:pl-10">
+            <div className="space-y-4 md:border-l md:border-secondary/10 md:pl-10">
               <span className="font-mono text-[10px] uppercase text-secondary tracking-widest font-bold block">
                 // System Outputs
               </span>

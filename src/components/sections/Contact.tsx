@@ -123,7 +123,7 @@ export default function Contact({ onInquirySubmitted }: ContactProps) {
   };
 
   return (
-    <section id="contact" className="py-16 md:py-24 bg-transparent border-b border-white/5 relative overflow-hidden">
+    <section id="contact" className="py-16 md:py-24 bg-transparent border-b border-secondary/5 relative overflow-hidden">
       <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-12 xl:px-20 grid grid-cols-1 md:grid-cols-2 gap-16 xl:gap-24">
 
         {/* Left Side: Investigator Info Card */}
@@ -143,9 +143,9 @@ export default function Contact({ onInquirySubmitted }: ContactProps) {
           </div>
 
           {/* Expert Card */}
-          <div className="glass-surface p-8 border-white/5 backdrop-blur-md relative overflow-hidden">
+          <div className="glass-surface p-8 border-secondary/5 backdrop-blur-md relative overflow-hidden">
             {/* Background coordinate grid watermark */}
-            <div className="absolute top-2 right-4 font-mono text-[9px] text-white/[0.04] uppercase">
+            <div className="absolute top-2 right-4 font-mono text-[9px] text-secondary/[0.06] uppercase">
               // CASE_FILE_ASSIGNMENT
             </div>
 
@@ -321,7 +321,7 @@ export default function Contact({ onInquirySubmitted }: ContactProps) {
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   placeholder="Your Name"
-                  className="w-full bg-transparent border-0 border-b border-white/15 px-0 py-2 focus:ring-0 focus:border-secondary text-on-surface placeholder:text-on-surface-variant/50 font-sans text-sm transition-all focus:outline-none"
+                  className="w-full bg-transparent border-0 border-b border-secondary/20 px-0 py-2 focus:ring-0 focus:border-secondary text-on-surface placeholder:text-on-surface-variant/50 font-sans text-sm transition-all focus:outline-none"
                 />
               </div>
 
@@ -335,7 +335,7 @@ export default function Contact({ onInquirySubmitted }: ContactProps) {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="email@address.com"
-                  className="w-full bg-transparent border-0 border-b border-white/15 px-0 py-2 focus:ring-0 focus:border-secondary text-on-surface placeholder:text-on-surface-variant/50 font-sans text-sm transition-all focus:outline-none"
+                  className="w-full bg-transparent border-0 border-b border-secondary/20 px-0 py-2 focus:ring-0 focus:border-secondary text-on-surface placeholder:text-on-surface-variant/50 font-sans text-sm transition-all focus:outline-none"
                 />
               </div>
 
@@ -349,7 +349,7 @@ export default function Contact({ onInquirySubmitted }: ContactProps) {
                   value={phoneNumber}
                   onChange={(e) => setPhoneNumber(e.target.value)}
                   placeholder="+60 12-345 6789"
-                  className="w-full bg-transparent border-0 border-b border-white/15 px-0 py-2 focus:ring-0 focus:border-secondary text-on-surface placeholder:text-on-surface-variant/50 font-sans text-sm transition-all focus:outline-none"
+                  className="w-full bg-transparent border-0 border-b border-secondary/20 px-0 py-2 focus:ring-0 focus:border-secondary text-on-surface placeholder:text-on-surface-variant/50 font-sans text-sm transition-all focus:outline-none"
                 />
               </div>
 
@@ -360,7 +360,7 @@ export default function Contact({ onInquirySubmitted }: ContactProps) {
                 <select
                   value={service}
                   onChange={(e) => setService(e.target.value)}
-                  className="w-full bg-transparent border-0 border-b border-white/15 px-0 py-2 focus:ring-0 focus:border-secondary text-on-surface font-sans text-sm transition-all focus:outline-none cursor-pointer"
+                  className="w-full bg-transparent border-0 border-b border-secondary/20 px-0 py-2 focus:ring-0 focus:border-secondary text-on-surface font-sans text-sm transition-all focus:outline-none cursor-pointer"
                 >
                   {servicesList.map((srv) => (
                     <option key={srv} value={srv} className="bg-surface text-on-surface">
@@ -380,7 +380,7 @@ export default function Contact({ onInquirySubmitted }: ContactProps) {
                   value={briefInquiry}
                   onChange={(e) => setBriefInquiry(e.target.value)}
                   placeholder="Describe your property case, title issue, or survey requirements..."
-                  className="w-full bg-transparent border-0 border-b border-white/15 px-0 py-2 focus:ring-0 focus:border-secondary text-on-surface placeholder:text-on-surface-variant/50 font-sans text-sm transition-all focus:outline-none resize-none"
+                  className="w-full bg-transparent border-0 border-b border-secondary/20 px-0 py-2 focus:ring-0 focus:border-secondary text-on-surface placeholder:text-on-surface-variant/50 font-sans text-sm transition-all focus:outline-none resize-none"
                 />
               </div>
 

@@ -16,6 +16,7 @@ export interface CompletedProject {
 export interface Service {
   id: string;
   iconName: string; // Lucide icon name
+  imageUrl?: string; // Optional 3D rendered asset image path
   title: string;
   description: string;
   detailedDescription: string;

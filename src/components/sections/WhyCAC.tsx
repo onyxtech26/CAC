@@ -102,7 +102,7 @@ export default function WhyCAC() {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6 }}
               whileHover={{ y: -6 }}
-              className="glass-surface p-8 sm:p-10 fingerprint-bg border-white/5 relative group hover:border-secondary/30 hover:shadow-[0_26px_55px_-26px_rgba(74,116,201,0.35)] transition-shadow duration-300"
+              className="glass-surface p-8 sm:p-10 fingerprint-bg border-secondary/5 relative group hover:border-secondary/30 hover:shadow-[0_26px_55px_-26px_rgba(19,41,75,0.18)] transition-shadow duration-300"
             >
               <div className="flex items-center gap-2 mb-4">
                 <Target className="w-4 h-4 text-secondary" />
@@ -123,7 +123,7 @@ export default function WhyCAC() {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               whileHover={{ y: -6 }}
-              className="glass-surface p-8 sm:p-10 fingerprint-bg border-white/5 relative group hover:border-secondary/30 hover:shadow-[0_26px_55px_-26px_rgba(74,116,201,0.35)] transition-shadow duration-300"
+              className="glass-surface p-8 sm:p-10 fingerprint-bg border-secondary/5 relative group hover:border-secondary/30 hover:shadow-[0_26px_55px_-26px_rgba(19,41,75,0.18)] transition-shadow duration-300"
             >
               <div className="flex items-center gap-2 mb-4">
                 <Compass className="w-4 h-4 text-secondary" />

@@ -15,7 +15,7 @@ export default function StatsBar() {
     <section className="py-12 md:py-16 relative overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 xl:px-20">
         <motion.div
-          className="glass-neon grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-white/10 overflow-hidden"
+          className="glass-neon grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-secondary/10 overflow-hidden"
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}

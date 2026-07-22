@@ -11,6 +11,7 @@ import Timeline from './components/sections/Timeline';
 import StatsBar from './components/sections/StatsBar';
 import WhyCAC from './components/sections/WhyCAC';
 import Contact from './components/sections/Contact';
+import IntelligenceHub from './components/sections/IntelligenceHub';
 
 export default function App() {
   const [isInquiryLogOpen, setIsInquiryLogOpen] = useState(false);
@@ -41,8 +42,11 @@ export default function App() {
       {/* Hero Section with animated property graphic */}
       <Hero onBookConsultation={handleBookConsultation} />
 
-      {/* 6 Capabilities with expandable forensics drawer */}
+      {/* 12 Capabilities with expandable forensics drawer */}
       <Services />
+
+      {/* Property Intelligence Dashboard Hub */}
+      <IntelligenceHub />
 
       {/* Firm Overview Section */}
       <About />
