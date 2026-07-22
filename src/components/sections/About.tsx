@@ -69,14 +69,14 @@ export default function About() {
             {/* Soft subtle ambient shadow glow behind floating building */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] rounded-full bg-tertiary/10 blur-[80px] pointer-events-none" />
 
-            {/* User Uploaded Floating 3D Modern Estate */}
+            {/* Malaysian Property Forensic Estate & Title Deed 3D Visual */}
             <motion.div
               style={{ y: imageY }}
               className="relative z-10 w-full h-full flex items-center justify-center pointer-events-none select-none p-2"
             >
               <img
-                src="/assets/user-house-3d.png"
-                alt="CAC Modern 3D Luxury Family Estate Model"
+                src="/assets/about-forensic-malaysia-3d.png"
+                alt="CAC Property Forensic Investigation 3D Estate & Title Deed Model"
                 className="w-full max-h-[580px] lg:max-h-[640px] object-contain scale-105 md:scale-110 lg:scale-115 filter drop-shadow-[0_25px_50px_rgba(202,138,4,0.35)] transition-transform duration-700 hover:scale-120"
               />
             </motion.div>
