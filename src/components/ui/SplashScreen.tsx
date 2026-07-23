@@ -14,11 +14,8 @@ const STAGES = [
   'WELCOME TO CAC CONSULTANCY'
 ];
 
-export default function SplashScreen({ onComplete, forceShow = false }: SplashScreenProps) {
-  const [isVisible, setIsVisible] = useState(() => {
-    if (forceShow) return true;
-    return !sessionStorage.getItem('cac_splash_shown');
-  });
+export default function SplashScreen({ onComplete }: SplashScreenProps) {
+  const [isVisible, setIsVisible] = useState(true);
 
   const [progress, setProgress] = useState(0);
   const [stageIndex, setStageIndex] = useState(0);
@@ -50,7 +47,6 @@ export default function SplashScreen({ onComplete, forceShow = false }: SplashSc
     if (progress >= 100) {
       const timer = setTimeout(() => {
         setIsVisible(false);
-        sessionStorage.setItem('cac_splash_shown', 'true');
         onComplete?.();
       }, 500);
       return () => clearTimeout(timer);
@@ -60,7 +56,6 @@ export default function SplashScreen({ onComplete, forceShow = false }: SplashSc
   const handleSkip = () => {
     setProgress(100);
     setIsVisible(false);
-    sessionStorage.setItem('cac_splash_shown', 'true');
     onComplete?.();
   };
 
