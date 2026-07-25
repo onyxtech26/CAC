@@ -58,7 +58,7 @@ export default function Contact() {
 
         {/* Main grid */}
         <div className="mt-12 grid gap-10 lg:grid-cols-12">
-          {/* left: details + map */}
+          {/* left: details */}
           <div className="space-y-8 lg:col-span-5">
             <Reveal>
               <div className="grid gap-3 sm:grid-cols-2">
@@ -74,29 +74,6 @@ export default function Contact() {
                     {r.href ? <a href={r.href} target="_blank" rel="noreferrer" className="mt-1 block break-words text-sm text-ivory/85 hover:text-gold-2">{r.v}</a> : <p className="mt-1 text-sm text-ivory/85">{r.v}</p>}
                   </div>
                 ))}
-              </div>
-            </Reveal>
-
-            {/* Map panel */}
-            <Reveal delay={120}>
-              <div className="relative overflow-hidden rounded-lg border border-gold-2/20">
-                <div className="relative h-72">
-                  <iframe
-                    title="CAC Headquarters — Skudai, Johor"
-                    src="https://www.openstreetmap.org/export/embed.html?bbox=103.6360%2C1.5108%2C103.6760%2C1.5308&layer=mapnik&marker=1.5208%2C103.6560"
-                    className="absolute inset-0 h-full w-full"
-                    style={{ filter: "invert(0.9) hue-rotate(180deg) saturate(0.7) contrast(1.05)" }}
-                    loading="lazy"
-                  />
-                  <div className="pointer-events-none absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(11,25,46,0.35), rgba(11,25,46,0.85))" }} />
-                  <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-full text-gold-2 anim-float">
-                    <Icon name="pin" size={42} className="drop-shadow-[0_6px_10px_rgba(0,0,0,0.7)]" />
-                  </div>
-                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between rounded border border-gold-2/20 bg-navy/80 px-3 py-2 backdrop-blur">
-                    <span className="font-mono text-[10px] uppercase tracking-wide-2 text-gold-2">CAC HQ · Skudai, Johor</span>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Taman+Tan+Sri+Yaacob+Skudai" target="_blank" rel="noreferrer" className="font-mono text-[10px] uppercase tracking-wide-2 text-ivory/70 hover:text-gold-2">Directions →</a>
-                  </div>
-                </div>
               </div>
             </Reveal>
           </div>
