@@ -3,15 +3,20 @@ import { Icon } from "../components/Icon";
 import { Eyebrow, Heading, Reveal, Tag } from "../components/ui";
 import { MISSION, VISION, WHY_PRINCIPLES, waLink } from "../data";
 
-const PRINCIPLE_GLYPHS = ["eye", "scales", "lock", "users"];
+const PRINCIPLE_IMAGES = [
+  { img: "/assets/illustration-forensic.jpg", alt: "Documentary Forensic Investigation Evidence" },
+  { img: "/assets/case-gavel-bRvLoHQ5.jpg", alt: "Independent Court Grade Legal Standards" },
+  { img: "/assets/illustration-estate.jpg", alt: "Confidential Estate & Asset Handling" },
+  { img: "/assets/cac-building.jpg", alt: "End-to-End Registry & Title Support" },
+];
 
 const STANDARDS = [
-  { k: "Experienced Professionals", g: "users", d: "Experts with decades of combined experience." },
-  { k: "Confidential & Secure", g: "lock", d: "Your information is always protected." },
-  { k: "Evidence Based Results", g: "seal", d: "We provide facts, not assumptions." },
-  { k: "Legal & Industry Network", g: "scales-user", d: "Strong network of legal and property experts." },
-  { k: "End-to-End Support", g: "handshake", d: "We are with you from start to finish." },
-  { k: "Global Standards & Ethics", g: "globe", d: "We follow international standards and ethics." },
+  { k: "Experienced Professionals", img: "/assets/mohaan-profile.png", d: "Experts with decades of combined experience." },
+  { k: "Confidential & Secure", img: "/assets/icon-legal.jpg", d: "Your information is always protected." },
+  { k: "Evidence Based Results", img: "/assets/service-forensic-title.jpg", d: "We provide facts, not assumptions." },
+  { k: "Legal & Industry Network", img: "/assets/case-gavel-bRvLoHQ5.jpg", d: "Strong network of legal and property experts." },
+  { k: "End-to-End Support", img: "/assets/service-ill-forensic.jpg", d: "We are with you from start to finish." },
+  { k: "Global Standards & Ethics", img: "/assets/cac-building.jpg", d: "We follow international standards and ethics." },
 ];
 
 const COMPARE = [
@@ -49,16 +54,23 @@ export default function WhyCAC() {
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {WHY_PRINCIPLES.map((p, i) => (
             <Reveal key={p.k} delay={i * 90}>
-              <div className="plate plate-hover corner-ticks group relative h-full overflow-hidden rounded-lg p-7">
-                <div className="flex items-center justify-between">
-                  <span className="grid h-14 w-14 place-items-center rounded-full border border-gold-2/30 bg-ink/50 text-gold-2 transition group-hover:border-gold-2">
-                    <Icon name={PRINCIPLE_GLYPHS[i]} size={26} />
+              <div className="plate plate-hover corner-ticks group relative flex h-full flex-col overflow-hidden rounded-lg">
+                <div className="relative h-44 w-full overflow-hidden bg-navy-3">
+                  <img
+                    src={PRINCIPLE_IMAGES[i].img}
+                    alt={PRINCIPLE_IMAGES[i].alt}
+                    className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy-2 via-navy-2/40 to-transparent" />
+                  <span className="absolute top-3 right-3 font-mono text-[11px] font-bold text-gold-2 bg-navy/80 px-2.5 py-1 rounded border border-gold-2/30 backdrop-blur">
+                    0{i + 1}
                   </span>
-                  <span className="font-mono text-[11px] text-gold-2/60">0{i + 1}</span>
                 </div>
-                <h3 className="mt-5 font-display text-2xl leading-snug text-ivory">{p.k}</h3>
-                <div className="mt-3 h-px w-10 hairline" />
-                <p className="mt-4 text-sm leading-relaxed text-ivory/65">{p.d}</p>
+                <div className="flex flex-1 flex-col p-6">
+                  <h3 className="font-display text-2xl leading-snug text-ivory">{p.k}</h3>
+                  <div className="mt-3 h-px w-10 hairline" />
+                  <p className="mt-4 text-sm leading-relaxed text-ivory/65">{p.d}</p>
+                </div>
               </div>
             </Reveal>
           ))}
@@ -96,17 +108,25 @@ export default function WhyCAC() {
         {/* Vision + Mission */}
         <div className="mt-20 grid gap-5 lg:grid-cols-2">
           {[
-            { k: "Vision", t: VISION, g: "eye" },
-            { k: "Mission", t: MISSION, g: "seal" },
+            { k: "Vision", t: VISION, img: "/assets/service-ill-forensic.jpg", alt: "CAC Vision" },
+            { k: "Mission", t: MISSION, img: "/assets/service-family-estate.jpg", alt: "CAC Mission" },
           ].map((v, i) => (
             <Reveal key={v.k} delay={i * 100}>
-              <div className="plate corner-ticks relative h-full overflow-hidden rounded-xl p-8">
-                <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full opacity-30 blur-3xl" style={{ background: "radial-gradient(circle, rgba(201,138,4,0.5), transparent 70%)" }} />
-                <div className="relative flex items-center gap-3">
-                  <span className="grid h-12 w-12 place-items-center rounded-full border border-gold-2/40 bg-ink/60 text-gold-2"><Icon name={v.g} size={22} /></span>
-                  <Eyebrow>{v.k} Statement</Eyebrow>
+              <div className="plate corner-ticks relative flex h-full flex-col overflow-hidden rounded-xl">
+                <div className="relative h-48 w-full overflow-hidden bg-navy-3 sm:h-56">
+                  <img
+                    src={v.img}
+                    alt={v.alt}
+                    className="h-full w-full object-cover transition duration-700 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy-2 via-navy-2/40 to-transparent" />
+                  <div className="absolute top-4 left-4">
+                    <Eyebrow>{v.k} Statement</Eyebrow>
+                  </div>
                 </div>
-                <p className="relative mt-5 font-display text-xl leading-relaxed text-ivory sm:text-2xl">"{v.t}"</p>
+                <div className="flex flex-1 flex-col p-7 sm:p-8">
+                  <p className="font-display text-xl leading-relaxed text-ivory sm:text-2xl">"{v.t}"</p>
+                </div>
               </div>
             </Reveal>
           ))}
@@ -119,9 +139,11 @@ export default function WhyCAC() {
             {STANDARDS.map((s, i) => (
               <Reveal key={s.k} delay={(i % 3) * 80}>
                 <div className="group flex h-full items-start gap-4 bg-navy-2/70 p-6 transition hover:bg-navy-3/60">
-                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full border border-gold-2/30 text-gold-2 transition group-hover:border-gold-2">
-                    <Icon name={s.g} size={22} />
-                  </span>
+                  <img
+                    src={s.img}
+                    alt={s.k}
+                    className="h-14 w-14 shrink-0 rounded-md object-cover border border-gold-2/30 shadow-md transition group-hover:border-gold-2 group-hover:scale-105"
+                  />
                   <div>
                     <p className="font-mono text-[10px] uppercase tracking-wide-2 text-gold-2/70">0{i + 1}</p>
                     <h4 className="font-display text-lg text-ivory">{s.k}</h4>
