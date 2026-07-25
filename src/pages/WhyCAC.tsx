@@ -84,23 +84,25 @@ export default function WhyCAC() {
           </div>
 
           <Reveal delay={100}>
-            <div className="mt-10 overflow-hidden rounded-xl border border-gold-2/20">
-              <div className="grid grid-cols-[1.2fr_1fr_1fr] bg-navy-2/70 font-mono text-[10px] uppercase tracking-wide-2 text-gold-2/70">
-                <div className="p-4">Dimension</div>
-                <div className="border-l border-gold-2/10 p-4 text-mute">Conventional</div>
-                <div className="border-l border-gold-2/10 p-4 text-gold-2">CAC Forensic</div>
-              </div>
-              {COMPARE.map((c, i) => (
-                <div key={c.row} className={`grid grid-cols-[1.2fr_1fr_1fr] text-sm ${i % 2 ? "bg-navy-2/30" : "bg-ink/30"}`}>
-                  <div className="p-4 font-display text-ivory">{c.row}</div>
-                  <div className="flex items-start gap-2 border-l border-gold-2/10 p-4 text-ivory/55">
-                    <Icon name="close" size={14} className="mt-0.5 shrink-0 text-rose-300/80" /> {c.them}
-                  </div>
-                  <div className="flex items-start gap-2 border-l border-gold-2/10 p-4 text-ivory/90">
-                    <Icon name="check" size={14} className="mt-0.5 shrink-0 text-gold-2" /> {c.us}
-                  </div>
+            <div className="mt-10 overflow-x-auto [scrollbar-width:thin] rounded-xl border border-gold-2/20">
+              <div className="min-w-[600px]">
+                <div className="grid grid-cols-[1.2fr_1fr_1fr] bg-navy-2/70 font-mono text-[10px] uppercase tracking-wide-2 text-gold-2/70">
+                  <div className="p-4">Dimension</div>
+                  <div className="border-l border-gold-2/10 p-4 text-mute">Conventional</div>
+                  <div className="border-l border-gold-2/10 p-4 text-gold-2">CAC Forensic</div>
                 </div>
-              ))}
+                {COMPARE.map((c, i) => (
+                  <div key={c.row} className={`grid grid-cols-[1.2fr_1fr_1fr] text-sm ${i % 2 ? "bg-navy-2/30" : "bg-ink/30"}`}>
+                    <div className="p-4 font-display text-ivory">{c.row}</div>
+                    <div className="flex items-start gap-2 border-l border-gold-2/10 p-4 text-ivory/55">
+                      <Icon name="close" size={14} className="mt-0.5 shrink-0 text-rose-300/80" /> {c.them}
+                    </div>
+                    <div className="flex items-start gap-2 border-l border-gold-2/10 p-4 text-ivory/90">
+                      <Icon name="check" size={14} className="mt-0.5 shrink-0 text-gold-2" /> {c.us}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </Reveal>
         </div>
