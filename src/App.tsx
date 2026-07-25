@@ -1,71 +1,70 @@
-import { useState, lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import PremiumBackground from './components/ui/PremiumBackground';
-import InquiryLogModal from './components/ui/InquiryLogModal';
-import Navbar from './components/layout/Navbar';
-import Footer from './components/layout/Footer';
-import PageLoader from './components/ui/PageLoader';
-import ScrollToTop from './components/utils/ScrollToTop';
+import { useEffect, type ReactNode } from "react";
+import { HashRouter, Route, Routes, useLocation } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import { Icon } from "./components/Icon";
+import {
+  StatsBand, FeaturedDisciplines, FirmSummary, ProcessTeaser,
+  TrackRecord, CaseStudies, Testimonials, ContactTeaser,
+} from "./components/sections";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Services from "./pages/Services";
+import ServiceDetail from "./pages/ServiceDetail";
+import Process from "./pages/Process";
+import WhyCAC from "./pages/WhyCAC";
+import Contact from "./pages/Contact";
+import SplashScreen from "./components/SplashScreen";
+import { waLink } from "./data";
 
-// Lazy Loaded Pages for Optimized Bundle Code-Splitting
-const HomePage = lazy(() => import('./pages/HomePage'));
-const AboutPage = lazy(() => import('./pages/AboutPage'));
-const ServicesPage = lazy(() => import('./pages/ServicesPage'));
-const ServiceDetailPage = lazy(() => import('./pages/ServiceDetailPage'));
-const ProcessPage = lazy(() => import('./pages/ProcessPage'));
-const WhyCACPage = lazy(() => import('./pages/WhyCACPage'));
-const ContactPage = lazy(() => import('./pages/ContactPage'));
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior }); }, [pathname]);
+  return null;
+}
 
-import SplashScreen from './components/ui/SplashScreen';
+function FloatingWhatsApp() {
+  return (
+    <a
+      href={waLink()}
+      target="_blank"
+      rel="noreferrer"
+      aria-label="WhatsApp CAC"
+      className="group fixed bottom-5 right-5 z-40 flex items-center gap-3"
+    >
+      <span className="pointer-events-none hidden rounded-full border border-gold-2/30 bg-navy-2/90 px-3 py-1.5 font-mono text-[10px] uppercase tracking-wide-2 text-gold-2 opacity-0 shadow-lg backdrop-blur transition group-hover:opacity-100 sm:block">
+        +6018-377 7716
+      </span>
+      <span className="relative grid h-14 w-14 place-items-center rounded-full bg-gradient-to-br from-gold-2 via-gold to-gold-3 text-navy shadow-[0_14px_30px_-10px_rgba(201,138,4,0.8)] transition group-hover:scale-105">
+        <span className="absolute inset-0 rounded-full ring-2 ring-gold-2/40" style={{ animation: "pulse-ring 2.4s ease-out infinite" }} />
+        <Icon name="whatsapp" size={26} />
+      </span>
+    </a>
+  );
+}
 
 export default function App() {
-  const [isInquiryLogOpen, setIsInquiryLogOpen] = useState(false);
-
-  const handleOpenInquiryLog = () => {
-    setIsInquiryLogOpen(true);
-  };
-
-  const handleInquirySubmitted = () => {
-    // Confirmation handling
-  };
-
   return (
-    <BrowserRouter>
-      {/* Initial Brand Introduction Splash Screen */}
+    <HashRouter>
       <SplashScreen />
-
       <ScrollToTop />
-      <div className="min-h-screen bg-transparent text-on-surface font-sans selection:bg-secondary selection:text-surface flex flex-col justify-between">
-        {/* Static premium land-survey graphic background */}
-        <PremiumBackground />
-
-        {/* Dynamic Floating Glass Navbar */}
-        <Navbar onOpenInquiryLog={handleOpenInquiryLog} />
-
-        {/* Multi-Page Client-Side Routes with Suspense Fallback */}
-        <main className="flex-grow z-10">
-          <Suspense fallback={<PageLoader />}>
-            <Routes>
-              <Route path="/" element={<HomePage onInquirySubmitted={handleInquirySubmitted} />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/services" element={<ServicesPage />} />
-              <Route path="/services/:serviceId" element={<ServiceDetailPage />} />
-              <Route path="/process" element={<ProcessPage />} />
-              <Route path="/why-cac" element={<WhyCACPage />} />
-              <Route path="/contact" element={<ContactPage onInquirySubmitted={handleInquirySubmitted} />} />
-            </Routes>
-          </Suspense>
+      <div className="relative flex min-h-screen flex-col bg-navy text-ivory">
+        <Navbar />
+        <main className="flex-1">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/services/:serviceId" element={<ServiceDetail />} />
+            <Route path="/process" element={<Process />} />
+            <Route path="/why-cac" element={<WhyCAC />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<Home />} />
+          </Routes>
         </main>
-
-        {/* Brand Disclaimer & Columns Footer */}
         <Footer />
-
-        {/* Dialog Modals */}
-        <InquiryLogModal
-          isOpen={isInquiryLogOpen}
-          onClose={() => setIsInquiryLogOpen(false)}
-        />
+        <FloatingWhatsApp />
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
