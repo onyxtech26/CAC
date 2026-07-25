@@ -87,8 +87,8 @@ function Hero() {
             <div className="pointer-events-none absolute -inset-8 rounded-full opacity-60 blur-3xl" style={{ background: "radial-gradient(circle at 50% 50%, rgba(201,138,4,0.35), transparent 65%)" }} />
             <div className="relative anim-float-slow">
               <img
-                src="/assets/hero-forensic-CZAanpR-.jpg"
-                alt="CAC Property Forensic Investigation"
+                src="/assets/cac-building-logo.jpg"
+                alt="CAC Headquarters Building with Company Logo"
                 className="w-full rounded-lg border border-gold-2/20 shadow-[0_60px_120px_-40px_rgba(0,0,0,0.9)]"
               />
               {/* corner ticks overlay */}
