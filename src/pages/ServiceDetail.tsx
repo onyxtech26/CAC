@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { Icon } from "../components/Icon";
-import { Eyebrow, Reveal } from "../components/ui";
+import { Eyebrow, Reveal, Tag } from "../components/ui";
 import { PROCESS, SERVICES, waLink } from "../data";
 
 export default function ServiceDetail() {

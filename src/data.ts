@@ -20,6 +20,45 @@ export const CONTACT = {
 export const waLink = (extra?: string) =>
   `https://wa.me/${CONTACT.phoneRaw}${extra ? `?text=${encodeURIComponent(extra)}` : `?text=${CONTACT.waText}`}`;
 
+// Consultant roster shown on /contact. `blurb` renders under the name.
+// Leave `phoneDisplay`/`phoneRaw`/`email` off a member to fall back to the firm's
+// main channels in CONTACT above.
+export type TeamMember = {
+  name: string;
+  role: string;
+  img: string;
+  blurb: string;
+  phoneDisplay?: string;
+  phoneRaw?: string;
+  email?: string;
+};
+
+export const TEAM: TeamMember[] = [
+  {
+    name: "Mohaan",
+    role: "Senior Forensic Consultant",
+    img: "/assets/mohaan-profile.png",
+    blurb:
+      "Lead investigator across property forensic, estate recovery and fraud-exposure engagements. Personally briefs every new case and remains the point of contact through to resolution.",
+  },
+  {
+    // TODO: replace name + role with the real details.
+    name: "Consultant Two",
+    role: "Forensic Consultant",
+    img: "/assets/team-02.png",
+    blurb:
+      "Handles registry chain reconstruction and title tracing — from colonial grant books through to present-day land-office folios.",
+  },
+  {
+    // TODO: replace name + role with the real details.
+    name: "Consultant Three",
+    role: "Estate & Probate Consultant",
+    img: "/assets/team-03.png",
+    blurb:
+      "Leads family estate investigations, beneficiary tracing and probate coordination, working alongside counsel through to distribution.",
+  },
+];
+
 export const TAGLINES = [
   "Uncover The Truth. Protect Your Legacy.",
   "Turning Intelligence Into Evidence",

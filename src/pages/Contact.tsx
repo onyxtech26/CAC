@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Icon } from "../components/Icon";
 import { Eyebrow, Heading, Reveal } from "../components/ui";
 import ContactForm from "../components/ContactForm";
-import { CONTACT, waLink } from "../data";
+import { CONTACT, TEAM } from "../data";
 
 export default function Contact() {
   return (
@@ -26,35 +26,45 @@ export default function Contact() {
           </Reveal>
         </div>
 
-        {/* Consultant banner */}
-        <Reveal delay={120}>
-          <div className="mt-12 corner-ticks relative overflow-hidden rounded-xl border border-gold-2/25 bg-gradient-to-br from-navy-3 to-ink p-7 sm:p-9">
-            <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full opacity-30 blur-3xl" style={{ background: "radial-gradient(circle, rgba(201,138,4,0.5), transparent 70%)" }} />
-            <div className="relative grid items-center gap-7 lg:grid-cols-[auto_1fr_auto]">
-              <div className="relative">
-                <img src="/assets/mohaan-profile.png" alt={CONTACT.consultant} className="h-24 w-24 rounded-full object-cover border border-gold-2/50 shrink-0" />
-                <span className="absolute -bottom-1 -right-1 grid h-8 w-8 place-items-center rounded-full border border-gold-2 bg-navy text-gold-2">
-                  <Icon name="seal" size={16} />
-                </span>
-              </div>
-              <div>
-                <Eyebrow>Senior Forensic Consultant</Eyebrow>
-                <h3 className="mt-2 font-display text-3xl text-ivory sm:text-4xl">{CONTACT.consultant}</h3>
-                <p className="mt-2 max-w-xl text-ivory/70">
-                  Lead investigator across property forensic, estate recovery and fraud-exposure engagements. {CONTACT.consultant} personally briefs every new case and remains the point of contact through to resolution.
-                </p>
-              </div>
-              <div className="flex flex-wrap gap-3 lg:flex-col lg:items-stretch">
-                <a href={waLink()} target="_blank" rel="noreferrer" className="gold-btn sheen-host flex items-center justify-center gap-2 rounded-sm px-6 py-3 text-[12px] uppercase">
-                  <Icon name="whatsapp" size={16} /> WhatsApp {CONTACT.phoneDisplay}
-                </a>
-                <a href={`mailto:${CONTACT.email}`} className="ghost-btn flex items-center justify-center gap-2 rounded-sm px-6 py-3 text-[12px] uppercase">
-                  <Icon name="mail" size={16} /> Email CAC
-                </a>
-              </div>
-            </div>
-          </div>
-        </Reveal>
+        {/* Consultant roster */}
+        <div className="mt-14 grid gap-5 lg:grid-cols-3">
+          {TEAM.map((m, i) => {
+            const phoneDisplay = m.phoneDisplay ?? CONTACT.phoneDisplay;
+            const phoneRaw = m.phoneRaw ?? CONTACT.phoneRaw;
+            const email = m.email ?? CONTACT.email;
+            const waTo = `https://wa.me/${phoneRaw}?text=${encodeURIComponent(
+              `Hello CAC, I would like to speak with ${m.name} (${m.role}).`
+            )}`;
+            return (
+              <Reveal key={m.name} delay={i * 110}>
+                <div className="corner-ticks relative flex h-full flex-col overflow-hidden rounded-xl border border-gold-2/25 bg-gradient-to-br from-navy-3 to-ink p-7 sm:p-8">
+                  <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full opacity-30 blur-3xl" style={{ background: "radial-gradient(circle, rgba(201,138,4,0.5), transparent 70%)" }} />
+                  <div className="relative flex flex-1 flex-col">
+                    <div className="relative w-fit">
+                      <img src={m.img} alt={m.name} className="h-24 w-24 shrink-0 rounded-full border border-gold-2/50 object-cover object-top" />
+                      <span className="absolute -bottom-1 -right-1 grid h-8 w-8 place-items-center rounded-full border border-gold-2 bg-navy text-gold-2">
+                        <Icon name="seal" size={16} />
+                      </span>
+                    </div>
+                    <div className="mt-6">
+                      <Eyebrow>{m.role}</Eyebrow>
+                      <h3 className="mt-2 font-display text-3xl text-ivory">{m.name}</h3>
+                      <p className="mt-3 text-sm leading-relaxed text-ivory/70">{m.blurb}</p>
+                    </div>
+                    <div className="mt-auto flex flex-col gap-3 pt-7">
+                      <a href={waTo} target="_blank" rel="noreferrer" className="gold-btn sheen-host flex items-center justify-center gap-2 rounded-sm px-5 py-3 text-[12px] uppercase">
+                        <Icon name="whatsapp" size={16} /> {phoneDisplay}
+                      </a>
+                      <a href={`mailto:${email}`} className="ghost-btn flex items-center justify-center gap-2 rounded-sm px-5 py-3 text-[12px] uppercase">
+                        <Icon name="mail" size={16} /> Email CAC
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+            );
+          })}
+        </div>
 
         {/* Main grid */}
         <div className="mt-12 grid gap-10 lg:grid-cols-12">
