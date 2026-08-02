@@ -42,17 +42,15 @@ export const TEAM: TeamMember[] = [
       "Lead investigator across property forensic, estate recovery and fraud-exposure engagements. Personally briefs every new case and remains the point of contact through to resolution.",
   },
   {
-    // TODO: replace name + role with the real details.
-    name: "Consultant Two",
-    role: "Forensic Consultant",
+    name: "Mr. Goku",
+    role: "Executive Consultant",
     img: "/assets/team-02.png",
     blurb:
       "Handles registry chain reconstruction and title tracing — from colonial grant books through to present-day land-office folios.",
   },
   {
-    // TODO: replace name + role with the real details.
-    name: "Consultant Three",
-    role: "Estate & Probate Consultant",
+    name: "Mr. Shiva",
+    role: "Senior Consultant",
     img: "/assets/team-03.png",
     blurb:
       "Leads family estate investigations, beneficiary tracing and probate coordination, working alongside counsel through to distribution.",
