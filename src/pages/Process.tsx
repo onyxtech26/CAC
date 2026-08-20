@@ -27,7 +27,7 @@ export default function Process() {
 
   return (
     <>
-    <Seo title="Our Process" description="A seven-stage investigation lifecycle — from initial consultation and evidence collection through verification, asset tracing and forensic analysis to a documented report." path="/process" />
+    <Seo route="/process" />
       <section className="relative pt-32 pb-24 lg:pt-40">
         <div className="pointer-events-none absolute inset-0 bg-grid opacity-50" />
         <div className="pointer-events-none absolute inset-0 bg-radial-navy" />

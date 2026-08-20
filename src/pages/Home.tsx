@@ -16,7 +16,7 @@ const CREED = ["Discovering the Past", "Protecting the Present", "Securing the F
 export default function Home() {
   return (
     <>
-    <Seo title="Property Forensic Investigation in Malaysia" description="Independent property forensic investigation in Johor and across Malaysia — uncovering true ownership, tracing missing land titles, exposing fraudulent transfers and recovering hidden estate assets." path="/" />
+    <Seo route="/" />
       <Hero />
       <Marquee items={SERVICES.map((s) => s.title)} />
       <FeaturedDisciplines />

@@ -8,7 +8,7 @@ import { Seo } from "../components/Seo";
 export default function Contact() {
   return (
     <>
-    <Seo title="Contact" description="Confidential enquiries regarding property ownership, inheritance disputes, historical land investigations and asset tracing. Based in Skudai, Johor." path="/contact" />
+    <Seo route="/contact" />
       <section className="relative pt-32 pb-24 lg:pt-40">
         <div className="pointer-events-none absolute inset-0 bg-grid opacity-50" />
         <div className="pointer-events-none absolute inset-0 bg-radial-navy" />

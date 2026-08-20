@@ -36,7 +36,7 @@ const COMPARE = [
 export default function WhyCAC() {
   return (
     <>
-    <Seo title="Why CAC" description="Independent and objective investigations, confidential handling, detailed historical research and structured evidence-based reporting for lawyers, executors, trustees and beneficiaries." path="/why-cac" />
+    <Seo route="/why-cac" />
       <section className="relative pt-32 pb-24 lg:pt-40">
         <div className="pointer-events-none absolute inset-0 bg-grid opacity-50" />
         <div className="pointer-events-none absolute inset-0 bg-radial-gold opacity-40" />

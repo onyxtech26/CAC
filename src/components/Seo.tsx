@@ -1,14 +1,22 @@
 import { useEffect } from "react";
 import { CONTACT } from "../data";
+import ROUTES from "../seo-routes.json";
 
 export const SITE_URL = "https://www.cac.com.my";
 
-type Props = {
-  title: string;
-  description: string;
-  /** path only, e.g. "/services" — combined with SITE_URL for the canonical */
-  path: string;
-};
+type Props =
+  /** static page — metadata comes from src/seo-routes.json */
+  | { route: keyof typeof ROUTES; title?: never; description?: never; path?: never }
+  /** dynamic page (e.g. a service) — metadata supplied by the caller */
+  | { route?: never; title: string; description: string; path: string };
+
+/** Shared by the app and scripts/prerender.mjs so the two cannot drift. */
+export function pageTitle(title: string) {
+  // several page titles already contain "CAC"; don't append it twice
+  return title.includes(CONTACT.short)
+    ? `${title} · ${CONTACT.company}`
+    : `${title} · ${CONTACT.short}`;
+}
 
 function setMeta(selector: string, attr: "name" | "property", key: string, content: string) {
   let el = document.head.querySelector<HTMLMetaElement>(selector);
@@ -23,21 +31,22 @@ function setMeta(selector: string, attr: "name" | "property", key: string, conte
 /**
  * Per-page title, description, canonical and Open Graph tags.
  *
- * Note on reach: Google renders JavaScript, so these are picked up for search.
- * Social scrapers (WhatsApp, Facebook, LinkedIn) do NOT execute JS — they read
- * the raw HTML, so they will always see the defaults baked into index.html.
- * Per-page social previews need prerendering or SSR; this covers search.
+ * These run on the client for in-app navigation. For the first response,
+ * scripts/prerender.mjs bakes the same values into a static HTML file per
+ * route at build time — which is what social scrapers (WhatsApp, Facebook,
+ * LinkedIn) read, since they do not execute JavaScript.
  */
-export function Seo({ title, description, path }: Props) {
+export function Seo(props: Props) {
+  const meta = props.route ? ROUTES[props.route] : null;
+  const title = meta ? meta.title : props.title!;
+  const description = meta ? meta.description : props.description!;
+  const path = props.route ?? props.path!;
+
   useEffect(() => {
-    // several page titles already contain "CAC"; don't append it twice
-    const full = title.includes(CONTACT.short)
-      ? `${title} · ${CONTACT.company}`
-      : `${title} · ${CONTACT.short}`;
+    const full = pageTitle(title);
     document.title = full;
 
     setMeta('meta[name="description"]', "name", "description", description);
-
     setMeta('meta[property="og:title"]', "property", "og:title", full);
     setMeta('meta[property="og:description"]', "property", "og:description", description);
     setMeta('meta[property="og:url"]', "property", "og:url", `${SITE_URL}${path}`);

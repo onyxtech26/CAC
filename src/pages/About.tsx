@@ -23,7 +23,7 @@ const TIMELINE = [
 export default function About() {
   return (
     <>
-    <Seo title="About CAC" description="CAC is an independent property investigation consultancy specialising in forensic analysis of real estate ownership, estate assets, historical property records and asset tracing." path="/about" />
+    <Seo route="/about" />
       <section className="relative overflow-hidden pt-32 pb-20 lg:pt-40">
         <div className="pointer-events-none absolute inset-0 bg-grid opacity-50" />
         <div className="pointer-events-none absolute inset-0 bg-radial-navy" />

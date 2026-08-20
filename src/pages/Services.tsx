@@ -17,7 +17,7 @@ export default function Services() {
 
   return (
     <>
-    <Seo title="Our Services" description="Six forensic disciplines: family estate investigation, property ownership investigation, missing property investigation, title and document investigation, fraud investigation and asset tracing." path="/services" />
+    <Seo route="/services" />
       <section className="relative pt-32 pb-24 lg:pt-40">
         <div className="pointer-events-none absolute inset-0 bg-grid opacity-50" />
         <div className="pointer-events-none absolute inset-0 bg-radial-gold opacity-40" />
