@@ -326,6 +326,69 @@ body {
 }
 .ghost-btn:hover { background: rgba(233, 199, 102, 0.1); border-color: #e9c766; transform: translateY(-2px); }
 
+/* ---------- Evidence chain ----------
+   A gold spine that draws itself down the stage list. The fill height is set
+   from IntersectionObserver as each node is reached rather than from a scroll
+   listener, so there is no per-frame work — the transition does the drawing. */
+.chain-track {
+  background: linear-gradient(180deg, rgba(233, 199, 102, 0.16), rgba(233, 199, 102, 0.16));
+}
+.chain-fill {
+  background: linear-gradient(180deg, #8f6519, #e9c766 40%, #ca8a04);
+  transition: height 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: height;
+}
+.chain-node {
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1),
+              background-color 500ms ease, border-color 500ms ease, box-shadow 500ms ease;
+}
+.chain-node[data-reached="true"] {
+  transform: scale(1.15);
+  border-color: var(--color-gold-2);
+  background-color: var(--color-gold-2);
+  box-shadow: 0 0 0 6px rgba(233, 199, 102, 0.12), 0 0 22px -4px rgba(201, 138, 4, 0.8);
+}
+
+/* stage body lifts in once its node is reached */
+.chain-item {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 800ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.chain-item[data-reached="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Redaction reveal ----------
+   Used once, on the page heading. The bar sits over the text and retracts to
+   the right to declassify it. Deliberately not applied per stage — repeated
+   seven times it stops being a device and starts being a tic. */
+.redact {
+  position: relative;
+  display: inline-block;
+}
+.redact::after {
+  content: "";
+  position: absolute;
+  inset: -0.06em -0.12em;
+  background: var(--color-gold-2);
+  transform-origin: right center;
+  transform: scaleX(1);
+  transition: transform 760ms cubic-bezier(0.76, 0, 0.24, 1);
+}
+.redact[data-revealed="true"]::after {
+  transform: scaleX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chain-fill { transition: none; }
+  .chain-item { opacity: 1; transform: none; transition: none; }
+  .chain-node { transition: none; }
+  .redact::after { display: none; }
+}
+
 /* ---------- Premium stat plate ----------
    A 1px flat border reads cheap at this scale. Two nested radii with a gold
    gradient between them give a real metal rim that catches light along the
