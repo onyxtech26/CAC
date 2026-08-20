@@ -28,7 +28,7 @@ export default function Services() {
 
         <div className="mt-5 flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
           <Heading
-            eyebrow="Capabilities directory · 12 disciplines"
+            eyebrow={`Capabilities directory · ${SERVICES.length} disciplines`}
             title={<>Our <span className="italic text-gold-gradient">Services</span></>}
           />
           <Reveal delay={120} className="w-full lg:max-w-md">
@@ -54,7 +54,7 @@ export default function Services() {
           <div className="mt-16 grid place-items-center rounded-lg border border-dashed border-gold-2/20 py-20 text-center">
             <Icon name="magnifier-house" size={42} className="text-gold-2/40" />
             <p className="mt-4 font-display text-2xl text-ivory">No disciplines match "{q}"</p>
-            <p className="mt-2 text-sm text-mute">Try "forensic", "title", "fraud", "ROI" or "estate".</p>
+            <p className="mt-2 text-sm text-stone">Try "forensic", "title", "fraud", "ROI" or "estate".</p>
           </div>
         ) : (
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -62,7 +62,7 @@ export default function Services() {
               <Reveal key={s.id} delay={(i % 3) * 90}>
                 <Link to={`/services/${s.id}`} className="plate plate-hover group relative flex h-full flex-col overflow-hidden rounded-lg">
                   {/* AI Illustration Banner */}
-                  <div className="relative h-44 w-full overflow-hidden bg-navy-3">
+                  <div className="media-clip media-fade relative h-44 w-full overflow-hidden">
                     <img
                       src={s.img}
                       alt={s.title}
@@ -73,16 +73,16 @@ export default function Services() {
                       <Tag>{s.accent}</Tag>
                     </div>
                     <span className="absolute top-3 right-3 font-mono text-[10px] font-semibold text-gold-2/90 bg-navy/80 px-2.5 py-1 rounded border border-gold-2/30 backdrop-blur">
-                      {s.no} / 12
+                      {s.no} / {SERVICES.length}
                     </span>
                   </div>
 
                   <div className="flex flex-1 flex-col p-6">
                     <h3 className="font-display text-2xl leading-snug text-ivory">{s.title}</h3>
-                    <p className="mt-3 flex-1 text-sm leading-relaxed text-ivory/65">{s.short}</p>
+                    <p className="mt-3 flex-1 text-sm leading-relaxed text-stone">{s.short}</p>
                     <ul className="mt-5 space-y-1.5 border-t border-gold-2/10 pt-4">
                       {s.deliverables.slice(0, 2).map((d, j) => (
-                        <li key={j} className="flex items-start gap-2 text-xs text-ivory/55">
+                        <li key={j} className="flex items-start gap-2 text-xs text-stone">
                           <Icon name="check" size={12} className="mt-0.5 shrink-0 text-gold-2" /> <span className="line-clamp-1">{d}</span>
                         </li>
                       ))}
@@ -102,7 +102,7 @@ export default function Services() {
           <div className="mt-14 flex flex-col items-center justify-between gap-5 rounded-lg border border-gold-2/20 bg-navy-2/50 p-7 sm:flex-row">
             <div className="flex items-center gap-4">
               <Icon name="scales" size={34} className="text-gold-2" />
-              <p className="max-w-xl text-sm text-ivory/75">Not sure which discipline fits? Our senior consultant will scope the right combination during a confidential briefing.</p>
+              <p className="max-w-xl text-sm text-stone">Not sure which discipline fits? Our senior consultant will scope the right combination during a confidential briefing.</p>
             </div>
             <Link to="/contact" className="gold-btn sheen-host flex items-center gap-2 rounded-sm px-6 py-3 text-[12px] uppercase">
               Request a Scope <Icon name="arrow" size={16} />

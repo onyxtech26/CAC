@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Icon } from "../components/Icon";
 import { Counter, Eyebrow, Heading, Marquee, Reveal, Tag } from "../components/ui";
-import { CONTACT, HERO_STATS, MISSION, PRINCIPLES_HOME, TAGLINES, waLink } from "../data";
+import { CONTACT, HERO_STATS, INDUSTRIES, MISSION, PRINCIPLES_HOME, STRAPLINE, TAGLINES, waLink } from "../data";
 
 const VALUES = [
   { k: "Integrity", g: "shield-alert" },
@@ -11,10 +11,10 @@ const VALUES = [
 ];
 
 const TIMELINE = [
-  { y: "2009", t: "Practice established", d: "Founding investigations into Johor family estates and pioneer-title disputes." },
+  { y: "2009", t: "Consultancy established", d: "Founding investigations into Johor family estates and pioneer-title disputes." },
   { y: "2014", t: "Registry network expanded", d: "Formal working channels with state land offices, survey departments and High Court probate registries." },
-  { y: "2018", t: "Forensic methodology codified", d: "The 8-stage investigation lifecycle standardised across every engagement." },
-  { y: "2020", t: "Incorporated as CAC", d: "Conglomerate Appraisal Consultancy Sdn. Bhd. — 17+ years of practice under one corporate entity." },
+  { y: "2018", t: "Forensic methodology codified", d: "The investigation lifecycle standardised across every engagement." },
+  { y: "2020", t: "Consolidated as CAC", d: "Conglomerate Appraisal Consultancy — all forensic casework brought under a single consultancy name." },
   { y: "2024", t: "Intelligence Hub launched", d: "GIS, satellite and chronology dashboards integrated into client reporting." },
   { y: "2026", t: "227+ cases closed", d: "Nationwide footprint across 14 Malaysian states with a 30+ active caseload." },
 ];
@@ -41,11 +41,11 @@ export default function About() {
               <div className="mt-5 h-px w-24 hairline" />
             </Reveal>
             <Reveal delay={140}>
-              <p className="mt-6 max-w-xl text-ivory/75">
-                Conglomerate Appraisal Consultancy (CAC) is a leading Property Forensic Consultancy firm dedicated to uncovering the truth behind property ownership, resolving complex disputes and helping clients protect their legacy.
+              <p className="mt-6 max-w-xl text-stone">
+                CAC is an independent property investigation consultancy specialising in forensic analysis of real estate ownership, estate assets, historical property records and asset tracing — uncovering the truth behind property ownership and helping clients protect their legacy.
               </p>
-              <p className="mt-4 max-w-xl text-ivory/70">
-                We combine investigative expertise, legal knowledge, and modern technology to deliver accurate, reliable and admissible findings — across Johor and all of Malaysia.
+              <p className="mt-4 max-w-xl text-stone">
+                We combine investigative research, historical analysis, land administration knowledge, legal documentation review and financial tracing to reconstruct the complete history of a property. Every investigation is conducted professionally, confidentially and objectively.
               </p>
             </Reveal>
             <Reveal delay={200}>
@@ -63,7 +63,7 @@ export default function About() {
                 {VALUES.map((v) => (
                   <div key={v.k} className="flex flex-col items-center gap-2 rounded-md border border-gold-2/15 bg-navy-2/40 py-4 text-center">
                     <Icon name={v.g} size={22} className="text-gold-2" />
-                    <span className="font-mono text-[10px] uppercase tracking-wide-2 text-ivory/80">{v.k}</span>
+                    <span className="font-mono text-[10px] uppercase tracking-wide-2 text-stone">{v.k}</span>
                   </div>
                 ))}
               </div>
@@ -73,7 +73,7 @@ export default function About() {
           <Reveal delay={120} className="lg:col-span-6">
             <div className="relative">
               <div className="pointer-events-none absolute -inset-4 rounded-lg border border-gold-2/15" />
-              <img src="/assets/cac-building-logo.jpg" alt="CAC headquarters building with illuminated logo" className="relative w-full rounded-lg border border-gold-2/20 shadow-2xl" />
+              <img src="/assets/cac-building-logo.webp" alt="CAC headquarters building with illuminated logo" className="relative w-full rounded-lg border border-gold-2/20 shadow-2xl" />
             </div>
           </Reveal>
         </div>
@@ -115,18 +115,18 @@ export default function About() {
           <div className="lg:col-span-5">
             <Heading eyebrow="Our story" title={<>Seventeen years reading<br />the Malaysian record.</>} />
             <Reveal delay={120}>
-              <p className="mt-6 text-ivory/70">
-                CAC began in 2009 as a focused forensic practice serving families tangled in Johor inheritance disputes and pioneer-title ambiguities. What started as a single consultant tracing registry chains by hand has grown into a multidisciplinary intelligence firm — yet the method has never changed: start with the document, follow the chain, verify every transition, and compile evidence that survives scrutiny.
+              <p className="mt-6 text-stone">
+                CAC began in 2009 as a focused forensic consultancy serving families tangled in Johor inheritance disputes and pioneer-title ambiguities. What started as a single consultant tracing registry chains by hand has grown into a multidisciplinary intelligence team — yet the method has never changed: start with the document, follow the chain, verify every transition, and compile evidence that survives scrutiny.
               </p>
-              <p className="mt-4 text-ivory/70">
-                Incorporated in 2020, CAC today serves beneficiaries, legal counsel, developers and investors nationwide — from Skudai to the High Court — with the same discretion and rigour that defined its first engagement.
+              <p className="mt-4 text-stone">
+                Today CAC serves beneficiaries, legal counsel, developers and investors nationwide — from Skudai to the High Court — with the same discretion and rigour that defined its first engagement.
               </p>
             </Reveal>
             <Reveal delay={180}>
               <div className="mt-8 rounded-md border border-gold-2/20 bg-navy-2/50 p-6">
-                <Eyebrow>Senior Forensic Consultant</Eyebrow>
+                <Eyebrow>Who you&apos;ll deal with</Eyebrow>
                 <div className="mt-3 flex items-center gap-4">
-                  <img src="/assets/mohaan-profile.png" alt={CONTACT.consultant} className="h-14 w-14 rounded-full object-cover border border-gold-2/50 shrink-0" />
+                  <img src="/assets/mohaan-profile.webp" alt={CONTACT.consultant} className="h-14 w-14 rounded-full object-cover border border-gold-2/50 shrink-0" />
                   <div>
                     <p className="font-display text-xl text-ivory">{CONTACT.consultant}</p>
                     <p className="font-mono text-[10px] uppercase tracking-wide-2 text-gold-2/70">{CONTACT.consultantRole}</p>
@@ -137,7 +137,7 @@ export default function About() {
           </div>
 
           <div className="lg:col-span-7">
-            <Reveal><p className="font-mono text-[11px] uppercase tracking-wide-2 text-gold-2/70">// Firm chronology</p></Reveal>
+            <Reveal><p className="font-mono text-[11px] uppercase tracking-wide-2 text-gold-2/70">// Consultancy chronology</p></Reveal>
             <ol className="mt-6 space-y-6 border-l border-gold-2/20 pl-6">
               {TIMELINE.map((t, i) => (
                 <Reveal as="li" key={t.y} delay={i * 80} className="relative">
@@ -148,7 +148,7 @@ export default function About() {
                     <span className="font-display text-2xl text-gold-gradient">{t.y}</span>
                     <span className="font-display text-lg text-ivory">{t.t}</span>
                   </div>
-                  <p className="mt-1 text-sm text-ivory/65">{t.d}</p>
+                  <p className="mt-1 text-sm text-stone">{t.d}</p>
                 </Reveal>
               ))}
             </ol>
@@ -168,7 +168,7 @@ export default function About() {
                   <span className="font-display text-5xl text-gold-gradient">0{i + 1}</span>
                   <h3 className="mt-4 font-display text-2xl text-ivory">{p.k}</h3>
                   <div className="mt-3 h-px w-12 hairline" />
-                  <p className="mt-4 text-ivory/70">{p.d}</p>
+                  <p className="mt-4 text-stone">{p.d}</p>
                 </div>
               </Reveal>
             ))}
@@ -191,6 +191,29 @@ export default function About() {
         </div>
       </section>
 
+      {/* Industries we serve */}
+      <section className="band-deep band-edge relative overflow-hidden py-24">
+        <div className="mx-auto max-w-[1320px] px-5 lg:px-8">
+          <Heading eyebrow="Industries we serve" title={<>Who we act for,<br />and what they need proven.</>} />
+          <Reveal delay={120}>
+            <p className="mt-6 max-w-2xl text-stone">{STRAPLINE} — for anyone who has to rely on the answer.</p>
+          </Reveal>
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+            {INDUSTRIES.map((n, i) => (
+              <Reveal key={n.k} delay={i * 55}>
+                <div className="plate plate-hover flex h-full flex-col rounded-lg p-5">
+                  <span className="grid h-10 w-10 place-items-center rounded-full border border-gold-2/30 text-gold-2">
+                    <Icon name={n.g} size={18} />
+                  </span>
+                  <p className="mt-4 font-display text-lg leading-snug text-ivory">{n.k}</p>
+                  <p className="mt-2 text-xs leading-relaxed text-stone">{n.d}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA banner */}
       <section className="relative pb-24">
         <div className="mx-auto max-w-[1320px] px-5 lg:px-8">
@@ -203,7 +226,7 @@ export default function About() {
                   <h3 className="mt-4 font-display text-4xl leading-tight text-ivory sm:text-5xl">
                     Your estate deserves a <span className="italic text-gold-gradient">forensic reading</span>, not a guess.
                   </h3>
-                  <p className="mt-4 max-w-2xl text-ivory/70">Begin with a confidential briefing. We will scope the investigation, outline the registry trail, and tell you — plainly — what the record can prove.</p>
+                  <p className="mt-4 max-w-2xl text-stone">Begin with a confidential briefing. We will scope the investigation, outline the registry trail, and tell you — plainly — what the record can prove.</p>
                 </div>
                 <div className="flex flex-wrap gap-3 lg:col-span-4 lg:justify-end">
                   <a href={waLink()} target="_blank" rel="noreferrer" className="gold-btn sheen-host flex items-center gap-2 rounded-sm px-6 py-3 text-[12px] uppercase">

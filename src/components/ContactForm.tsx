@@ -50,9 +50,9 @@ export default function ContactForm({ compact = false }: { compact?: boolean }) 
           <div>
             <p className="font-mono text-[10px] uppercase tracking-wide-2 text-emerald-300">// Case file opened</p>
             <h4 className="mt-1 font-display text-2xl text-ivory">Inquiry received, {form.name.split(" ")[0] || "counsel"}.</h4>
-            <p className="mt-2 text-sm text-ivory/70">Your confidential tracking reference is</p>
+            <p className="mt-2 text-sm text-stone">Your confidential tracking reference is</p>
             <p className="mt-1 inline-block rounded border border-gold-2/30 bg-ink/60 px-3 py-1 font-mono text-sm text-gold-2">{trackId}</p>
-            <p className="mt-3 text-sm text-ivory/70">A senior forensic consultant will respond within one business day. For immediate attention, continue on WhatsApp with your reference pre-filled.</p>
+            <p className="mt-3 text-sm text-stone">A senior forensic consultant will respond within one business day. For immediate attention, continue on WhatsApp with your reference pre-filled.</p>
             <div className="mt-5 flex flex-wrap gap-3">
               <a href={waFollow} target="_blank" rel="noreferrer" className="gold-btn sheen-host flex items-center gap-2 rounded-sm px-5 py-2.5 text-[12px] uppercase">
                 <Icon name="whatsapp" size={16} /> Continue on WhatsApp

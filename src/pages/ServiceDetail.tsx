@@ -12,7 +12,7 @@ export default function ServiceDetail() {
         <div>
           <Icon name="magnifier-house" size={56} className="mx-auto text-gold-2/50" />
           <h1 className="mt-6 font-display text-4xl text-ivory">Discipline not found</h1>
-          <p className="mt-3 text-mute">The dossier you requested is not in our current catalogue.</p>
+          <p className="mt-3 text-stone">The dossier you requested is not in our current catalogue.</p>
           <Link to="/services" className="gold-btn mt-6 inline-flex items-center gap-2 rounded-sm px-6 py-3 text-[12px] uppercase">
             Back to Services <Icon name="arrow" size={16} />
           </Link>
@@ -45,7 +45,7 @@ export default function ServiceDetail() {
                 <div className="absolute inset-0 bg-gradient-to-t from-navy-2 via-navy-2/50 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
                   <Tag>{s.accent}</Tag>
-                  <span className="font-mono text-[11px] uppercase tracking-wide-2 text-gold-2">Discipline {s.no} / 12</span>
+                  <span className="font-mono text-[11px] uppercase tracking-wide-2 text-gold-2">Discipline {s.no} / {SERVICES.length}</span>
                 </div>
               </div>
               <h1 className="font-display text-4xl leading-tight text-ivory sm:text-5xl">{s.title}</h1>
@@ -58,7 +58,7 @@ export default function ServiceDetail() {
             <Reveal delay={140}>
               <div className="mt-8">
                 <Eyebrow>Investigation scope</Eyebrow>
-                <p className="mt-4 text-ivory/75">{s.scope}</p>
+                <p className="mt-4 text-stone">{s.scope}</p>
               </div>
             </Reveal>
 
@@ -69,7 +69,7 @@ export default function ServiceDetail() {
                   {s.deliverables.map((d, i) => (
                     <li key={i} className="plate flex items-start gap-4 rounded-md p-4">
                       <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-gold-2/40 font-mono text-[11px] text-gold-2">{i + 1}</span>
-                      <p className="pt-1 text-ivory/85">{d}</p>
+                      <p className="pt-1 text-sand">{d}</p>
                       <Icon name="check" size={16} className="ml-auto mt-1 text-gold-2/70" />
                     </li>
                   ))}
@@ -103,10 +103,10 @@ export default function ServiceDetail() {
                   </dl>
                 </div>
                 <div className="border-t border-gold-2/10 pt-5">
-                  <p className="font-mono text-[10px] uppercase tracking-wide-2 text-gold-2/70">Where this sits in the 8-stage method</p>
+                  <p className="font-mono text-[10px] uppercase tracking-wide-2 text-gold-2/70">Where this sits in the {PROCESS.length}-stage method</p>
                   <ul className="mt-3 space-y-2">
                     {PROCESS.slice(0, 5).map((p) => (
-                      <li key={p.no} className="flex items-center gap-3 text-xs text-ivory/70">
+                      <li key={p.no} className="flex items-center gap-3 text-xs text-stone">
                         <span className="font-mono text-[10px] text-gold-2">{p.no}</span>
                         <Icon name={p.glyph} size={14} className="text-gold-2/70" />
                         {p.title}
@@ -120,8 +120,8 @@ export default function ServiceDetail() {
                 <div className="border-t border-gold-2/10 pt-5">
                   <p className="font-mono text-[10px] uppercase tracking-wide-2 text-gold-2/70">Adjacent disciplines</p>
                   <div className="mt-3 flex flex-wrap gap-2">
-                    <Link to={`/services/${prev.id}`} className="rounded border border-gold-2/20 px-3 py-1.5 font-mono text-[10px] uppercase tracking-wide-2 text-ivory/70 hover:border-gold-2 hover:text-gold-2">← {prev.no} {prev.title}</Link>
-                    <Link to={`/services/${next.id}`} className="rounded border border-gold-2/20 px-3 py-1.5 font-mono text-[10px] uppercase tracking-wide-2 text-ivory/70 hover:border-gold-2 hover:text-gold-2">{next.no} {next.title} →</Link>
+                    <Link to={`/services/${prev.id}`} className="rounded border border-gold-2/20 px-3 py-1.5 font-mono text-[10px] uppercase tracking-wide-2 text-stone hover:border-gold-2 hover:text-gold-2">← {prev.no} {prev.title}</Link>
+                    <Link to={`/services/${next.id}`} className="rounded border border-gold-2/20 px-3 py-1.5 font-mono text-[10px] uppercase tracking-wide-2 text-stone hover:border-gold-2 hover:text-gold-2">{next.no} {next.title} →</Link>
                   </div>
                 </div>
               </div>
@@ -137,7 +137,7 @@ function Row({ k, v }: { k: string; v: string }) {
   return (
     <div className="flex items-center justify-between gap-3 border-b border-white/5 pb-2">
       <dt className="text-mute">{k}</dt>
-      <dd className="text-right text-ivory/85">{v}</dd>
+      <dd className="text-right text-sand">{v}</dd>
     </div>
   );
 }

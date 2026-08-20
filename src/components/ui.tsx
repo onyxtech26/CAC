@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { Icon } from "./Icon";
 
 /* ---------------- Reveal on scroll ---------------- */
 export function Reveal({
@@ -92,7 +91,7 @@ export function LogoMark({ size = 44, className = "" }: { size?: number; classNa
   return (
     <span className={`relative inline-flex items-center justify-center ${className}`}>
       <img
-        src="/assets/logo.png"
+        src="/assets/logo.webp"
         alt="CAC Logo"
         style={{ width: size, height: size, objectFit: "contain" }}
         className="shrink-0 brightness-110 drop-shadow-[0_2px_10px_rgba(233,199,102,0.3)]"
@@ -102,10 +101,10 @@ export function LogoMark({ size = 44, className = "" }: { size?: number; classNa
 }
 
 /* ---------------- Eyebrow / label ---------------- */
-export function Eyebrow({ children, className = "" }: { children: ReactNode; className?: string }) {
+export function Eyebrow({ children, className = "", light = false }: { children: ReactNode; className?: string; light?: boolean }) {
   return (
-    <span className={`inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-wide-2 text-gold-2 ${className}`}>
-      <span className="h-px w-8 bg-gold-2/60" />
+    <span className={`inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-wide-2 ${light ? "text-gold-3" : "text-gold-2"} ${className}`}>
+      <span className={`h-px w-8 ${light ? "bg-gold-3/60" : "bg-gold-2/60"}`} />
       {children}
     </span>
   );
@@ -127,26 +126,34 @@ export function Heading({
 }) {
   return (
     <div className={className}>
-      {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
+      {eyebrow && <Eyebrow light={light}>{eyebrow}</Eyebrow>}
       <h2 className={`mt-5 font-display text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.04] ${light ? "text-navy-3" : "text-ivory"}`}>
         {title}
-        {italic && <span className="block italic text-gold-gradient mt-1">{italic}</span>}
+        {italic && <span className={`block italic mt-1 ${light ? "text-gold-gradient-dark" : "text-gold-gradient"}`}>{italic}</span>}
       </h2>
-      <div className="mt-6 h-px w-full max-w-[140px] hairline" />
+      <div className={`mt-6 h-px w-full max-w-[140px] ${light ? "hairline-dark" : "hairline"}`} />
     </div>
   );
 }
 
 /* ---------------- Marquee strip ---------------- */
 export function Marquee({ items }: { items: string[] }) {
-  const row = [...items, ...items];
+  // The track translates by -50%, so one half must be at least as wide as the
+  // viewport or a gap opens mid-loop. Four copies keeps that true on ultrawide.
+  const row = [...items, ...items, ...items, ...items];
   return (
-    <div className="relative overflow-hidden border-y border-gold-2/15 bg-navy-2/40 py-4">
-      <div className="marquee-track flex w-max items-center gap-12 whitespace-nowrap">
+    <div className="marquee-strip relative overflow-hidden bg-gradient-to-b from-ink via-navy-2 to-ink py-5">
+      {/* Gradient hairlines instead of flat 1px borders — they read as an
+          engraved channel rather than a boxed-in strip. */}
+      <span className="pointer-events-none absolute inset-x-0 top-0 h-px hairline" />
+      <span className="pointer-events-none absolute inset-x-0 bottom-0 h-px hairline" />
+      <div className="marquee-track flex w-max items-center gap-14 whitespace-nowrap">
         {row.map((t, i) => (
-          <span key={i} className="flex items-center gap-12 font-mono text-[12px] uppercase tracking-wide-2 text-mute">
-            <span className="text-gold-2/80">{t}</span>
-            <Icon name="seal" size={14} className="text-gold/70" />
+          <span key={i} className="flex items-center gap-14 font-mono text-[12px] font-bold uppercase tracking-wide-2 text-gold-2">
+            {t}
+            {/* Same rotated diamond used between the hero creed phrases, so the
+                two strips read as one design language. */}
+            <span className="h-1.5 w-1.5 shrink-0 rotate-45 bg-gold-2/55" />
           </span>
         ))}
       </div>

@@ -1,12 +1,8 @@
-import { useEffect, type ReactNode } from "react";
+import { useEffect } from "react";
 import { HashRouter, Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { Icon } from "./components/Icon";
-import {
-  StatsBand, FeaturedDisciplines, FirmSummary, ProcessTeaser,
-  TrackRecord, CaseStudies, Testimonials, ContactTeaser,
-} from "./components/sections";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Services from "./pages/Services";

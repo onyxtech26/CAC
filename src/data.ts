@@ -9,8 +9,8 @@ export const CONTACT = {
   phoneDisplay: "+6018-377 7716",
   phoneRaw: "60183777716",
   site: "www.cac.com.my",
-  consultant: "Mohaan",
-  consultantRole: "Senior Forensic Consultant",
+  consultant: "Mr Mohan",
+  consultantRole: "Director",
   techPartner: "Onyxx Tech",
   techPartnerUrl: "https://onyxx-tech.vercel.app/",
   waText:
@@ -21,7 +21,7 @@ export const waLink = (extra?: string) =>
   `https://wa.me/${CONTACT.phoneRaw}${extra ? `?text=${encodeURIComponent(extra)}` : `?text=${CONTACT.waText}`}`;
 
 // Consultant roster shown on /contact. `blurb` renders under the name.
-// Leave `phoneDisplay`/`phoneRaw`/`email` off a member to fall back to the firm's
+// Leave `phoneDisplay`/`phoneRaw`/`email` off a member to fall back to the consultancy's
 // main channels in CONTACT above.
 export type TeamMember = {
   name: string;
@@ -35,25 +35,25 @@ export type TeamMember = {
 
 export const TEAM: TeamMember[] = [
   {
-    name: "Mohaan",
-    role: "Senior Forensic Consultant",
-    img: "/assets/mohaan-profile.png",
+    name: "Mr Siva",
+    role: "Senior Director",
+    img: "/assets/team-03.webp",
+    blurb:
+      "Leads family estate investigations, beneficiary tracing and probate coordination, working alongside counsel through to distribution.",
+  },
+  {
+    name: "Mr Mohan",
+    role: "Director",
+    img: "/assets/mohaan-profile.webp",
     blurb:
       "Lead investigator across property forensic, estate recovery and fraud-exposure engagements. Personally briefs every new case and remains the point of contact through to resolution.",
   },
   {
-    name: "Mr. Goku",
-    role: "Executive Consultant",
-    img: "/assets/team-02.png",
+    name: "Mr Goku",
+    role: "Executive Staff",
+    img: "/assets/team-02.webp",
     blurb:
       "Handles registry chain reconstruction and title tracing — from colonial grant books through to present-day land-office folios.",
-  },
-  {
-    name: "Mr. Shiva",
-    role: "Senior Consultant",
-    img: "/assets/team-03.png",
-    blurb:
-      "Leads family estate investigations, beneficiary tracing and probate coordination, working alongside counsel through to distribution.",
   },
 ];
 
@@ -62,26 +62,15 @@ export const TAGLINES = [
   "Turning Intelligence Into Evidence",
   "Uncovering Truth. Protecting Legacies. Creating Value.",
   "Discovering the Past • Protecting the Present • Securing the Future",
+  "Uncovering the Past. Protecting the Future.",
 ];
+
+// Descriptor that sits under the PROPERTY FORENSIC heading in the client brief.
+export const STRAPLINE = "Discovering the Truth Behind Property Ownership";
 
 export const HERO_STATS = [
   { label: "Years Established", value: 17, suffix: "+", note: "Since 2009", glyph: "clock" },
   { label: "Cases Completed", value: 227, suffix: "+", note: "Closed & delivered", glyph: "doc-seal" },
-];
-
-export const TRACK_RECORD = [
-  { code: "LA", label: "Letter of Administration", count: 27, suffix: "+",
-    desc: "Letters of Administration secured and executed for estates without a will." },
-  { code: "PRB", label: "Probate", count: 30, suffix: "+",
-    desc: "Grants of Probate obtained and carried through the High Court." },
-  { code: "SUB", label: "Subsale (House & Land)", count: 50, suffix: "+",
-    desc: "Subsale house and land transactions resolved end-to-end." },
-  { code: "ABN", label: "Abandoned Properties", count: 40, suffix: "+",
-    desc: "Abandoned and forgotten properties traced, verified, and revived." },
-  { code: "FOR", label: "Forensic Investigations", count: 50, suffix: "+",
-    desc: "Deep-dive title, ownership, and fraud investigations closed with findings." },
-  { code: "STC", label: "State / Bumi Consent", count: 35, suffix: "+",
-    desc: "State-authority consent applications approved and registered." },
 ];
 
 export const PRINCIPLES_HOME = [
@@ -98,10 +87,55 @@ export const WHY_PRINCIPLES = [
 ];
 
 export const VISION =
-  "To be Malaysia's most trusted property intelligence authority — the firm courts, counsel and families call first when ownership must be proven, not merely asserted.";
+  "To become the leading property forensic investigation consultancy, recognised for integrity, accuracy and excellence in resolving property ownership disputes — the consultancy courts, counsel and families call first when ownership must be proven rather than merely asserted.";
 
 export const MISSION =
-  "To convert historical land records, colonial grants, cadastral maps and probate archives into court-ready documentary evidence — restoring rightful ownership, recovering lost assets and protecting family legacies with forensic precision and uncompromising confidentiality.";
+  "To preserve family legacies, protect property rights, and provide reliable investigative findings that support informed legal and financial decisions.";
+
+// The six mission commitments from the client brief. The final three are marked
+// "must add" in the client's own hand and are not optional.
+export const MISSION_POINTS = [
+  { k: "Protect legitimate property ownership",
+    d: "Where a title is contested, we establish who the record actually supports — and give the rightful owner the documentary basis to defend it." },
+  { k: "Preserve family inheritance",
+    d: "Estates fragment across generations. We reconstruct the line of succession so what a family built is passed on intact rather than lost to ambiguity." },
+  { k: "Recover hidden or forgotten assets",
+    d: "Parcels lost to acquisition, dormant holdings and undisclosed transfers are traced back to the estate they belong to." },
+  { k: "Support courts and legal professionals with reliable evidence",
+    d: "Findings are compiled as structured evidence portfolios counsel can work from directly, each claim sourced to the folio, grant or probate file it came from." },
+  { k: "Promote transparency in estate administration",
+    d: "Every beneficiary sees the same verified record, so distribution proceeds on documented fact rather than on the account of whoever holds the papers." },
+  { k: "Deliver independent forensic investigations based on facts",
+    d: "We hold no stake in the outcome. Where the record contradicts what a client hoped to find, the report says so." },
+];
+
+// Frequently asked questions, per the client brief. The court-admissibility
+// answer keeps the brief's hedging deliberately — it is a legal qualification,
+// not marketing copy, and should not be strengthened.
+export const FAQ = [
+  { q: "What is property forensic?",
+    a: "Property forensic is the investigation of ownership, legal history and assets relating to land, buildings and estates. It reconstructs how a property came to be held as it is today — through registry entries, historical grants, survey plans, probate files and transfer records — and establishes what the documentary record can, and cannot, support." },
+  { q: "Can you investigate missing inherited property?",
+    a: "Yes. We trace historical records and ownership changes to identify properties that may have been overlooked or transferred. Ancestral parcels commonly drop out of family knowledge through township development, compulsory acquisition, or an undocumented transfer a generation ago — the registry usually still remembers what the family no longer does." },
+  { q: "Can you investigate old land titles?",
+    a: "Yes. We research historical records, archived documents and ownership histories where available — including colonial-era grant books, superseded title series and land-office folios that predate computerised records. Where an archive is incomplete, we state that plainly rather than infer around the gap." },
+  { q: "Can your reports be used in court?",
+    a: "Our reports are prepared to professional standards and may assist legal advisers and courts, subject to the applicable rules of evidence in the relevant jurisdiction. We compile findings with their source documents attached so counsel can put them to the test — but admissibility remains a matter for the court and for the lawyers conducting the matter." },
+];
+
+// Client types served, per the client brief.
+export const INDUSTRIES = [
+  { k: "Law Firms", d: "Registry reconstruction and evidence portfolios for counsel running probate, land and inheritance matters.", g: "scales" },
+  { k: "Estate Administrators", d: "Asset identification and beneficiary verification, so an estate is administered on a complete picture.", g: "clipboard-check" },
+  { k: "Executors", d: "Independent confirmation of what an estate actually holds before distribution is executed.", g: "doc-seal" },
+  { k: "Trustees", d: "Documentary support for trust property, including holdings the trust instrument records only in outline.", g: "shield-alert" },
+  { k: "Families", d: "Discreet investigation where inheritance is disputed, undocumented, or has quietly gone missing.", g: "family" },
+  { k: "Financial Institutions", d: "Title and ownership verification supporting lending, recovery and collateral review.", g: "coins-stack" },
+  { k: "Property Developers", d: "Chain-of-title and encumbrance checks before an acquisition commits capital.", g: "building-uplift" },
+  { k: "Corporate Organisations", d: "Verification of corporate landholdings, subsidiary assets and historical transfers.", g: "network" },
+  { k: "Government Agencies", d: "Historical ownership research supporting acquisition, compensation and land administration.", g: "map-pin-grid" },
+  { k: "Private Clients", d: "Confidential enquiries on a single family home or a multi-property estate, handled end to end.", g: "key-house" },
+];
 
 export type Service = {
   id: string;
@@ -117,159 +151,101 @@ export type Service = {
 
 export const SERVICES: Service[] = [
   {
-    id: "property-forensic", no: "01", title: "Property Forensic Investigation",
-    glyph: "magnifier-house", img: "/assets/service-ill-forensic.jpg", accent: "CORE DISCIPLINE",
-    short: "Systematic analysis of land titles, deeds, and historical records to establish true, pioneer ownership and trace succession lines.",
-    scope: "We conduct independent property forensic audits by researching historical registry books, colonial grants, surveyor cadastrals, and local archives. Our findings map succession chains, clarify heir validity, and compile evidence packages designed to stand up in judicial and state arbitration processes.",
-    deliverables: [
-      "Colonial land grant & pioneer title tracing",
-      "Registry chain-of-ownership reconstruction",
-      "Deed authenticity & conveyance audits",
-      "High-court archive & probate record searches",
-      "Compilation of verified forensic evidence portfolios",
-    ],
-  },
-  {
-    id: "family-estate", no: "02", title: "Family Estate Investigation",
-    glyph: "family", img: "/assets/service-family-estate.jpg", accent: "ESTATE RECOVERY",
+    id: "family-estate", no: "01", title: "Family Estate Investigation",
+    glyph: "family", img: "/assets/service-family-estate.webp", accent: "ESTATE RECOVERY",
     short: "Resolving complex estate disputes among heirs by tracing hidden assets, verifying beneficiaries, and clarifying distribution paths.",
     scope: "When family estates are contested or lack clear administration, our agents step in. We research family genealogies, identify all lawful beneficiaries (including missing or unnotified heirs), uncover undisclosed or hidden inherited assets, and provide administration support for probate filings.",
     deliverables: [
-      "Beneficiary tracing & lawful heir identification",
-      "Hidden estate asset discovery & mapping",
-      "Genealogy & family tree lineage verification",
-      "Intestate distribution path clarification",
-      "Probate court document compilation",
+      "Small estates — single-property matters resolved end to end",
+      "Large estates — multi-property, multi-jurisdiction holdings mapped in full",
+      "Multiple beneficiaries — entitlements clarified where several parties claim",
+      "Missing heirs — lawful beneficiaries traced and formally identified",
+      "Disputed ownership — competing claims tested against the documentary record",
+      "Estate asset identification — a verified inventory of what the estate holds",
+      "Hidden inheritance — undisclosed or forgotten assets brought back into the estate",
+      "Estate administration support — probate and distribution filings compiled",
     ],
   },
   {
-    id: "property-intelligence", no: "03", title: "Property Intelligence Centre",
-    glyph: "map-pin-grid", img: "/assets/icon-forensic.jpg", accent: "GIS · SATELLITE",
-    short: "Advanced property due diligence utilizing GIS maps, satellite imagery, survey plans, and historical ownership chronologies.",
-    scope: "Our intelligence services compile geospatial data, registry entries, and historical zoning maps. We construct a comprehensive dashboard of a property's physical and legal boundary history, protecting buyers and developers from costly encroachment or land classification errors.",
+    id: "property-forensic", no: "02", title: "Property Ownership Investigation",
+    glyph: "magnifier-house", img: "/assets/service-ill-forensic.webp", accent: "CORE DISCIPLINE",
+    short: "Systematic analysis of land titles, deeds, and historical records to establish true, pioneer ownership and trace succession lines.",
+    scope: "We conduct independent property forensic audits by researching historical registry books, colonial grants, surveyor cadastrals, and local archives. Our findings map succession chains, clarify heir validity, and compile evidence packages designed to stand up in judicial and state arbitration processes.",
     deliverables: [
-      "Geospatial boundary audits & GIS surveying analysis",
-      "Historical zoning & land use chronology mapping",
-      "Encroachment & easement risk assessment",
-      "Zoning restriction & developmental constraint review",
-      "High-resolution satellite ownership mapping",
+      "Ownership verification — establishing who the current record actually supports",
+      "Chain of ownership reconstruction — every transfer from pioneer grant to present folio",
+      "Historical ownership research — archived series, superseded titles and grant books",
+      "Pioneer ownership investigation — tracing the earliest recorded holder of the land",
+      "Land registry searches — certified extracts from the relevant land office",
+      "Property transfer verification — confirming each conveyance was validly executed",
+      "Boundary investigation — survey plans and cadastrals reconciled against the title",
+      "Encroachment investigation — identifying where occupation departs from the record",
     ],
   },
   {
-    id: "missing-property", no: "04", title: "Missing Property Recovery",
-    glyph: "compass-pin", img: "/assets/case-tower-B50q7XNj.jpg", accent: "LOST PARCELS",
+    id: "missing-property", no: "03", title: "Missing Property Investigation",
+    glyph: "compass-pin", img: "/assets/case-tower-B50q7XNj.webp", accent: "LOST PARCELS",
     short: "Locating properties lost due to township developments, compulsory government acquisition, or historical zoning changes.",
     scope: "Valuable ancestral land often gets lost in government acquisitions, highway constructions, or township consolidation projects. We trace lost coordinates, audit replacement land allocations, and determine if outstanding compensation funds remain unclaimed by the rightful heirs.",
     deliverables: [
-      "Historical coordinates & boundary recovery",
-      "Compulsory government acquisition audit",
-      "Highway, rail, & infrastructure project mapping",
-      "Unclaimed compensation fund tracing",
-      "Zoning layout & master plan reconciliation",
+      "Missing land — parcels a family knows of but can no longer locate on any title",
+      "Forgotten properties — holdings dropped from family knowledge across generations",
+      "Unregistered ownership — entitlement never carried onto the register",
+      "Redeveloped land — parcels absorbed into later schemes and re-titled",
+      "Government acquisition — compulsory takings traced and documented",
+      "Township development — land consolidated into master-planned schemes",
+      "Compensation entitlement — unclaimed awards identified and evidenced",
+      "Replacement land — substitute allocations located and verified",
     ],
   },
   {
-    id: "asset-tracing", no: "05", title: "Asset Tracing & Recovery",
-    glyph: "coins-stack", img: "/assets/illustration-estate.jpg", accent: "PORTFOLIO MAPPING",
-    short: "Identifying and mapping residential, commercial, agricultural, corporate, and vehicle assets held under small or large estates.",
-    scope: "We trace assets from single residential homes to sprawling agricultural plantations, corporate shareholdings, bank funds, and international holdings. Our investigations map out current assets, identify unauthorized transfers, and verify hidden ownership structures.",
-    deliverables: [
-      "Residential & commercial portfolio mapping",
-      "Agricultural & plantation asset tracking",
-      "Corporate shareholdings & trust structure investigation",
-      "Unauthorized asset transfer audit",
-      "Vehicle, equipment, & luxury asset location",
-    ],
-  },
-  {
-    id: "title-investigation", no: "06", title: "Title & Document Investigation",
-    glyph: "doc-seal", img: "/assets/icon-legal.jpg", accent: "RECORD RETRIEVAL",
+    id: "title-investigation", no: "04", title: "Title and Document Investigation",
+    glyph: "doc-seal", img: "/assets/icon-legal.webp", accent: "RECORD RETRIEVAL",
     short: "Locating and verifying missing land titles, Deeds of Gift, wills, court orders, and land registry records.",
     scope: "When original documents are lost, misplaced, or withheld, we retrieve certified copies, explore registry files, search court probate records, and locate legal agreements (SPAs, Wills, Deeds of Gift) to establish formal chains of custody and legal security.",
     deliverables: [
-      "Registry file searches for lost or damaged titles",
-      "Deed of Gift & Will document validation",
-      "Probate files & High Court order retrieval",
-      "Certified copy procurement from land offices",
-      "Historical transaction ledger verification",
+      "Land Titles — lost, damaged or withheld titles located and certified",
+      "Deeds of Gift — validity and execution of gifted transfers examined",
+      "Wills — testamentary documents retrieved and authenticated",
+      "Probate documents — grants and administration files obtained from the court",
+      "Sale and Purchase Agreements — recovered and checked against the register",
+      "Survey Plans — cadastral plans matched to the title description",
+      "Trust documents — instruments governing property held on trust",
+      "Court Orders — orders affecting title traced and produced",
     ],
   },
   {
-    id: "fraud-investigation", no: "07", title: "Fraud & Dispute Investigation",
-    glyph: "shield-alert", img: "/assets/illustration-forensic.jpg", accent: "FORGERY DETECTION",
+    id: "fraud-investigation", no: "05", title: "Fraud Investigation",
+    glyph: "shield-alert", img: "/assets/illustration-forensic.webp", accent: "FORGERY DETECTION",
     short: "Exposing forged signatures, fake deeds, invalid powers of attorney, and fraudulent claims to family properties.",
     scope: "We conduct forensic analyses of questionable property transfers. Our team investigates fraudulent signatures, unauthorized powers of attorney, fake registry entries, and illegal sales, delivering an independent factual report for legal action.",
     deliverables: [
-      "Signature & document forgery detection",
-      "Power of Attorney validity investigation",
-      "Registry transaction audit for irregularities",
-      "Unauthorised sale & asset concealment analysis",
-      "Fact-finding report compilation for legal counsel",
+      "Forged land transfers — transfers executed without lawful authority",
+      "Fraudulent ownership claims — asserted interests tested against the record",
+      "Fake documents — fabricated titles, agreements and supporting papers",
+      "Forged signatures — execution examined against known specimens",
+      "Illegal property sales — disposals made without the owner's authority",
+      "Hidden beneficiaries — parties concealed from the distribution",
+      "Asset concealment — holdings deliberately kept off the estate inventory",
+      "Misappropriation of estate assets — value diverted from rightful heirs",
     ],
   },
   {
-    id: "legal-coordination", no: "08", title: "Legal & Authority Coordination",
-    glyph: "scales", img: "/assets/case-gavel-bRvLoHQ5.jpg", accent: "COUNSEL LIAISON",
-    short: "Preparing evidence portfolios, coordinating with land offices, and referring clients to expert probate and land attorneys.",
-    scope: "We translate our investigation findings into legal evidence files. We refer clients to elite, experienced attorneys specializing in land law, probate, and inheritance, coordinating with government agencies and survey offices through to case resolution.",
+    id: "asset-tracing", no: "06", title: "Asset Tracing",
+    glyph: "coins-stack", img: "/assets/illustration-estate.webp", accent: "PORTFOLIO MAPPING",
+    short: "Identifying and mapping residential, commercial, agricultural, corporate, and vehicle assets held under small or large estates.",
+    scope: "We trace assets from single residential homes to sprawling agricultural plantations, corporate shareholdings, bank funds, and international holdings. Our investigations map out current assets, identify unauthorized transfers, and verify hidden ownership structures.",
     deliverables: [
-      "Evidence portfolio compilation for court cases",
-      "Referrals to specialist property & probate attorneys",
-      "Liaising with land offices & survey departments",
-      "Strategic advisory on case evidence structure",
-      "Post-investigation case progress tracking",
-    ],
-  },
-  {
-    id: "property-sale", no: "09", title: "Property Sale Coordination",
-    glyph: "handshake", img: "/assets/icon-estate.jpg", accent: "TRANSACTION DESK",
-    short: "Facilitating valuation, marketing, and subsale transaction coordination for recovered or inherited real estate assets.",
-    scope: "Once property ownership disputes are resolved, we help clients unlock the financial value of their assets. Working alongside licensed real estate professionals, we assist with property valuations, marketing campaigns, and subsale transaction compliance.",
-    deliverables: [
-      "Property valuation & market appraisal support",
-      "Marketing campaigns targeting qualified networks",
-      "Transaction compliance & documentation check",
-      "Liaison with buyers, brokers, and bank valuers",
-      "Negotiation advisory for maximum asset value",
-    ],
-  },
-  {
-    id: "buyer-matching", no: "10", title: "Investor & Buyer Matching",
-    glyph: "network", img: "/assets/case-mansion-DTsvvO41.jpg", accent: "PRIVATE NETWORK",
-    short: "Connecting property owners with a vetted network of real estate investors, cash buyers, and developers.",
-    scope: "For clients seeking quick liquidations or partnership deals on newly resolved tracts of land and commercial blocks, we coordinate directly with our private investor network, matchmaking sellers with qualified cash buyers and developers.",
-    deliverables: [
-      "Matchmaking with vetted property developers",
-      "Direct coordination with private cash buyers",
-      "Structuring Joint Venture (JV) property proposals",
-      "Facilitating off-market transaction bids",
-      "Targeted pitches to real estate investment syndicates",
-    ],
-  },
-  {
-    id: "investment-consultancy", no: "11", title: "Investment Consultancy",
-    glyph: "chart-up", img: "/assets/hero-forensic-CZAanpR-.jpg", accent: "DUE DILIGENCE",
-    short: "Advising on property due diligence, acquisition feasibility, development potential, and risk mitigation strategies.",
-    scope: "We guide real estate buyers, developers, and funds through acquisition due diligence. Our consultancy reviews ownership histories, restrictive covenants, zoning limits, and development risks to ensure every investment is sound and legally protected.",
-    deliverables: [
-      "Acquisition due diligence & title risk auditing",
-      "Development potential & zoning compliance check",
-      "Joint Venture feasibility & structure analysis",
-      "Property risk profiles & liability assessments",
-      "Long-term asset appreciation and exit planning",
-    ],
-  },
-  {
-    id: "renovation-consultancy", no: "12", title: "Renovation & ROI Consultancy",
-    glyph: "building-uplift", img: "/assets/cac-building-logo.jpg", accent: "VALUE UPLIFT",
-    short: "Evaluating property upgrades, coordinating contractors, and structuring renovations to maximize resale market value.",
-    scope: "We help clients maximize the market value of recovered or inherited properties before sale. We coordinate structural and cosmetic upgrades, establish contractor budgets, and conduct ROI analyses to ensure renovations yield optimal capital gains.",
-    deliverables: [
-      "Before-and-after value uplift assessments",
-      "Detailed renovation scope & contractor budgeting",
-      "Coordination of exterior and interior upgrades",
-      "Project milestone monitoring and quality control",
-      "Market positioning & rental yield maximization analysis",
+      "Residential property — homes held directly or through nominees",
+      "Commercial buildings — shoplots, offices and income-producing units",
+      "Agricultural land — smallholdings and titled agricultural lots",
+      "Plantations — estate acreage and associated planting rights",
+      "Companies — corporate vehicles holding property on the estate's behalf",
+      "Shares — registered shareholdings and beneficial interests",
+      "Bank accounts (subject to legal authority) — pursued only where lawfully permitted",
+      "Vehicles — registered vehicles and transferable equipment",
+      "Luxury assets — high-value chattels forming part of the estate",
+      "Investment portfolios — managed holdings and instruments held at death",
     ],
   },
 ];
@@ -279,96 +255,65 @@ export type ProcessStep = {
 };
 
 export const PROCESS: ProcessStep[] = [
-  { no: "01", title: "Consultation", sub: "Case Briefing", glyph: "chat-user", img: "/assets/service-family-estate.jpg",
-    details: "We begin by understanding your concerns, reviewing available family records, and establishing the exact scope of property, assets, and individuals under investigation.",
+  { no: "01", title: "Initial Consultation", sub: "Case Briefing", glyph: "chat-user", img: "/assets/service-family-estate.webp",
+    details: "We begin by understanding the client's concerns and reviewing the documents already in hand — establishing the exact scope of property, assets and individuals to be investigated before any work is committed.",
     outputs: [
-      "Understanding of case history & objectives",
-      "Preliminary timeline and scope definition",
-      "Confidentiality & engagement agreements executed",
+      "Client concerns understood and case objectives agreed",
+      "Available documents reviewed and gaps identified",
+      "Confidentiality and engagement terms executed",
     ] },
-  { no: "02", title: "Evidence Collection", sub: "Document Gathering", glyph: "clipboard-check", img: "/assets/icon-legal.jpg",
-    details: "We gather all available property deeds, historical maps, wills, probate files, bank records, and land registry records from public and private archives.",
+  { no: "02", title: "Evidence Collection", sub: "Document Gathering", glyph: "clipboard-check", img: "/assets/icon-legal.webp",
+    details: "We gather relevant records from public authorities, land registries, archives and other lawful sources — deeds, historical maps, wills, probate files and registry entries.",
     outputs: [
-      "Land office register searches & title extraction",
-      "High Court probate & administration registry records",
-      "Verification of historical surveyor maps and boundaries",
+      "Land office register searches and title extraction",
+      "High Court probate and administration registry records",
+      "Historical surveyor maps and boundary records obtained",
     ] },
-  { no: "03", title: "Historical Research", sub: "Chain Reconstruction", glyph: "magnifier-fingerprint", img: "/assets/service-ill-forensic.jpg",
-    details: "We reconstruct the complete ownership chronology, tracing back to pioneer owners and checking every transition (sales, inheritance, gifts) for validity.",
+  { no: "03", title: "Historical Research", sub: "Chain Reconstruction", glyph: "magnifier-fingerprint", img: "/assets/service-ill-forensic.webp",
+    details: "We reconstruct the property's ownership history from the earliest available records, tracing back to pioneer owners and checking every transition — sale, inheritance or gift — for validity.",
     outputs: [
       "Pioneer ownership records and original grants verified",
       "Complete chronology of ownership transfers compiled",
-      "Reconstruction of subdivision or acquisition history",
+      "Subdivision and acquisition history reconstructed",
     ] },
-  { no: "04", title: "Intelligence Analysis", sub: "Forensic Review", glyph: "chart-doc", img: "/assets/illustration-forensic.jpg",
-    details: "We analyze all collected data, identifying forged documents, unauthorized land sales, hidden beneficiaries, or irregularities in estate distribution.",
+  { no: "04", title: "Verification", sub: "Authenticity Testing", glyph: "doc-seal", img: "/assets/service-forensic-title.webp",
+    details: "We verify the authenticity of documents and ownership information, testing each instrument against the issuing authority's record rather than accepting it at face value.",
     outputs: [
-      "Exposing signatures, wills, or deeds with indicators of forgery",
-      "Auditing land transfer timelines for inconsistency",
-      "Tracing missing or hidden assets within the estate",
+      "Document authenticity confirmed against source records",
+      "Ownership information cross-checked with the land office",
+      "Discrepancies between copy and register flagged",
     ] },
-  { no: "05", title: "Forensic Reporting", sub: "Evidence Synthesis", glyph: "doc-pen", img: "/assets/service-forensic-title.jpg",
-    details: "We prepare an independent Property Forensic Investigation Report with clear findings, verified chronologies, and evidence packages structured for legal use.",
+  { no: "05", title: "Asset Tracing", sub: "Estate Mapping", glyph: "coins-stack", img: "/assets/illustration-estate.webp",
+    details: "We locate missing or undisclosed assets connected to the estate — from residential and commercial property to plantations, shareholdings, vehicles and investment portfolios.",
     outputs: [
-      "Professional Forensic Investigation Report delivered",
-      "Evidence binder with certified copies of deeds & titles",
-      "Formal declaration and recommendations for resolution",
+      "Undisclosed and missing assets located",
+      "Corporate, plantation and portfolio holdings mapped",
+      "Verified estate asset inventory produced",
     ] },
-  { no: "06", title: "Legal Coordination", sub: "Expert Referrals", glyph: "scales-user", img: "/assets/case-gavel-bRvLoHQ5.jpg",
-    details: "We coordinate with probate or property attorneys and prepare evidence files, ensuring our findings are effectively leveraged for legal success.",
+  { no: "06", title: "Forensic Analysis", sub: "Findings Review", glyph: "chart-doc", img: "/assets/illustration-forensic.webp",
+    details: "We analyse all findings, identify inconsistencies and prepare a chronological timeline — exposing forged documents, unauthorised sales, hidden beneficiaries and irregularities in distribution.",
     outputs: [
-      "Referrals to elite, specialized estate and land lawyers",
-      "Preparation of legal evidence files for counsel use",
-      "Liaison with land offices and government surveyor teams",
+      "Signatures, wills and deeds examined for indicators of forgery",
+      "Transfer timelines audited for inconsistency",
+      "Chronological timeline of the matter prepared",
     ] },
-  { no: "07", title: "Resolution", sub: "Estate Recovery", glyph: "gavel", img: "/assets/illustration-estate.jpg",
-    details: "We support the execution of distribution orders, registration of recovered assets, and resolution of beneficiary claims under legal guidance.",
+  { no: "07", title: "Reporting", sub: "Evidence Synthesis", glyph: "doc-pen", img: "/assets/service-forensic-title.webp",
+    details: "We deliver a detailed investigation report with findings, supporting evidence and recommendations, structured so that legal advisers can work from it directly.",
     outputs: [
-      "Registration of correct ownership titles at land office",
-      "Settle inheritance distribution disputes among heirs",
-      "Reclaim missing assets or unclaimed compensation funds",
-    ] },
-  { no: "08", title: "Property Sale", sub: "Asset Monetization", glyph: "key-house", img: "/assets/case-mansion-DTsvvO41.jpg",
-    details: "Once assets are legally recovered, we assist with property valuations, ROI renovation consultancy, buyer-matching, and sale coordination.",
-    outputs: [
-      "Detailed property condition & appraisal valuation support",
-      "Marketing targeting our private investor/developer networks",
-      "Sale completion coordinating with licensed property professionals",
+      "Detailed investigation report delivered",
+      "Evidence binder with certified copies of deeds and titles",
+      "Formal findings and recommendations for resolution",
     ] },
 ];
 
-export const CASE_STUDIES = [
-  { tag: "Inheritance Dispute", title: "Inheritance Dispute Resolved",
-    body: "A complex family inheritance dispute resolved through comprehensive forensic investigation.", glyph: "scales", tone: "from-[#1b3a63] to-[#0b192e]",
-    img: "/assets/case-gavel-bRvLoHQ5.jpg", meta: "Johor Bahru · 7 heirs · 14 months" },
-  { tag: "Missing Land", title: "Missing Land Located",
-    body: "We located a missing land which disappeared due to township development.", glyph: "compass-pin", tone: "from-[#3a2a12] to-[#0b192e]",
-    img: "/assets/case-tower-B50q7XNj.jpg", meta: "Kulai · 4.2 acres · pioneer grant" },
-  { tag: "Hidden Assets", title: "Hidden Asset Recovered",
-    body: "Our investigation uncovered hidden assets worth millions in overseas accounts.", glyph: "coins-stack", tone: "from-[#2a2012] to-[#0b192e]",
-    img: "/assets/illustration-estate.jpg", meta: "Cross-border · RM 8.4M traced" },
-  { tag: "Abandoned Property", title: "Abandoned Property Revived",
-    body: "We traced the owners, negotiated the deal and successfully revived the abandoned property.", glyph: "magnifier-house", tone: "from-[#14304f] to-[#0b192e]",
-    img: "/assets/case-mansion-DTsvvO41.jpg", meta: "Batu Pahat · 38 years dormant" },
-  { tag: "Fraud Exposure", title: "Forged Transfer Exposed",
-    body: "A fraudulent power-of-attorney sale unravelled through signature and registry forensic audit.", glyph: "shield-alert", tone: "from-[#2a1420] to-[#0b192e]",
-    img: "/assets/illustration-forensic.jpg", meta: "High Court · POA invalidated" },
-];
-
-export const TESTIMONIALS = [
-  { quote: "CAC helped us uncover the truth in a very complex inheritance case. Their professionalism and detailed investigation were outstanding.", who: "Family Client", role: "Estate Beneficiary · Johor" },
-  { quote: "Their forensic report stood up flawlessly in the High Court. Every claim was backed by registry evidence — counsel had everything needed.", who: "Legal Counsel", role: "Probate & Land Litigation" },
-  { quote: "They traced an ancestral parcel lost to a highway acquisition and recovered unclaimed compensation we didn't know existed.", who: "Heir Group", role: "Multi-generational Estate" },
-  { quote: "Discreet, methodical, and relentless on the documents. CAC turned a tangle of missing titles into a clean, registrable chain.", who: "Property Developer", role: "Acquisition Due Diligence" },
-];
-
+// Kept in step with SERVICES above — the six blocks in the client's brief.
 export const SERVICE_OPTIONS = [
+  "Family Estate Investigation",
   "Property Ownership Investigation",
   "Missing Property Investigation",
-  "Title & Document Investigation",
-  "Fraud & Dispute Investigation",
-  "Asset Tracing & Recovery",
-  "Legal & Advisory Support",
+  "Title and Document Investigation",
+  "Fraud Investigation",
+  "Asset Tracing",
 ];
 
 export const NAV = [

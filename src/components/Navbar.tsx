@@ -66,7 +66,7 @@ export default function Navbar() {
               to={n.to}
               className={({ isActive }) =>
                 `group relative px-4 py-2 font-mono text-[12px] uppercase tracking-wide-2 transition-colors ${
-                  isActive ? "text-gold-2" : "text-ivory/75 hover:text-ivory"
+                  isActive ? "text-gold-2" : "text-stone hover:text-ivory"
                 }`
               }
             >
@@ -104,7 +104,7 @@ export default function Navbar() {
                 href={waLink()}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-3 rounded px-3 py-2.5 text-sm text-ivory/90 transition hover:bg-gold-2/10 hover:text-gold-2"
+                className="flex items-center gap-3 rounded px-3 py-2.5 text-sm text-sand transition hover:bg-gold-2/10 hover:text-gold-2"
               >
                 <Icon name="whatsapp" size={18} className="text-gold-2" />
                 <span>
@@ -114,7 +114,7 @@ export default function Navbar() {
               </a>
               <a
                 href={`mailto:${CONTACT.email}`}
-                className="flex items-center gap-3 rounded px-3 py-2.5 text-sm text-ivory/90 transition hover:bg-gold-2/10 hover:text-gold-2"
+                className="flex items-center gap-3 rounded px-3 py-2.5 text-sm text-sand transition hover:bg-gold-2/10 hover:text-gold-2"
               >
                 <Icon name="mail" size={18} className="text-gold-2" />
                 <span>
@@ -148,7 +148,7 @@ export default function Navbar() {
               to={n.to}
               className={({ isActive }) =>
                 `flex items-center justify-between border-b border-white/5 py-3 font-display text-lg ${
-                  isActive ? "text-gold-2" : "text-ivory/85"
+                  isActive ? "text-gold-2" : "text-sand"
                 }`
               }
             >

@@ -41,8 +41,8 @@ export default function Footer() {
               <p className="font-mono text-[9px] uppercase tracking-wide-2 text-gold-2/70">Property Forensic Consultation</p>
             </div>
           </div>
-          <p className="mt-5 max-w-sm text-sm leading-relaxed text-ivory/60">
-            An elite Malaysian property intelligence and forensic firm converting registry records, colonial grants and probate archives into court-ready documentary evidence.
+          <p className="mt-5 max-w-sm text-sm leading-relaxed text-stone">
+            An elite Malaysian property intelligence and forensic consultancy converting registry records, colonial grants and probate archives into court-ready documentary evidence.
           </p>
           <p className="mt-5 font-display text-lg italic text-gold-gradient">"{TAGLINES[1]}"</p>
           <div className="mt-6 flex items-center gap-3">
@@ -68,9 +68,9 @@ export default function Footer() {
         <div className="lg:col-span-2">
           <p className="font-mono text-[11px] uppercase tracking-wide-2 text-gold-2/70">Navigate</p>
           <ul className="mt-5 space-y-3 text-sm">
-            <li><Link to="/" className="text-ivory/70 transition hover:text-gold-2">Home</Link></li>
+            <li><Link to="/" className="text-stone transition hover:text-gold-2">Home</Link></li>
             {NAV.map((n) => (
-              <li key={n.to}><Link to={n.to} className="text-ivory/70 transition hover:text-gold-2">{n.label}</Link></li>
+              <li key={n.to}><Link to={n.to} className="text-stone transition hover:text-gold-2">{n.label}</Link></li>
             ))}
           </ul>
         </div>
@@ -78,9 +78,9 @@ export default function Footer() {
         <div className="lg:col-span-3">
           <p className="font-mono text-[11px] uppercase tracking-wide-2 text-gold-2/70">Core Disciplines</p>
           <ul className="mt-5 grid grid-cols-1 gap-2.5 text-sm sm:grid-cols-1">
-            {SERVICES.slice(0, 7).map((s) => (
+            {SERVICES.map((s) => (
               <li key={s.id}>
-                <Link to={`/services/${s.id}`} className="group flex items-center gap-2 text-ivory/70 transition hover:text-gold-2">
+                <Link to={`/services/${s.id}`} className="group flex items-center gap-2 text-stone transition hover:text-gold-2">
                   <span className="font-mono text-[10px] text-gold-2/50">{s.no}</span>
                   <span className="truncate">{s.title}</span>
                 </Link>
@@ -92,7 +92,7 @@ export default function Footer() {
 
         <div className="lg:col-span-3">
           <p className="font-mono text-[11px] uppercase tracking-wide-2 text-gold-2/70">Headquarters</p>
-          <ul className="mt-5 space-y-4 text-sm text-ivory/70">
+          <ul className="mt-5 space-y-4 text-sm text-stone">
             <li className="flex gap-3">
               <Icon name="pin" size={18} className="mt-0.5 shrink-0 text-gold-2" />
               <span>{CONTACT.address}</span>
@@ -116,7 +116,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="relative border-t border-gold-2/10">
         <div className="mx-auto flex max-w-[1320px] flex-col items-center justify-between gap-4 px-5 py-6 text-xs text-mute sm:flex-row lg:px-8">
-          <p>© {new Date().getFullYear()} Conglomerate Appraisal Consultancy (CAC). Est. 2009 · Inc. 2020. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Conglomerate Appraisal Consultancy (CAC). Est. 2009. All rights reserved.</p>
           <p className="flex items-center gap-2 font-mono uppercase tracking-wide-2">
             Powered by
             <a href={CONTACT.techPartnerUrl} target="_blank" rel="noreferrer" className="text-gold-2 hover:underline">{CONTACT.techPartner}</a>

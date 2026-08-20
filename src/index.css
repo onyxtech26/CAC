@@ -3,16 +3,20 @@
 @theme {
   --color-ivory: #faf8f5;
   --color-paper: #f3eee5;
+  /* Warm text ramp. Solid tones, never alpha — blending warm ivory over cool
+     navy neutralises the warmth and reads as disabled-UI grey. */
+  --color-sand: #ece6da;
+  --color-stone: #d7d0c2;
   --color-navy: #0b192e;
-  --color-navy-2: #0f2138;
-  --color-navy-3: #13294b;
-  --color-navy-4: #1b3a63;
-  --color-ink: #08111f;
+  --color-navy-2: #112a48;
+  --color-navy-3: #173763;
+  --color-navy-4: #22497c;
+  --color-ink: #050b16;
   --color-gold: #ca8a04;
   --color-gold-2: #e9c766;
   --color-gold-3: #8f6519;
   --color-gold-soft: #d8b25a;
-  --color-mute: #8a97ad;
+  --color-mute: #b0a795;
 
   --font-display: "Playfair Display", Georgia, serif;
   --font-body: "Poppins", system-ui, sans-serif;
@@ -32,7 +36,8 @@ body {
   background: #0b192e;
   color: #e7ecf3;
   font-family: var(--font-body);
-  font-weight: 300;
+  /* 400, not 300 — Poppins Light on dark navy at 14-15px reads too thin. */
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -51,8 +56,8 @@ body {
 /* ---------- Ambient background layers ---------- */
 .bg-grid {
   background-image:
-    linear-gradient(rgba(201, 138, 4, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(201, 138, 4, 0.06) 1px, transparent 1px);
+    linear-gradient(rgba(201, 138, 4, 0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201, 138, 4, 0.10) 1px, transparent 1px);
   background-size: 64px 64px;
 }
 .bg-grid-fine {
@@ -62,13 +67,47 @@ body {
   background-size: 28px 28px;
 }
 .bg-radial-gold {
-  background: radial-gradient(ellipse at 70% 30%, rgba(201, 138, 4, 0.18), transparent 55%);
+  background: radial-gradient(ellipse at 70% 30%, rgba(201, 138, 4, 0.26), transparent 58%);
 }
 .bg-radial-navy {
-  background: radial-gradient(ellipse at 20% 80%, rgba(27, 58, 99, 0.55), transparent 60%);
+  background: radial-gradient(ellipse at 20% 80%, rgba(34, 73, 124, 0.60), transparent 62%);
 }
 .noise {
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.8 0 0 0 0 0.6 0 0 0 0 0.2 0 0 0 0.06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.8 0 0 0 0 0.6 0 0 0 0 0.2 0 0 0 0.09 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* ---------- Section bands ----------
+   The old palette spanned only 1.65:1 from ink to navy-4, so every section
+   read at the same depth. These alternate the ground so scrolling has rhythm. */
+.band-deep {
+  background: linear-gradient(180deg, #0a1729 0%, #050b16 55%, #0a1729 100%);
+}
+.band-lift {
+  background: linear-gradient(180deg, #0b192e 0%, #12294a 55%, #0b192e 100%);
+}
+.band-edge {
+  box-shadow:
+    inset 0 1px 0 rgba(233, 199, 102, 0.10),
+    inset 0 -1px 0 rgba(233, 199, 102, 0.10);
+}
+
+/* Slow drifting gold beam — ambient life without motion that distracts. */
+@keyframes beam-drift {
+  0%, 100% { transform: translate3d(-8%, 0, 0) rotate(-8deg); opacity: 0.30; }
+  50%      { transform: translate3d(8%, 0, 0) rotate(-8deg);  opacity: 0.55; }
+}
+.beam {
+  position: absolute;
+  inset: -25% -12% auto -12%;
+  height: 75%;
+  background: linear-gradient(100deg, transparent 22%, rgba(233, 199, 102, 0.12) 46%, rgba(233, 199, 102, 0.03) 62%, transparent 78%);
+  filter: blur(44px);
+  animation: beam-drift 22s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.vignette {
+  background: radial-gradient(ellipse at 50% 38%, transparent 42%, rgba(3, 8, 16, 0.55) 100%);
 }
 
 /* ---------- Typographic helpers ---------- */
@@ -86,6 +125,16 @@ body {
 
 .hairline {
   background: linear-gradient(90deg, transparent, rgba(233, 199, 102, 0.55), transparent);
+}
+/* Gold accents legible on the ivory break-band: #e9c766 is far too pale there. */
+.hairline-dark {
+  background: linear-gradient(90deg, transparent, rgba(143, 101, 25, 0.6), transparent);
+}
+.text-gold-gradient-dark {
+  background: linear-gradient(100deg, #6b4a12 0%, #a97b1e 42%, #ca8a04 55%, #8f6519 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* ---------- Reveal on scroll ---------- */
@@ -129,6 +178,19 @@ body {
 }
 .marquee-track { animation: marquee 38s linear infinite; }
 
+/* Fade both ends so the strip reads as continuous rather than clipped at the
+   viewport edge — the single biggest tell of a cheap marquee. */
+.marquee-strip {
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%);
+}
+/* Let people actually read a line they care about. */
+.marquee-strip:hover .marquee-track { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+
 @keyframes dash {
   to { stroke-dashoffset: 0; }
 }
@@ -151,14 +213,47 @@ body {
 /* ---------- Card / plate surfaces ---------- */
 .plate {
   background:
-    linear-gradient(160deg, rgba(19, 41, 75, 0.9), rgba(8, 17, 31, 0.92));
-  border: 1px solid rgba(233, 199, 102, 0.14);
+    linear-gradient(160deg, rgba(23, 55, 99, 0.94), rgba(5, 11, 22, 0.96));
+  /* was 0.14 alpha = 1.35:1 against its own fill, i.e. invisible at rest */
+  border: 1px solid rgba(233, 199, 102, 0.34);
+  box-shadow:
+    inset 0 1px 0 rgba(233, 199, 102, 0.22),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.55),
+    0 18px 40px -24px rgba(0, 0, 0, 0.9),
+    /* resting gold halo — the glow is permanent, not a hover reveal */
+    0 22px 50px -30px rgba(201, 138, 4, 0.40);
 }
-.plate-hover { transition: transform 0.5s cubic-bezier(0.22,1,0.36,1), border-color 0.5s, box-shadow 0.5s; }
+
+/* Cards drift continuously. Only `transform` is animated (GPU-cheap); the glow
+   stays constant so nothing pulses. The reveal-on-scroll transform lives on the
+   parent .reveal wrapper, so the two never fight over the same property. */
+@keyframes card-float {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50%      { transform: translate3d(0, -9px, 0); }
+}
+.plate-hover {
+  animation: card-float 7.5s ease-in-out infinite;
+  transition: border-color 0.5s, box-shadow 0.5s;
+}
+/* Negative delays start each card mid-cycle, so a grid never bobs in unison
+   and nothing waits before its first move. */
+:nth-child(4n + 2) > .plate-hover { animation-delay: -1.9s; }
+:nth-child(4n + 3) > .plate-hover { animation-delay: -3.7s; }
+:nth-child(4n + 4) > .plate-hover { animation-delay: -5.4s; }
+
 .plate-hover:hover {
-  transform: translateY(-6px);
-  border-color: rgba(233, 199, 102, 0.55);
-  box-shadow: 0 30px 60px -30px rgba(201, 138, 4, 0.45), inset 0 1px 0 rgba(233,199,102,0.15);
+  /* settle under the cursor, and lift the halo well clear of the resting glow
+     so hover still reads as a distinct state */
+  animation-play-state: paused;
+  border-color: rgba(233, 199, 102, 0.85);
+  box-shadow:
+    inset 0 1px 0 rgba(233, 199, 102, 0.40),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.55),
+    0 34px 70px -26px rgba(201, 138, 4, 0.72);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plate-hover { animation: none; }
 }
 
 .gold-btn {
@@ -179,6 +274,86 @@ body {
 }
 .ghost-btn:hover { background: rgba(233, 199, 102, 0.1); border-color: #e9c766; transform: translateY(-2px); }
 
+/* ---------- Premium stat plate ----------
+   A 1px flat border reads cheap at this scale. Two nested radii with a gold
+   gradient between them give a real metal rim that catches light along the
+   top-left and fades away — the frame is the outer element, the card sits
+   inside it. */
+.stat-frame {
+  background:
+    linear-gradient(140deg,
+      rgba(233, 199, 102, 0.62) 0%,
+      rgba(233, 199, 102, 0.10) 28%,
+      rgba(233, 199, 102, 0.04) 62%,
+      rgba(233, 199, 102, 0.34) 100%);
+  box-shadow: 0 40px 80px -32px rgba(0, 0, 0, 0.85);
+}
+.stat-card {
+  background:
+    radial-gradient(120% 140% at 18% 0%, rgba(35, 74, 128, 0.85), transparent 55%),
+    linear-gradient(160deg, rgba(23, 55, 99, 0.92), rgba(5, 11, 22, 0.98));
+  box-shadow:
+    inset 0 1px 0 rgba(233, 199, 102, 0.28),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.6);
+}
+/* hairline that fades out at both ends, instead of a hard full-height rule */
+.stat-divider {
+  background: linear-gradient(180deg, transparent, rgba(233, 199, 102, 0.42) 22%, rgba(233, 199, 102, 0.42) 78%, transparent);
+}
+/* gold ring around each glyph, brightest top-left */
+.stat-ring {
+  background: linear-gradient(140deg, rgba(233, 199, 102, 0.85), rgba(233, 199, 102, 0.18) 55%, rgba(233, 199, 102, 0.06));
+}
+
+/* ---------- Process step transitions ----------
+   The detail panel previously remounted with `reveal in` already applied, so it
+   jumped straight to the end state and nothing actually animated. These replay
+   on each step change because the panel is keyed by the active index. */
+@keyframes step-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+.step-in { animation: step-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+@keyframes step-media-in {
+  from { opacity: 0; transform: scale(1.06); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.step-media-in { animation: step-media-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+/* Active marker on the step list */
+@keyframes step-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(233, 199, 102, 0.45); }
+  50%      { box-shadow: 0 0 0 6px rgba(233, 199, 102, 0); }
+}
+.step-dot-active { animation: step-pulse 2.4s ease-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .step-in, .step-media-in, .step-dot-active { animation: none; }
+}
+
+/* ---------- Card media wells ----------
+   A floating card sits at a fractional Y offset, and its image scales on hover.
+   The scaled image becomes its own compositing layer, and that layer's edge can
+   disagree with the parent's rounded overflow clip by a subpixel — leaking a
+   hairline along the bottom of the image. Pinning the well to its own layer
+   keeps the clip and the child rasterised together. */
+.media-clip {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Fade the media well into the card body rather than ending it on a flat colour.
+   A hardcoded blend colour can only match the card's gradient at one height — at
+   the disciplines cards it was 7 RGB points light, which reads as a hard line
+   across the card. Masking makes the card's OWN background the blend target, so
+   it matches at any card size, and a soft edge cannot leak a compositing seam
+   when the image scales on hover. Only for wells with no bottom-anchored content. */
+.media-fade {
+  -webkit-mask-image: linear-gradient(to top, transparent 0, #000 14%);
+  mask-image: linear-gradient(to top, transparent 0, #000 14%);
+}
+
 /* ---------- Decorative corner ticks ---------- */
 .corner-ticks::before, .corner-ticks::after {
   content: ""; position: absolute; width: 14px; height: 14px;
@@ -186,6 +361,14 @@ body {
 }
 .corner-ticks::before { top: 10px; left: 10px; border-top: 1px solid; border-left: 1px solid; }
 .corner-ticks::after { bottom: 10px; right: 10px; border-bottom: 1px solid; border-right: 1px solid; }
+
+/* Corner ticks for the light break-band */
+.corner-ticks-dark::before, .corner-ticks-dark::after {
+  content: ""; position: absolute; width: 14px; height: 14px;
+  border-color: rgba(143, 101, 25, 0.55);
+}
+.corner-ticks-dark::before { top: 10px; left: 10px; border-top: 1px solid; border-left: 1px solid; }
+.corner-ticks-dark::after { bottom: 10px; right: 10px; border-bottom: 1px solid; border-right: 1px solid; }
 
 /* range slider */
 input[type="range"].gold-range {
@@ -208,5 +391,15 @@ input[type="range"].gold-range::-moz-range-thumb {
 }
 
 /* light surface section */
-.surface-light { background: #faf8f5; color: #13294b; }
+.surface-light {
+  background: linear-gradient(180deg, #faf8f5 0%, #f3eee5 55%, #ece5d8 100%);
+  color: #13294b;
+}
 .surface-light .muted { color: #5b6678; }
+.plate-light {
+  background: linear-gradient(160deg, #ffffff, #f7f2e8);
+  border: 1px solid rgba(143, 101, 25, 0.28);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 22px 44px -28px rgba(19, 41, 75, 0.45);
+}
