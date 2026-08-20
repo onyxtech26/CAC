@@ -15,9 +15,9 @@ export default function Footer() {
           <div className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-center">
             <div>
               <p className="font-mono text-[11px] uppercase tracking-wide-2 text-gold-2/80">// Ready when you are</p>
-              <h3 className="mt-3 max-w-2xl font-display text-3xl leading-tight text-ivory sm:text-4xl">
+              <h2 className="mt-3 max-w-2xl font-display text-3xl leading-tight text-ivory sm:text-4xl">
                 Every estate has a paper trail. <span className="italic text-gold-gradient">We know how to read it.</span>
-              </h3>
+              </h2>
             </div>
             <div className="flex flex-wrap gap-3">
               <a href={waLink()} target="_blank" rel="noreferrer" className="gold-btn sheen-host flex items-center gap-2 rounded-sm px-6 py-3 text-[12px] uppercase">

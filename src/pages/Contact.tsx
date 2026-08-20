@@ -18,7 +18,7 @@ export default function Contact() {
         </nav>
 
         <div className="mt-6 max-w-3xl">
-          <Heading eyebrow="Open a confidential file" title={<>Speak with <span className="italic text-gold-gradient">CAC.</span></>} />
+          <Heading as="h1" eyebrow="Open a confidential file" title={<>Speak with <span className="italic text-gold-gradient">CAC.</span></>} />
           <Reveal delay={120}>
             <p className="mt-6 text-stone">
               We welcome confidential enquiries regarding property ownership, inheritance disputes, historical land investigations and asset tracing. Whether your matter involves a single family home or a complex multi-property estate, we are committed to delivering thorough, impartial and evidence-based investigations.
@@ -48,7 +48,7 @@ export default function Contact() {
                     </div>
                     <div className="mt-6">
                       <Eyebrow>{m.role}</Eyebrow>
-                      <h3 className="mt-2 font-display text-3xl text-ivory">{m.name}</h3>
+                      <h2 className="mt-2 font-display text-3xl text-ivory">{m.name}</h2>
                       <p className="mt-3 text-sm leading-relaxed text-stone">{m.blurb}</p>
                     </div>
                     <div className="mt-auto flex flex-col gap-3 pt-7">
@@ -92,7 +92,7 @@ export default function Contact() {
           <div className="lg:col-span-7">
             <Reveal delay={120}>
               <Eyebrow>Secure intake</Eyebrow>
-              <h3 className="mt-3 font-display text-2xl text-ivory sm:text-3xl">Send us a message</h3>
+              <h2 className="mt-3 font-display text-2xl text-ivory sm:text-3xl">Send us a message</h2>
               <p className="mt-2 text-sm text-stone">All fields encrypted in transit. A unique tracking reference (CAC-2026-XXXX) is issued on submission.</p>
               <div className="mt-6"><ContactForm /></div>
             </Reveal>

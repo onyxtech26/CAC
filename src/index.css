@@ -47,6 +47,45 @@ body {
   color: #0b192e;
 }
 
+/* ---------- Focus visibility (WCAG 2.4.7) ----------
+   There was no focus styling anywhere, so keyboard users had no way to see
+   where they were. :focus-visible keeps it off for pointer users. */
+:focus-visible {
+  outline: 2px solid var(--color-gold-2);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+:focus:not(:focus-visible) {
+  outline: none;
+}
+/* gold-2 is too pale to see on the ivory break-band */
+.surface-light :focus-visible {
+  outline-color: var(--color-gold-3);
+}
+
+/* ---------- Skip link (WCAG 2.4.1) ----------
+   17 tabbables sat before the main content on every page. */
+.skip-link {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -120%);
+  z-index: 200;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--color-gold-2);
+  border-radius: 0 0 0.5rem 0.5rem;
+  background: var(--color-ink);
+  color: var(--color-gold-2);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  transition: transform 0.2s ease;
+}
+.skip-link:focus {
+  transform: translate(-50%, 0);
+}
+
 /* ---------- Scrollbar ---------- */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: #08111f; }

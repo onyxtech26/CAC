@@ -45,8 +45,9 @@ export default function App() {
       <SplashScreen />
       <ScrollToTop />
       <div className="relative flex min-h-screen flex-col bg-navy text-ivory">
+        <a href="#main-content" className="skip-link">Skip to content</a>
         <Navbar />
-        <main className="flex-1">
+        <main id="main-content" tabIndex={-1} className="flex-1">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />

@@ -117,20 +117,23 @@ export function Heading({
   italic,
   className = "",
   light = false,
+  as: Tag = "h2",
 }: {
   eyebrow?: string;
   title: ReactNode;
   italic?: string;
   className?: string;
   light?: boolean;
+  /** the lead heading on a page should be "h1"; section headings stay "h2" */
+  as?: "h1" | "h2";
 }) {
   return (
     <div className={className}>
       {eyebrow && <Eyebrow light={light}>{eyebrow}</Eyebrow>}
-      <h2 className={`mt-5 font-display text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.04] ${light ? "text-navy-3" : "text-ivory"}`}>
+      <Tag className={`mt-5 font-display text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.04] ${light ? "text-navy-3" : "text-ivory"}`}>
         {title}
         {italic && <span className={`block italic mt-1 ${light ? "text-gold-gradient-dark" : "text-gold-gradient"}`}>{italic}</span>}
-      </h2>
+      </Tag>
       <div className={`mt-6 h-px w-full max-w-[140px] ${light ? "hairline-dark" : "hairline"}`} />
     </div>
   );

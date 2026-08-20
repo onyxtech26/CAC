@@ -28,6 +28,7 @@ export default function Services() {
 
         <div className="mt-5 flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
           <Heading
+            as="h1"
             eyebrow={`Capabilities directory · ${SERVICES.length} disciplines`}
             title={<>Our <span className="italic text-gold-gradient">Services</span></>}
           />
@@ -78,7 +79,7 @@ export default function Services() {
                   </div>
 
                   <div className="flex flex-1 flex-col p-6">
-                    <h3 className="font-display text-2xl leading-snug text-ivory">{s.title}</h3>
+                    <h2 className="font-display text-2xl leading-snug text-ivory">{s.title}</h2>
                     <p className="mt-3 flex-1 text-sm leading-relaxed text-stone">{s.short}</p>
                     <ul className="mt-5 space-y-1.5 border-t border-gold-2/10 pt-4">
                       {s.deliverables.slice(0, 2).map((d, j) => (

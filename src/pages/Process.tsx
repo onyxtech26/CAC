@@ -37,7 +37,7 @@ export default function Process() {
         </nav>
 
         <div className="mt-6 flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
-          <Heading eyebrow={`Methodology · ${PROCESS.length} stages`} title={<>The investigation<br /><span className="italic text-gold-gradient">lifecycle.</span></>} />
+          <Heading as="h1" eyebrow={`Methodology · ${PROCESS.length} stages`} title={<>The investigation<br /><span className="italic text-gold-gradient">lifecycle.</span></>} />
           <Reveal delay={100}>
             <div className="flex items-center gap-3">
               <button onClick={() => { manual.current = false; setPlaying((p) => !p); }} className="ghost-btn flex items-center gap-2 rounded-sm px-4 py-2 text-[11px] uppercase">
@@ -142,7 +142,7 @@ export default function Process() {
                 </div>
               </div>
 
-              <h3 className="step-in font-display text-3xl leading-tight text-ivory sm:text-4xl" style={{ animationDelay: "80ms" }}>{step.title}</h3>
+              <h2 className="step-in font-display text-3xl leading-tight text-ivory sm:text-4xl" style={{ animationDelay: "80ms" }}>{step.title}</h2>
 
               <p className="step-in relative mt-7 text-[15px] leading-relaxed text-stone sm:text-base" style={{ animationDelay: "140ms" }}>{step.details}</p>
 

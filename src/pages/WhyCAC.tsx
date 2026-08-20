@@ -46,7 +46,7 @@ export default function WhyCAC() {
         </nav>
 
         <div className="mt-6 max-w-3xl">
-          <Heading eyebrow="Why CAC" title={<>Why clients trust<br /><span className="italic text-gold-gradient">CAC</span> with the record.</>} />
+          <Heading as="h1" eyebrow="Why CAC" title={<>Why clients trust<br /><span className="italic text-gold-gradient">CAC</span> with the record.</>} />
           <Reveal delay={120}>
             <p className="mt-6 text-stone">
               When ownership must be proven — not merely asserted — courts, counsel and families call CAC. Four principles govern every engagement we accept.
@@ -71,7 +71,7 @@ export default function WhyCAC() {
                   </span>
                 </div>
                 <div className="flex flex-1 flex-col p-6">
-                  <h3 className="font-display text-2xl leading-snug text-ivory">{p.k}</h3>
+                  <h2 className="font-display text-2xl leading-snug text-ivory">{p.k}</h2>
                   <div className="mt-3 h-px w-10 hairline" />
                   <p className="mt-4 text-sm leading-relaxed text-stone">{p.d}</p>
                 </div>
@@ -174,7 +174,7 @@ export default function WhyCAC() {
                   />
                   <div>
                     <p className="font-mono text-[10px] uppercase tracking-wide-2 text-gold-2/70">0{i + 1}</p>
-                    <h4 className="font-display text-lg text-ivory">{s.k}</h4>
+                    <h3 className="font-display text-lg text-ivory">{s.k}</h3>
                     <p className="mt-1 text-sm text-stone">{s.d}</p>
                   </div>
                 </div>
