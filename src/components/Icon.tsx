@@ -63,11 +63,11 @@ const paths: Record<string, ReactElement> = {
   ),
   "doc-seal": (
     <>
-      <path d="M6 3h8l4 4v9" />
-      <path d="M14 3v4h4" />
-      <path d="M8 9h6M8 12h4" />
-      <circle cx="15.5" cy="17" r="3" />
-      <path d="m13.7 19.4-1 2.6 2.8-1.3 2.8 1.3-1-2.6" />
+      <path d="M5.6 4.2h7.2l4 4v5"/>
+      <path d="M12.8 4.2v4h4" />
+      <path d="M8.2 10.4h5M8.2 13h3.4" />
+      <circle cx="15" cy="16.4" r="3" />
+      <path d="M13 18.7 12.2 21l2.8-1.3 2.8 1.3-.8-2.3" />
     </>
   ),
   "shield-alert": (
@@ -78,9 +78,11 @@ const paths: Record<string, ReactElement> = {
   ),
   scales: (
     <>
-      <path d="M12 3v17M7 20h10" />
-      <path d="M5 7h14M5 7 3 13a3 3 0 0 0 6 0ZM19 7l-2 6a3 3 0 0 0 6 0Z" />
-      <path d="M12 4.5 5 7M12 4.5 19 7" />
+      <path d="M12 4.2v15.6M7.5 19.8h9" />
+      <path d="M5 7.6h14" />
+      <path d="M5 7.6 2.8 13a2.9 2.9 0 0 0 5.8 0Z" />
+      <path d="M19 7.6 21.2 13a2.9 2.9 0 0 1-5.8 0Z" />
+      <path d="M12 5.4 5 7.6M12 5.4l7 2.2" />
     </>
   ),
   handshake: (
@@ -92,11 +94,11 @@ const paths: Record<string, ReactElement> = {
   ),
   network: (
     <>
-      <circle cx="12" cy="5" r="2" />
-      <circle cx="5" cy="17" r="2" />
-      <circle cx="19" cy="17" r="2" />
-      <circle cx="12" cy="13" r="1.6" />
-      <path d="M12 7v4.4M10.7 14 6.5 15.7M13.3 14l4.2 1.7" />
+      <circle cx="12" cy="6" r="2" />
+      <circle cx="5" cy="18" r="2" />
+      <circle cx="19" cy="18" r="2" />
+      <circle cx="12" cy="14" r="1.6" />
+      <path d="M12 8v4.4M10.7 15 6.5 16.7M13.3 15l4.2 1.7" />
     </>
   ),
   "chart-up": (
@@ -108,25 +110,25 @@ const paths: Record<string, ReactElement> = {
   ),
   "building-uplift": (
     <>
-      <path d="M5 21V8l6-4 6 4v13" />
-      <path d="M9 21v-4h4v4M9 11h.01M13 11h.01M9 14h.01M13 14h.01" />
-      <path d="M18 9v12M18 9l3-2v14" />
-      <path d="m2 5 2-2 2 2" />
+      <path d="M3.6 20.4V8.2L10 4l6.4 4.2v12.2" />
+      <path d="M8 20.4v-4.2h4v4.2" />
+      <path d="M8 10.6h.01M12 10.6h.01M8 13.6h.01M12 13.6h.01" />
+      <path d="M18.4 20.4V9.6l2-1.4v12.2" />
     </>
   ),
   // ---- process glyphs ----
   "chat-user": (
     <>
-      <path d="M4 5h12a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9l-4 3v-3H4a2 2 0 0 1-2-2V7" />
-      <circle cx="18.5" cy="16.5" r="2.5" />
-      <path d="M15 21a3.5 3.5 0 0 1 7 0" />
+      <path d="M5 5.2h14a1.8 1.8 0 0 1 1.8 1.8v7.6a1.8 1.8 0 0 1-1.8 1.8h-6.4L9 19.6v-3.2H5a1.8 1.8 0 0 1-1.8-1.8V7A1.8 1.8 0 0 1 5 5.2Z" />
+      <circle cx="12" cy="9.4" r="1.8" />
+      <path d="M9.1 13.8a3.2 3.2 0 0 1 5.8 0" />
     </>
   ),
   "clipboard-check": (
     <>
-      <rect x="5" y="4.5" width="14" height="16" rx="2" />
-      <path d="M9 4.5a3 3 0 0 1 6 0" />
-      <path d="m9 13 2 2 4-4" />
+      <rect x="5" y="5.4" width="14" height="15.2" rx="2" />
+      <rect x="9" y="3.4" width="6" height="3.6" rx="1.2" />
+      <path d="m9.2 13.4 2.2 2.2 4.4-4.4" />
     </>
   ),
   "magnifier-fingerprint": (
@@ -153,29 +155,30 @@ const paths: Record<string, ReactElement> = {
   ),
   "scales-user": (
     <>
-      <circle cx="12" cy="5" r="2" />
-      <path d="M12 7v4M8 11h8M8 11l-2 4a2.4 2.4 0 0 0 4 0ZM16 11l-2 4a2.4 2.4 0 0 0 4 0Z" />
-      <path d="M8 20h8" />
+      <circle cx="12" cy="4.6" r="2.1" />
+      <path d="M12 6.7v3.9M6.4 10.6h11.2" />
+      <path d="M6.4 10.6 4.4 15.2a2.5 2.5 0 0 0 4 0Z" />
+      <path d="M17.6 10.6 19.6 15.2a2.5 2.5 0 0 1-4 0Z" />
+      <path d="M8 19.6h8" />
     </>
   ),
   gavel: (
     <>
-      <path d="m13 5 6 6M14.5 3.5 18 7M9 9l3 3" />
-      <rect x="3.5" y="10.5" width="7" height="3.4" rx="1" transform="rotate(45 7 12)" />
-      <path d="M5 20h9" />
-      <path d="M9.5 16.5 7 19" />
+      <rect x="7" y="3.6" width="10" height="4.4" rx="1.5" />
+      <path d="M12 8v8" />
+      <rect x="5" y="16" width="14" height="4.4" rx="1.5" />
     </>
   ),
   "key-house": (
     <>
-      <path d="M3 11 9 6l6 5" />
-      <path d="M5 10v7h4v-3h2v3" />
-      <circle cx="17" cy="14" r="3" />
-      <path d="M19.2 16.2 22 19l-1.2 1.2-1-1-1 1-1.2-1.2" />
+      <path d="M3.4 10.6 9.6 5l6.2 5.6" />
+      <path d="M5.4 9.6v8h8" />
+      <circle cx="16.2" cy="14.6" r="2.8" />
+      <path d="M18.2 16.6 20.6 19" />
     </>
   ),
   // ---- utility ----
-  phone: <path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5Z" />,
+  phone: <path d="M6.5 4.5h3l1.5 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.5 6.7 2 2 0 0 1 6.5 4.5Z" />,
   mail: (
     <>
       <rect x="3" y="5" width="18" height="14" rx="2" />
@@ -214,7 +217,7 @@ const paths: Record<string, ReactElement> = {
   ),
   tiktok: (
     <>
-      <path d="M14 4c.5 2.3 2 3.8 4 4v3c-1.5 0-2.9-.5-4-1.3V15a5 5 0 1 1-5-5c.3 0 .7 0 1 .1v3.1a2 2 0 1 0 1.4 1.9V4Z" />
+      <path d="M15 4c.5 2.3 2 3.8 4 4v3c-1.5 0-2.9-.5-4-1.3V15a5 5 0 1 1-5-5c.3 0 .7 0 1 .1v3.1a2 2 0 1 0 1.4 1.9V4Z" />
     </>
   ),
   menu: <path d="M4 7h16M4 12h16M4 17h16" />,
@@ -222,9 +225,9 @@ const paths: Record<string, ReactElement> = {
   star: <path d="m12 3.5 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17l-5.2 2.6 1-5.8-4.3-4.1 5.9-.9Z" />,
   seal: (
     <>
-      <circle cx="12" cy="10" r="6" />
-      <path d="m8.5 9.5 2.2 2.2L15 7.5" />
-      <path d="m9 15-1.5 5L12 18l4.5 2L15 15" />
+      <circle cx="12" cy="9.8" r="6.6" />
+      <path d="m8.6 9.6 2.4 2.4 4.4-4.4" />
+      <path d="m8.4 15.4-1.6 5.2L12 18.4l5.2 2.2-1.6-5.2" />
     </>
   ),
   globe: (
@@ -268,6 +271,7 @@ export function Icon({ name, size = 24, ...rest }: P) {
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
+      data-icon={name}
       {...rest}
     >
       {node}
