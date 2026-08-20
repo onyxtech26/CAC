@@ -162,6 +162,19 @@ body {
   color: transparent;
 }
 
+/* background-clip:text paints the gradient into the element's BOX and then
+   clips it to the glyphs. Any ink outside that box — descenders on p/y/g,
+   tall italic ascenders — receives no gradient and renders invisible, which
+   looks like the letters are cut off. Tight leading makes it worse: at
+   line-height 1.0 the descenders sat 8px below the box.
+   Padding grows the painted box; the negative margin keeps layout identical.
+   On inline elements the margin is ignored, which is the behaviour we want. */
+.text-gold-gradient,
+.text-gold-gradient-dark {
+  padding-block: 0.2em;
+  margin-block: -0.2em;
+}
+
 .hairline {
   background: linear-gradient(90deg, transparent, rgba(233, 199, 102, 0.55), transparent);
 }
