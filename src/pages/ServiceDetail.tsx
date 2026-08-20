@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { Icon } from "../components/Icon";
 import { Eyebrow, Reveal, Tag } from "../components/ui";
 import { PROCESS, SERVICES, waLink } from "../data";
+import { Seo } from "../components/Seo";
 
 export default function ServiceDetail() {
   const { serviceId } = useParams();
@@ -25,6 +26,8 @@ export default function ServiceDetail() {
   const next = SERVICES[(idx + 1) % SERVICES.length];
 
   return (
+    <>
+    <Seo title={s.title} description={s.short} path={`/services/${s.id}`} />
     <section className="relative pt-32 pb-24 lg:pt-40">
       <div className="pointer-events-none absolute inset-0 bg-grid opacity-40" />
       <div className="pointer-events-none absolute inset-0 bg-radial-navy" />
@@ -130,6 +133,7 @@ export default function ServiceDetail() {
         </div>
       </div>
     </section>
+    </>
   );
 }
 

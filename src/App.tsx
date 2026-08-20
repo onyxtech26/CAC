@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { HashRouter, Route, Routes, useLocation } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { Icon } from "./components/Icon";
@@ -41,7 +41,7 @@ function FloatingWhatsApp() {
 
 export default function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <SplashScreen />
       <ScrollToTop />
       <div className="relative flex min-h-screen flex-col bg-navy text-ivory">
@@ -62,6 +62,6 @@ export default function App() {
         <Footer />
         <FloatingWhatsApp />
       </div>
-    </HashRouter>
+    </BrowserRouter>
   );
 }

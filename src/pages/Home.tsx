@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Icon } from "../components/Icon";
 import { Counter, Eyebrow, Heading, Marquee, Reveal, Tag } from "../components/ui";
 import { HERO_STATS, MISSION, MISSION_POINTS, PRINCIPLES_HOME, PROCESS, SERVICES, VISION } from "../data";
+import { Seo } from "../components/Seo";
 
 const TRUST = [
   { k: "Independent Investigations", g: "pin" },
@@ -15,6 +16,7 @@ const CREED = ["Discovering the Past", "Protecting the Present", "Securing the F
 export default function Home() {
   return (
     <>
+    <Seo title="Property Forensic Investigation in Malaysia" description="Independent property forensic investigation in Johor and across Malaysia — uncovering true ownership, tracing missing land titles, exposing fraudulent transfers and recovering hidden estate assets." path="/" />
       <Hero />
       <Marquee items={SERVICES.map((s) => s.title)} />
       <FeaturedDisciplines />
