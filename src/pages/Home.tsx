@@ -236,13 +236,6 @@ function FirmSummary() {
           <div className="relative">
             <div className="pointer-events-none absolute -inset-4 rounded-lg border border-gold-2/15" />
             <img src="/assets/cac-building-logo.webp" alt="CAC office building with illuminated logo" className="relative w-full rounded-lg border border-gold-2/20 shadow-2xl" />
-            <div className="absolute -bottom-5 left-5 flex items-center gap-3 rounded border border-gold-2/30 bg-navy-2/90 px-4 py-3 backdrop-blur">
-              <Icon name="seal" size={22} className="text-gold-2" />
-              <div>
-                <p className="font-mono text-[9px] uppercase tracking-wide-2 text-gold-2/70">Established</p>
-                <p className="font-display text-sm text-ivory">2009 · Skudai, Johor</p>
-              </div>
-            </div>
           </div>
         </Reveal>
 
