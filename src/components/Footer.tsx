@@ -42,7 +42,7 @@ export default function Footer() {
             </div>
           </div>
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-stone">
-            An elite Malaysian property intelligence and forensic consultancy converting registry records, colonial grants and probate archives into court-ready documentary evidence.
+            An independent Malaysian property forensic consultancy converting registry records, colonial grants and probate archives into documentary evidence.
           </p>
           <p className="mt-5 font-display text-lg italic text-gold-gradient">"{TAGLINES[1]}"</p>
           <div className="mt-6 flex items-center gap-3">
@@ -86,7 +86,7 @@ export default function Footer() {
                 </Link>
               </li>
             ))}
-            <li><Link to="/services" className="text-gold-2/90 hover:text-gold-2">+ all 12 services →</Link></li>
+            <li><Link to="/services" className="text-gold-2/90 hover:text-gold-2">View all services →</Link></li>
           </ul>
         </div>
 
