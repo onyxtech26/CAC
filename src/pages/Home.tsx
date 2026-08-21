@@ -255,8 +255,8 @@ function FirmSummary() {
           </Reveal>
           <div className="mt-8 grid gap-4 sm:grid-cols-3">
             {PRINCIPLES_HOME.map((p, i) => (
-              <Reveal key={p.k} delay={i * 100}>
-                <div className="plate rounded-md p-4">
+              <Reveal key={p.k} delay={i * 100} className="h-full">
+                <div className="plate flex h-full flex-col rounded-md p-4">
                   <span className="font-mono text-[10px] uppercase tracking-wide-2 text-gold-2">0{i + 1}</span>
                   <p className="mt-1 font-display text-lg text-ivory">{p.k}</p>
                   <p className="mt-2 text-xs leading-relaxed text-stone">{p.d}</p>

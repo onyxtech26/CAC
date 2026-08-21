@@ -67,7 +67,7 @@ export default function ServiceDetail() {
 
             <Reveal delay={180}>
               <div className="mt-10">
-                <Eyebrow>Deliverables · 5-point checklist</Eyebrow>
+                <Eyebrow>Deliverables · {s.deliverables.length}-point checklist</Eyebrow>
                 <ol className="mt-5 space-y-3">
                   {s.deliverables.map((d, i) => (
                     <li key={i} className="plate flex items-start gap-4 rounded-md p-4">
