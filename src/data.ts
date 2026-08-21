@@ -9,7 +9,7 @@ export const CONTACT = {
   phoneDisplay: "+60 11-5960 1300",
   phoneRaw: "601159601300",
   site: "www.cac.com.my",
-  consultant: "Mr Mohan",
+  consultant: "Mr Mohaan",
   consultantRole: "Director",
   techPartner: "Onyxx Tech",
   techPartnerUrl: "https://onyxx-tech.vercel.app/",
@@ -35,14 +35,14 @@ export type TeamMember = {
 
 export const TEAM: TeamMember[] = [
   {
-    name: "Mr Mohan",
+    name: "Mr Mohaan",
     role: "Director",
     img: "/assets/mohaan-profile.webp",
     blurb:
       "Lead investigator across property forensic, estate recovery and fraud-exposure engagements. Personally briefs every new case and remains the point of contact through to resolution.",
   },
   {
-    name: "Mr Siva",
+    name: "Mr Shiva",
     role: "Director",
     img: "/assets/team-03.webp",
     blurb:
