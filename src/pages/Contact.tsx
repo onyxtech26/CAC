@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { Icon } from "../components/Icon";
 import { Eyebrow, Heading, Reveal } from "../components/ui";
-import ContactForm from "../components/ContactForm";
 import { CONTACT, TEAM } from "../data";
 import { Seo } from "../components/Seo";
 
@@ -70,11 +69,11 @@ export default function Contact() {
           </div>
   
           {/* Main grid */}
-          <div className="mt-12 grid gap-10 lg:grid-cols-12">
+          <div className="mt-12">
             {/* left: details */}
-            <div className="space-y-8 lg:col-span-5">
+            <div className="space-y-8">
               <Reveal>
-                <div className="grid gap-3 sm:grid-cols-2">
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                   {[
                     { g: "phone", k: "Phone / WhatsApp", v: CONTACT.phoneDisplay, href: `tel:+${CONTACT.phoneRaw}` },
                     { g: "mail", k: "Email", v: CONTACT.email, href: `mailto:${CONTACT.email}` },
@@ -88,16 +87,6 @@ export default function Contact() {
                     </div>
                   ))}
                 </div>
-              </Reveal>
-            </div>
-  
-            {/* right: form */}
-            <div className="lg:col-span-7">
-              <Reveal delay={120}>
-                <Eyebrow>Secure intake</Eyebrow>
-                <h2 className="mt-3 font-display text-2xl text-ivory sm:text-3xl">Send us a message</h2>
-                <p className="mt-2 text-sm text-stone">All fields encrypted in transit. A unique tracking reference (CAC-2026-XXXX) is issued on submission.</p>
-                <div className="mt-6"><ContactForm /></div>
               </Reveal>
             </div>
           </div>
