@@ -35,18 +35,18 @@ export type TeamMember = {
 
 export const TEAM: TeamMember[] = [
   {
-    name: "Mr Siva",
-    role: "Senior Director",
-    img: "/assets/team-03.webp",
-    blurb:
-      "Leads family estate investigations, beneficiary tracing and probate coordination, working alongside counsel through to distribution.",
-  },
-  {
     name: "Mr Mohan",
     role: "Director",
     img: "/assets/mohaan-profile.webp",
     blurb:
       "Lead investigator across property forensic, estate recovery and fraud-exposure engagements. Personally briefs every new case and remains the point of contact through to resolution.",
+  },
+  {
+    name: "Mr Siva",
+    role: "Director",
+    img: "/assets/team-03.webp",
+    blurb:
+      "Leads family estate investigations, beneficiary tracing and probate coordination, working alongside counsel through to distribution.",
   },
   {
     name: "Mr Goku",
