@@ -11,7 +11,7 @@ import Process from "./pages/Process";
 import WhyCAC from "./pages/WhyCAC";
 import Contact from "./pages/Contact";
 import SplashScreen from "./components/SplashScreen";
-import { waLink } from "./data";
+import { CONTACT, waLink } from "./data";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -29,7 +29,7 @@ function FloatingWhatsApp() {
       className="group fixed bottom-5 right-5 z-40 flex items-center gap-3"
     >
       <span className="pointer-events-none hidden rounded-full border border-gold-2/30 bg-navy-2/90 px-3 py-1.5 font-mono text-[10px] uppercase tracking-wide-2 text-gold-2 opacity-0 shadow-lg backdrop-blur transition group-hover:opacity-100 sm:block">
-        +6018-377 7716
+        {CONTACT.phoneDisplay}
       </span>
       <span className="relative grid h-14 w-14 place-items-center rounded-full bg-gradient-to-br from-gold-2 via-gold to-gold-3 text-navy shadow-[0_14px_30px_-10px_rgba(201,138,4,0.8)] transition group-hover:scale-105">
         <span className="absolute inset-0 rounded-full ring-2 ring-gold-2/40" style={{ animation: "pulse-ring 2.4s ease-out infinite" }} />
