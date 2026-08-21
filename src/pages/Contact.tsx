@@ -40,7 +40,7 @@ export default function Contact() {
               return (
                 <Reveal key={m.name} delay={i * 110}>
                   <div className="corner-ticks relative flex h-full flex-col overflow-hidden rounded-xl border border-gold-2/25 bg-gradient-to-br from-navy-3 to-ink p-7 sm:p-8">
-                    <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full opacity-30 blur-3xl" style={{ background: "radial-gradient(circle, rgba(201,138,4,0.5), transparent 70%)" }} />
+                    <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full blur-3xl glow-gold" />
                     <div className="relative flex flex-1 flex-col">
                       <div className="relative w-fit">
                         <img src={m.img} alt={m.name} className="h-24 w-24 shrink-0 rounded-full border border-gold-2/50 object-cover object-top" />

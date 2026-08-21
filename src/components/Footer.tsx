@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer className="relative overflow-hidden border-t border-gold-2/15 bg-ink">
       <div className="pointer-events-none absolute inset-0 bg-grid-fine opacity-40" />
-      <div className="pointer-events-none absolute -top-32 left-1/3 h-72 w-[44rem] rounded-full opacity-30 blur-3xl" style={{ background: "radial-gradient(circle, rgba(201,138,4,0.35), transparent 70%)" }} />
+      <div className="pointer-events-none absolute -top-32 left-1/3 h-72 w-[44rem] rounded-full blur-3xl glow-gold" />
 
       {/* Pre-footer CTA ribbon */}
       <div className="relative mx-auto max-w-[1320px] px-5 pt-16 lg:px-8">

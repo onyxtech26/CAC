@@ -31,12 +31,10 @@ export default function SplashScreen() {
     >
       {/* Ambient background glows */}
       <div
-        className="pointer-events-none absolute h-96 w-96 rounded-full opacity-40 blur-3xl anim-float-slow"
-        style={{ background: "radial-gradient(circle, rgba(233,199,102,0.4), transparent 70%)" }}
+        className="pointer-events-none absolute h-96 w-96 rounded-full blur-3xl anim-float-slow glow-gold"
       />
       <div
-        className="pointer-events-none absolute h-[30rem] w-[30rem] rounded-full opacity-20 blur-3xl"
-        style={{ background: "radial-gradient(circle, rgba(201,138,4,0.3), transparent 70%)" }}
+        className="pointer-events-none absolute h-[30rem] w-[30rem] rounded-full blur-3xl glow-gold"
       />
 
       <div className="relative z-10 flex flex-col items-center text-center px-5">

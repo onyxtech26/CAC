@@ -88,8 +88,8 @@ export default function About() {
         <div className="mx-auto max-w-4xl px-5 lg:px-8">
           <Reveal>
             <div className="corner-ticks relative overflow-hidden rounded-[2.5rem] border border-gold-2/25 bg-gradient-to-br from-navy-3/90 via-navy-2/95 to-ink p-6 shadow-[0_30px_70px_-20px_rgba(0,0,0,0.8)] backdrop-blur-xl sm:p-12">
-              <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full opacity-30 blur-3xl" style={{ background: "radial-gradient(circle, rgba(233,199,102,0.4), transparent 70%)" }} />
-              <div className="pointer-events-none absolute -left-20 -bottom-20 h-64 w-64 rounded-full opacity-20 blur-3xl" style={{ background: "radial-gradient(circle, rgba(201,138,4,0.3), transparent 70%)" }} />
+              <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full blur-3xl glow-gold" />
+              <div className="pointer-events-none absolute -left-20 -bottom-20 h-64 w-64 rounded-full blur-3xl glow-gold" />
 
               <div className="grid grid-cols-1 divide-y divide-gold-2/15 sm:grid-cols-2 sm:divide-x sm:divide-y-0">
                 {HERO_STATS.map((s, i) => (
@@ -221,7 +221,7 @@ export default function About() {
         <div className="mx-auto max-w-[1320px] px-5 lg:px-8">
           <Reveal>
             <div className="corner-ticks relative overflow-hidden rounded-xl border border-gold-2/25 bg-gradient-to-br from-navy-3 to-ink p-10 sm:p-14">
-              <div className="pointer-events-none absolute -right-20 -top-20 h-80 w-80 rounded-full opacity-40 blur-3xl" style={{ background: "radial-gradient(circle, rgba(201,138,4,0.5), transparent 70%)" }} />
+              <div className="pointer-events-none absolute -right-20 -top-20 h-80 w-80 rounded-full blur-3xl glow-gold" />
               <div className="relative grid items-center gap-8 lg:grid-cols-12">
                 <div className="lg:col-span-8">
                   <Tag>Uncover The Truth · Protect Your Legacy</Tag>

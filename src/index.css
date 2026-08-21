@@ -105,8 +105,43 @@ body {
     linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
   background-size: 28px 28px;
 }
+/* Ambient gold bloom.
+   Built from a pale desaturated core rather than the brand amber. #ca8a04 is
+   96% saturation — painting that across the background reads as a yellow
+   stain, because a real light bloom tends toward warm white rather than
+   toward the source's own hue at full chroma.
+   Multi-stop so the falloff is fast early and long in the tail, the way light
+   actually behaves; a two-stop gradient falls off linearly and looks flat.
+   Every stop stays on the warm hue, including the final transparent one, so
+   the tail never drifts grey. */
 .bg-radial-gold {
-  background: radial-gradient(ellipse at 70% 30%, rgba(201, 138, 4, 0.26), transparent 58%);
+  background: radial-gradient(ellipse 82% 62% at 72% 24%,
+    rgba(255, 244, 207, 0.13) 0%,
+    rgba(233, 199, 102, 0.085) 17%,
+    rgba(201, 138, 4, 0.05) 37%,
+    rgba(201, 138, 4, 0.021) 60%,
+    rgba(201, 138, 4, 0.008) 78%,
+    rgba(201, 138, 4, 0) 100%);
+}
+
+/* Orb blooms — replaces eleven hand-written two-stop gradients that were
+   repeated inline across the pages. */
+.glow-gold {
+  background: radial-gradient(closest-side,
+    rgba(255, 244, 207, 0.22) 0%,
+    rgba(233, 199, 102, 0.14) 16%,
+    rgba(201, 138, 4, 0.075) 34%,
+    rgba(201, 138, 4, 0.032) 55%,
+    rgba(201, 138, 4, 0.012) 75%,
+    rgba(201, 138, 4, 0) 100%);
+}
+.glow-gold-soft {
+  background: radial-gradient(closest-side,
+    rgba(255, 244, 207, 0.13) 0%,
+    rgba(233, 199, 102, 0.082) 18%,
+    rgba(201, 138, 4, 0.044) 38%,
+    rgba(201, 138, 4, 0.018) 60%,
+    rgba(201, 138, 4, 0) 100%);
 }
 .bg-radial-navy {
   background: radial-gradient(ellipse at 20% 80%, rgba(34, 73, 124, 0.60), transparent 62%);

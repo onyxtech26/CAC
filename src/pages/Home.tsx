@@ -95,7 +95,7 @@ function Hero() {
         {/* Hero visual */}
         <div className="relative lg:col-span-6">
           <Reveal delay={120} className="relative">
-            <div className="pointer-events-none absolute -inset-8 rounded-full opacity-60 blur-3xl" style={{ background: "radial-gradient(circle at 50% 50%, rgba(201,138,4,0.35), transparent 65%)" }} />
+            <div className="pointer-events-none absolute -inset-8 rounded-full blur-3xl glow-gold" />
             <div className="relative anim-float-slow">
               <img
                 src="/assets/cac-building-logo.webp"
@@ -132,8 +132,8 @@ function Hero() {
           <div className="stat-frame relative rounded-[2rem] p-px">
             <div className="stat-card relative overflow-hidden rounded-[2rem] px-6 py-10 sm:px-10 sm:py-12">
               <div className="pointer-events-none absolute inset-0 bg-grid-fine opacity-[0.35]" />
-              <div className="pointer-events-none absolute -right-24 -top-28 h-72 w-72 rounded-full opacity-40 blur-3xl" style={{ background: "radial-gradient(circle, rgba(233,199,102,0.38), transparent 70%)" }} />
-              <div className="pointer-events-none absolute -left-24 -bottom-28 h-72 w-72 rounded-full opacity-25 blur-3xl" style={{ background: "radial-gradient(circle, rgba(201,138,4,0.3), transparent 70%)" }} />
+              <div className="pointer-events-none absolute -right-24 -top-28 h-72 w-72 rounded-full blur-3xl glow-gold" />
+              <div className="pointer-events-none absolute -left-24 -bottom-28 h-72 w-72 rounded-full blur-3xl glow-gold" />
 
               {/* divider fades out at both ends rather than butting into the edges */}
               <span className="stat-divider pointer-events-none absolute inset-y-10 left-1/2 hidden w-px sm:block" />

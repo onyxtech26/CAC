@@ -44,7 +44,7 @@ export default function Navbar() {
         <Link to="/" className="group flex items-center gap-3">
           <span className="relative">
             <LogoMark size={46} />
-            <span className="absolute -inset-1 rounded-full opacity-0 blur-md transition group-hover:opacity-60" style={{ background: "radial-gradient(circle, rgba(233,199,102,0.5), transparent 70%)" }} />
+            <span className="absolute -inset-1 rounded-full blur-md transition group-hover: glow-gold" />
           </span>
           <span className="leading-tight">
             <span className="block font-display text-[15px] font-bold tracking-wide text-ivory">
